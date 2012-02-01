@@ -26,8 +26,8 @@ else:
 ## none otherwise. a pattern can be 'controller/function.extension'
 response.generic_patterns = ['*'] if request.is_local else []
 ## (optional) optimize handling of static files
-# response.optimize_css = 'concat,minify,inline'
-# response.optimize_js = 'concat,minify,inline'
+#response.optimize_css = 'concat,minify,inline'
+#response.optimize_js = 'concat,minify,inline'
 
 #########################################################################
 ## Here is sample code if you need for
@@ -49,8 +49,8 @@ auth.define_tables()
 ## configure email
 mail=auth.settings.mailer
 mail.settings.server = 'logging' or 'smtp.gmail.com:587'
-mail.settings.sender = 'you@gmail.com'
-mail.settings.login = 'username:password'
+mail.settings.sender = 'scottianw@gmail.com'
+mail.settings.login = 'scottianw@gmail.com:p1o2lanyimeteor2003'
 
 ## configure auth policy
 auth.settings.registration_requires_verification = False
@@ -61,21 +61,3 @@ auth.settings.reset_password_requires_verification = True
 ## register with janrain.com, write your domain:api_key in private/janrain.key
 from gluon.contrib.login_methods.rpx_account import use_janrain
 use_janrain(auth,filename='private/janrain.key')
-
-#########################################################################
-## Define your tables below (or better in another model file) for example
-##
-## >>> db.define_table('mytable',Field('myfield','string'))
-##
-## Fields can be 'string','text','password','integer','double','boolean'
-##       'date','time','datetime','blob','upload', 'reference TABLENAME'
-## There is an implicit 'id integer autoincrement' field
-## Consult manual for more options, validators, etc.
-##
-## More API examples for controllers:
-##
-## >>> db.mytable.insert(myfield='value')
-## >>> rows=db(db.mytable.myfield=='value').select(db.mytable.ALL)
-## >>> for row in rows: print row.id, row.myfield
-#########################################################################
-

@@ -1,0 +1,215 @@
+(dp1
+S'output'
+p2
+S'Unable to open included view file: /home/ian/web2py/applications/blog/views/plugin_framework/framework.html'
+p3
+sS'layer'
+p4
+S"'layout.html'"
+p5
+sS'code'
+p6
+S"{{extend 'plugin_framework/framework.html'}}"
+p7
+sS'snapshot'
+p8
+(dp9
+S'exception'
+p10
+(dp11
+S'__getslice__'
+p12
+S"<method-wrapper '__getslice__' of exceptions.IOError object>"
+p13
+sS'__str__'
+p14
+S"<method-wrapper '__str__' of exceptions.IOError object>"
+p15
+sS'__reduce__'
+p16
+S'<built-in method __reduce__ of exceptions.IOError object>'
+p17
+sS'__dict__'
+p18
+S'{}'
+p19
+sS'__sizeof__'
+p20
+S'<built-in method __sizeof__ of exceptions.IOError object>'
+p21
+sS'__init__'
+p22
+S"<method-wrapper '__init__' of exceptions.IOError object>"
+p23
+sS'__setattr__'
+p24
+S"<method-wrapper '__setattr__' of exceptions.IOError object>"
+p25
+sS'__reduce_ex__'
+p26
+S'<built-in method __reduce_ex__ of exceptions.IOError object>'
+p27
+sS'__new__'
+p28
+S'<built-in method __new__ of type object>'
+p29
+sS'errno'
+p30
+S'2'
+sS'__format__'
+p31
+S'<built-in method __format__ of exceptions.IOError object>'
+p32
+sS'__class__'
+p33
+S"<type 'exceptions.IOError'>"
+p34
+sS'filename'
+p35
+S"'/home/ian/web2py/applications/blog/views/plugin_framework/framework.html'"
+p36
+sS'__doc__'
+p37
+S"'I/O operation failed.'"
+p38
+sS'__getitem__'
+p39
+S"<method-wrapper '__getitem__' of exceptions.IOError object>"
+p40
+sS'__setstate__'
+p41
+S'<built-in method __setstate__ of exceptions.IOError object>'
+p42
+sS'__getattribute__'
+p43
+S"<method-wrapper '__getattribute__' of exceptions.IOError object>"
+p44
+sS'args'
+p45
+S"(2, 'No such file or directory')"
+p46
+sS'__subclasshook__'
+p47
+S'<built-in method __subclasshook__ of type object>'
+p48
+sS'__unicode__'
+p49
+S'<built-in method __unicode__ of exceptions.IOError object>'
+p50
+sS'strerror'
+p51
+S"'No such file or directory'"
+p52
+sS'__delattr__'
+p53
+S"<method-wrapper '__delattr__' of exceptions.IOError object>"
+p54
+sS'__repr__'
+p55
+S"<method-wrapper '__repr__' of exceptions.IOError object>"
+p56
+sS'__hash__'
+p57
+S"<method-wrapper '__hash__' of exceptions.IOError object>"
+p58
+ssS'evalue'
+p59
+S"[Errno 2] No such file or directory: '/home/ian/web2py/applications/blog/views/plugin_framework/framework.html'"
+p60
+sS'frames'
+p61
+(lp62
+(dp63
+S'file'
+p64
+S'/home/ian/web2py/gluon/template.py'
+p65
+sS'dump'
+p66
+(dp67
+S'builtinopen'
+p68
+S'<built-in function open>'
+p69
+sS'fileobj'
+p70
+S'undefined'
+p71
+sS'filepath'
+p72
+S"'/home/ian/web2py/applications/blog/views/plugin_framework/framework.html'"
+p73
+ssS'lnum'
+p74
+I437
+sS'lines'
+p75
+(dp76
+I432
+S'        # Get the path of the file on the system.'
+p77
+sI433
+S'        filepath = os.path.join(self.path, filename)'
+p78
+sI434
+S''
+sI435
+S'        # try to read the text.'
+p79
+sI436
+S'        try:'
+p80
+sI437
+S"            fileobj = open(filepath, 'rb')"
+p81
+sI438
+S'            text = fileobj.read()'
+p82
+sI439
+S'            fileobj.close()'
+p83
+sI440
+S'        except IOError:'
+p84
+sI441
+S"            self._raise_error('Unable to open included view file: ' + filepath)"
+p85
+ssS'call'
+p86
+S"(self=<gluon.template.TemplateParser object>, filename='plugin_framework/framework.html')"
+p87
+sS'func'
+p88
+S'_get_file_text'
+p89
+sasS'pyver'
+p90
+S'Python 2.7.2+: /usr/bin/python2.7'
+p91
+sS'etype'
+p92
+S"<type 'exceptions.IOError'>"
+p93
+sS'date'
+p94
+S'Tue Jan 31 19:24:30 2012'
+p95
+sS'locals'
+p96
+(dp97
+S'self'
+p98
+S'<gluon.template.TemplateParser object>'
+p99
+sS'filepath'
+p100
+S"'/home/ian/web2py/applications/blog/views/plugin_framework/framework.html'"
+p101
+sg35
+S"'plugin_framework/framework.html'"
+p102
+sssS'traceback'
+p103
+S'Traceback (most recent call last):\n  File "/home/ian/web2py/gluon/template.py", line 437, in _get_file_text\n    fileobj = open(filepath, \'rb\')\nIOError: [Errno 2] No such file or directory: \'/home/ian/web2py/applications/blog/views/plugin_framework/framework.html\'\n'
+p104
+s.

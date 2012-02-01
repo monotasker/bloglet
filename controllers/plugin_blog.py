@@ -17,17 +17,17 @@ def articles():
     created = a.created.strftime('%B %e, %Y')
     return dict(a = a, created = created)
 
-@auth.requires(auth.user_id == 1)
+@auth.requires(auth.user_id == 2)
 def new_post():
     form = crud.create(db.articles)
     return dict(form = form)
 
-@auth.requires(auth.user_id == 1)
+@auth.requires(auth.user_id == 2)
 def edit_post():
     form = crud.update(db.articles)
     return dict(form = form)
 
-@auth.requires(auth.user_id == 1)
+@auth.requires(auth.user_id == 2)
 def new_tag():
     form = crud.create(db.blog_tags)
     return dict(form = form)
