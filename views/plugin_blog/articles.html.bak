@@ -1,0 +1,8 @@
+{{right_sidebar_enabled = True}}
+{{left_sidebar_enabled = True}}    
+{{extend 'layout.html'}}
+<article>
+{{=H2(a.title)}}
+{{=SPAN(a.created, _class='date_created')}}
+{{=XML(a.body)}}
+</article>
