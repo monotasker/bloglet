@@ -5,12 +5,6 @@
 
 @import "framework";
 
-@font-face{
-    font-family: 'MyWebFont';
-    src: url('fonts/websymbols-regular-webfont.eot');
-    src: url('fonts/websymbols-regular-webfont.eot?#iefix') format('embedded-opentype'), url('/topoi/static/plugin_framework/fonts/websymbols-regular-webfont.woff') format('woff'), url('fonts/websymbols-regular-webfont.ttf') format('truetype'), url('fonts/websymbols-regular-webfont.svg#websymbols-regular-webfont') format('svg');
-}
-
 body {
     background-color:@greye;
     .linear-gradient(@greye,@greyd);
@@ -22,14 +16,22 @@ body {
 header {
     position:relative;
     display:block;
-    height:@lineheight3;
+    height:@lineheight2;
+    line-height:@lineheight2;
     .linear-gradient(@brown1, @brown2);
     .box-shadow(0,2px,6px,rgba(0,0,0,0.3));
     z-index:99;
     padding:0;
 
+    #appname {
+        height:@lineheight2;
+        line-height:@lineheight2;
+        margin:0;
+    }
+
     h1 a {
         margin:0 @lineheight3;
+        line-height:@lineheight2;        
         color:#fff;
         .inset-text;
         font-size:@typeheight2;
@@ -39,14 +41,6 @@ header {
         letter-spacing: 2px;
     }
 
-}
-
-.blockletter() {
-    font-weight:normal;
-    letter-spacing:2px;
-    font-family:@fonts3;
-    text-transform:uppercase;
-    font-size:@typeheight * .8;
 }
 
 nav {
@@ -59,8 +53,8 @@ nav {
     .sf-menu {
         li {
             background-color:transparent;
-            height:@lineheight3;
-            line-height:@lineheight3;
+            height:@lineheight2;
+            line-height:@lineheight2;
             .blockletter;
 
             a, a:link, a:visited {
@@ -108,14 +102,14 @@ nav {
     .inset-text;
     .blockletter;
     color:#fff;
-    height:@lineheight3;
-    line-height:@lineheight3;
+    height:@lineheight2;
+    line-height:@lineheight2;
     display:block;
 
     a, a:link, a:visited {
         .inset-text;
-        height:@lineheight3;
-        line-height:@lineheight3;
+        height:@lineheight2;
+        line-height:@lineheight2;
         color:#fff;
         border-left:1px solid rgba(270,270,270,0.3);
         border-right:1px solid rgba(0,0,0,0.1);

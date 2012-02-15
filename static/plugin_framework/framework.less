@@ -1,3 +1,6 @@
+/* apply a natural box layout model to all elements */
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
 /* layout dimensions */
 @pagewidth: @typeheight * 60;
 @maxpagewidth:@typeheight * 60;
@@ -83,9 +86,16 @@ body{
 }
 
 /* fonts */
+@font-face{
+    font-family: 'websymbols';
+    src: url('fonts/websymbols-regular-webfont.eot');
+    src: url('fonts/websymbols-regular-webfont.eot?#iefix') format('embedded-opentype'), url('/topoi/static/plugin_framework/fonts/websymbols-regular-webfont.woff') format('woff'), url('fonts/websymbols-regular-webfont.ttf') format('truetype'), url('fonts/websymbols-regular-webfont.svg#websymbols-regular-webfont') format('svg');
+}
+
 @fonts1:"Palatino Linotype", serif;
 @fonts2:prociono, "Palatino Linotype", serif;
 @fonts3:ubuntu,arial,sans-serif;
+@websymbols:websymbols;
 
 body {
     .textdefaults;
@@ -96,6 +106,14 @@ body {
     line-height: @lineheight;
     font-family: @fonts1;
     color:@grey6;
+}
+
+.blockletter() {
+    font-weight:normal;
+    letter-spacing:2px;
+    font-family:@fonts3;
+    text-transform:uppercase;
+    font-size:@typeheight * .8;
 }
 
 .formfieldtext() {
