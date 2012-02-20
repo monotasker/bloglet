@@ -135,8 +135,9 @@ nav {
 
     article {
         padding:@lineheight3;
+        padding-left:@lineheight * 4;
         margin-right:30%;
-        padding-right:@lineheight3 * 3;
+        padding-right:@lineheight * 4;
         text-align:justify;
         -moz-hyphens:auto;
         -webkit-hyphens:auto;
@@ -202,6 +203,7 @@ nav {
 
     #left_sidebar, #right_sidebar {
         padding:@lineheight3;
+        padding-left:@lineheight;
         width:30%;
         float:right;
         border-left:1px solid #e6e6e6;
@@ -211,10 +213,9 @@ nav {
         font-family:prociono;
 
         h2 {
-            font-family: Arial;
-            text-transform: uppercase;
-            font-size: @typeheight;
-            letter-spacing: 2px;
+            
+            .blockletter();
+            
             font-weight: normal;
             color: #aaa;
             cursor:pointer;
@@ -354,7 +355,11 @@ nav {
 footer {
     background-color:transparent;
     color:@dusky-blue2;
-    .text-shadow();
+    
+    #poweredby {
+        float:right;
+    }
+    
 }
 
 .flash {
