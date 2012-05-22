@@ -1,3 +1,81 @@
+/* apply a natural box layout model to all elements */
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+@font-face {
+    font-family: 'SBLGreekRegular';
+    src: url('/grammateus3/static/plugin_framework/fonts/sbl_grk-webfont.eot');
+    src: local('☺'), url('/grammateus3/static/plugin_framework/fonts/sbl_grk-webfont.woff') format('woff'), 
+        url('/grammateus3/static/plugin_framework/fonts/sbl_grk-webfont.ttf') format('truetype'), 
+        url('/grammateus3/static/plugin_framework/fonts/sbl_grk-webfont.svg#webfontRelj09Wi') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face{
+    font-family: 'Websymbols';
+    src: url('../fonts/websymbols-regular-webfont.eot');
+    src: url('../fonts/websymbols-regular-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/websymbols-regular-webfont.woff') format('woff'), url('fonts/websymbols-regular-webfont.ttf') format('truetype'), url('fonts/websymbols-regular-webfont.svg#websymbols-regular-webfont') format('svg');
+}
+
+@font-face {
+    font-family: 'EstrangeloEdessaRegular';
+    src: url('/grammateus3/static/plugin_framework/fonts/estre-webfont.eot');
+    src: local('☺'), url('/grammateus3/static/plugin_framework/fonts/estre-webfont.woff') format('woff'), 
+        url('/grammateus3/static/plugin_framework/fonts/estre-webfont.ttf') format('truetype'), 
+        url('/grammateus3/static/plugin_framework/fonts/estre-webfont.svg#webfont7YE92Obt') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SBLHebrewRegular';
+    src: url('/grammateus3/static/plugin_framework/fonts/sbl_hbrw-webfont.eot');
+    src: local('☺'), url('/grammateus3/static/plugin_framework/fonts/sbl_hbrw-webfont.woff') format('woff'), 
+        url('/grammateus3/static/plugin_framework/fonts/sbl_hbrw-webfont.ttf') format('truetype'), 
+        url('/grammateus3/static/plugin_framework/fonts/sbl_hbrw-webfont.svg#webfontUHtlyWNi') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'AbyssinicaSIL';
+    src: url('/grammateus3/static/plugin_framework/fonts/abyssinica_sil-webfont.eot');
+    src: local('☺'), url('/grammateus3/static/plugin_framework/fonts/abyssinica_sil-webfont.woff') format('woff'), 
+        url('/grammateus3/static/plugin_framework/fonts/abyssinica_sil-webfont.ttf') format('truetype'), 
+        url('/grammateus3/static/plugin_framework/fonts/abyssinica_sil-webfont.svg#webfont5nU8VVLc') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* typography for non-Roman scripts */
+.Ethiopic {
+    font-family:AbyssinicaSIL;
+    font-size:@typeheight2;
+}
+
+.Aramaic, .Hebrew {
+    font-family:SBLHebrewRegular, 'Ezra SIL', 'Times New Roman';
+    font-size:@typeheight * 1.75;
+    direction: rtl;
+    line-height:@lineheight2;
+}
+
+.Greek {
+    font-family:SBLGreekRegular, Gentium, 'Galatia SIL', Palatino, 'Palatino Linotype', 'Times New Roman', xyz;
+    font-size:@typeheight * 1.25;    
+    direction: ltr;
+    line-height:@lineheight2;
+}
+
+.Syriac {
+    font-family:'EstrangeloEdessaRegular';
+    direction: ltr;
+}
+
+.Latin, .English {
+    font-family:prociono, Palatino, 'Palatino Linotype';
+}
+
 /* layout dimensions */
 @pagewidth: @typeheight * 60;
 @maxpagewidth:@typeheight * 60;
@@ -5,6 +83,7 @@
 
 /* text dimensions */
 @typeheight: 16px;
+@smalltype: @typeheight * 0.8;
 @lineheight: @typeheight * 1.5;
 @typeheight2: @typeheight * 1.5;
 @lineheight2: @lineheight * 1.5;
@@ -22,12 +101,12 @@
 @tangerine:#dd4814; /* ubuntu */
 
 @yellow:yellow;
-@ocp-yellow:#ffc100;
+@ocp-yellow:#ffc100; /* ocp - book title */
 
 @dark-green:#0D3100;
 @green:#5BA917;
-@grass1:#96BC44; /* ocp */
-@grass2:#690; /* ocp */
+@grass1:#96BC44; /* ocp -- text headings on white or on mud; edition label */
+@grass2:#690; /* ocp - not in active use */
 @moss:#809240; /* paideia */
 @spring-green:#AAE557;
 
@@ -35,8 +114,8 @@
 @sky:#7E9AFF;
 @aqua1:#00BFF3;
 @aqua2:#1087A4;
-@sea1:#007DBB; /* ocp */
-@sea2:#069; /* ocp */
+@sea1:#007DBB; /* ocp - not in active use */
+@sea2:#069; /* ocp - read text link on intro pages; maybe headings on white? */
 @blue:#164CA8;
 @dusky-blue1:#607890;
 @dusky-blue2:#003366;
@@ -48,9 +127,12 @@
 
 @brown1:#D99E52;
 @brown2:#956929;
-@warm-brown:#960; /* ocp */
+@warm-brown:#960; /* ocp - not in active use */
 @swamp:#BEB013;
+@mud1:#494738; /* ocp - footer and top of header gradient */
+@mud2:#38362b; /* ocp - bottom of header gradient */
 
+@chalk:#fcfbf7; /* ocp - table cell background */
 @mdn-beige1:#F6F6F1;
 @mdn-beige2:#E0E0D5;
 @cream:#F8F0E5; /* paideia */
@@ -58,8 +140,8 @@
 
 @yellow-beige1:#EBFC97;
 @ocp-beige1:#F5F3EA;
-@ocp-beige2:#E3E1D3;
-@ocp-beige3:#E4DFC8;
+@wet-chalk:#E3E1D3; /* ocp - accent with chalk, table lines */
+@latte:#E4DFC8; /* ocp - sidebars and control buttons */
 @granite1:#959174; /* ocp */
 @granite2:#79765D; /* ocp */
 
@@ -73,13 +155,14 @@
 @greya:#aaa;
 @grey8:#888;
 @grey85:#858585;
-@grey6:#666;
+@grey6:#666; /* ocp - text on latte */
 @grey3:#333;
 @grey2d:#2d2d2d; /*google black*/
 @black:#000;
 
 /* page */
 body{
+    .fixed-page;
 }
 
 /* fonts */
@@ -96,6 +179,18 @@ body {
     line-height: @lineheight;
     font-family: @fonts1;
     color:@grey6;
+}
+
+.blockletter() {
+    text-transform:uppercase;
+    font-family:@fonts3;
+    font-size:@smalltype;
+}
+
+.blockletter-small() {
+    text-transform:uppercase;
+    font-family:@fonts3;
+    font-size:@smalltype;
 }
 
 .formfieldtext() {
@@ -184,14 +279,16 @@ ul {
 
 /* forms */
 
-input[type=text], select, textarea {
-    /*.box-shadow-inset(0, 2px, 6px, rgba(0,0,0,0.2));*/
+input[type=text], select, textarea {    
     border:1px solid #eee;
     .textdefaults;
+    .transition();
 }
 
 input[type=text]:focus, textarea:focus {
-    .box-shadow-inset(0, 2px, 6px, rgba(0,0,270,0.5));
+    .box-shadow-inset(0, 1px, 2px, rgba(0,0,0,0.4));
+    border:1px solid @green;
+    .transition();
 }
 
 textarea {
@@ -201,7 +298,10 @@ textarea {
 
 input[type=text], select {
     line-height:28px;
-    padding-left:@typeheight;
+
+    option {
+        padding-left:@typeheight;
+    }
 }
 
 select {
@@ -210,13 +310,13 @@ select {
 }
 
 form label {
-    display:inline-block;
     line-height:@lineheight2;
-    height:@lineheight2;
+    .blockletter-small();
 }
 
-form a, button {
+input[type=submit] {
     .button-green-grad;
+    border:1px solid @green;    
 }
 
 /* tables */
@@ -235,13 +335,22 @@ form td {
 }
 
 /* layout */
-header, #page, footer {
-    position: relative;
-    width:@pagewidth;
-    min-width:@minpagewidth;
-    background-color: @white;
-    margin:0 auto;
-    padding:0;
+
+.fluid-page() {
+    header, #page, footer {
+        width:100%
+    }
+}
+
+.fixed-page() {
+    header, #page, footer {
+        position: relative;
+        width:@pagewidth;
+        min-width:@minpagewidth;
+        background-color: @white;
+        margin:0 auto;
+        padding:0;    
+    }
 }
 
 header {
@@ -274,19 +383,19 @@ div.flash {
     font-weight: bold;
     display: none;
     position: fixed;
-    padding: 10px;
-    top: 40px;
-    right: 10px;
+    padding: @typeheight;
+    top: 0;
+    right: 0px;
     min-width: 280px;
     opacity: 0.85;
     margin: 0px 0px 10px 10px;
     color: #fff;
     vertical-align: middle;
     cursor: pointer;
-    background: #000;
-    border: 2px solid #fff;
-    .border-radius(5px,5px,5px,5px);
-    z-index: 2;
+    background-color: rgba(0,0,0,0.8);
+    border: 1px solid #ccc;
+    .border-radius(0,0,5px,5px);
+    z-index: 100;
     .box-shadow;
 }
 
@@ -371,6 +480,14 @@ div.error {
     background-image: radial-gradient(@h @v, ellipse closest-side, @hue1, @hue2 100%);
 }
 
+.transition(@target:all, @time:200ms, @easing:ease-in-out){
+    -webkit-transition:@target @time @easing;
+    -moz-transition:@target @time @easing;
+    -o-transition:@target @time @easing;
+    -ms-transition:@target @time @easing;
+    transition:@target @time @easing;
+}
+
 .speech-bubble(@br:@lineheight2) {
     position:relative;
     border-radius:@br;
@@ -397,14 +514,27 @@ div.error {
 
 }
 
+.border-image(@img, @a, @b, @c, @d) {
+    border-width: @a px @b px @c px @d px;
+    -moz-border-image: url(@img) @a @b @c @d repeat;
+    -webkit-border-image: url(@img) @a @b @c @d repeat;
+    -o-border-image: url(@img) @a @b @c @d repeat;
+    border-image: url(@img) @a @b @c @d repeat;
+}
+
 .button {
     display:inline-block;
     line-height:@lineheight2;
     height:@lineheight2;
     margin-left:@typeheight;
     padding:0 @typeheight;
-    .box-shadow(0, 2px, 4px);
     color:#fff;
+    .transition();
+
+    :hover {
+        .box-shadow(0, 2px, 6px, rgba(0,0,0,0.4));
+        .transition();        
+    }
 }
 
 .button-green-grad {
@@ -417,14 +547,22 @@ div.error {
     .linear-gradient(#FFD272, #EFAD1F);
 }
 
-.sticker(@diam:24px, @rad:14px){
+.sticker(@diam:@lineheight, @rad:@typeheight) {
     display:inline-block;
     width:@diam;
     height:@diam;
+    line-height:@diam;
     padding:0;
     text-align:center;
     .border-radius(@rad,@rad,@rad,@rad);
-    .box-shadow(0, 2px, 4px);
+    font-weight:bold;
+    .border-radius(@rad,@rad,@rad,@rad);
+    .transition();
+
+    :hover{
+        .box-shadow(0, 2px, 4px);
+        .transition();
+    }
 }
 
 .red-sticker{

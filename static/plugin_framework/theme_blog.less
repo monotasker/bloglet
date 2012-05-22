@@ -3,50 +3,39 @@
 /* copyright Ian W. Scott, 2011 */
 /* licensed under GPL 3.0 as a free, open-source resource */
 
-@import "framework";
+@import "notebook_style";
 
-@font-face{
-    font-family: 'MyWebFont';
-    src: url('fonts/websymbols-regular-webfont.eot');
-    src: url('fonts/websymbols-regular-webfont.eot?#iefix') format('embedded-opentype'), url('/topoi/static/plugin_framework/fonts/websymbols-regular-webfont.woff') format('woff'), url('fonts/websymbols-regular-webfont.ttf') format('truetype'), url('fonts/websymbols-regular-webfont.svg#websymbols-regular-webfont') format('svg');
-}
-
-body {
-    background-color:@greye;
-    .linear-gradient(@greye,@greyd);
-    background-repeat: no-repeat;
-    z-index:1;
-    font-family: @fonts2;
-}
 
 header {
     position:relative;
     display:block;
-    height:@lineheight3;
+    height:@lineheight2;
+    line-height:@lineheight2;
     .linear-gradient(@brown1, @brown2);
     .box-shadow(0,2px,6px,rgba(0,0,0,0.3));
     z-index:99;
     padding:0;
 
+    #appname {
+        height:@lineheight2;
+        line-height:@lineheight2;
+        margin:0;
+    }
+
     h1 a {
         margin:0 @lineheight3;
+        line-height:@lineheight2;   
+        height:@lineheight2;     
         color:#fff;
+        display:block;
         .inset-text;
-        font-size:@typeheight2;
+        font-size:@typeheight;
         font-family:Ubuntu;
         text-transform: uppercase;
         font-weight:normal;
         letter-spacing: 2px;
     }
 
-}
-
-.blockletter() {
-    font-weight:normal;
-    letter-spacing:2px;
-    font-family:@fonts3;
-    text-transform:uppercase;
-    font-size:@typeheight * .8;
 }
 
 nav {
@@ -59,8 +48,8 @@ nav {
     .sf-menu {
         li {
             background-color:transparent;
-            height:@lineheight3;
-            line-height:@lineheight3;
+            height:@lineheight2;
+            line-height:@lineheight2;
             .blockletter;
 
             a, a:link, a:visited {
@@ -89,8 +78,6 @@ nav {
         }
 
         li:last-child {
-            font-family: 'MyWebFont';
-
             a {
                 border-right:none;
                 padding-l:@lineheight2;
@@ -108,14 +95,14 @@ nav {
     .inset-text;
     .blockletter;
     color:#fff;
-    height:@lineheight3;
-    line-height:@lineheight3;
+    height:@lineheight2;
+    line-height:@lineheight2;
     display:block;
 
     a, a:link, a:visited {
         .inset-text;
-        height:@lineheight3;
-        line-height:@lineheight3;
+        height:@lineheight2;
+        line-height:@lineheight2;
         color:#fff;
         border-left:1px solid rgba(270,270,270,0.3);
         border-right:1px solid rgba(0,0,0,0.1);
@@ -141,8 +128,9 @@ nav {
 
     article {
         padding:@lineheight3;
+        padding-left:@lineheight * 4;
         margin-right:30%;
-        padding-right:@lineheight3 * 3;
+        padding-right:@lineheight * 4;
         text-align:justify;
         -moz-hyphens:auto;
         -webkit-hyphens:auto;
@@ -208,6 +196,7 @@ nav {
 
     #left_sidebar, #right_sidebar {
         padding:@lineheight3;
+        padding-left:@lineheight;
         width:30%;
         float:right;
         border-left:1px solid #e6e6e6;
@@ -217,10 +206,9 @@ nav {
         font-family:prociono;
 
         h2 {
-            font-family: Arial;
-            text-transform: uppercase;
-            font-size: @typeheight;
-            letter-spacing: 2px;
+            
+            .blockletter();
+            
             font-weight: normal;
             color: #aaa;
             cursor:pointer;
@@ -359,65 +347,15 @@ nav {
 
 footer {
     background-color:transparent;
-    color:@dusky-blue2;
-    .text-shadow();
+    color:@dusky-blue1;
+    
+    .copyright {
+        font-size: @typeheight * .8;
+    }
+    
+    #poweredby {
+        float:right;
+    }
+    
 }
 
-.flash {
-    position:absolute;
-    width:280px;
-    left:50%;
-    top:0;
-    margin-left:-140px;
-    z-index:100;
-}
-
-/* ================= iPad in portrait ================= */
-@media all and (orientation:portrait){
-}
-
-/* ================= iPad in landscape ================= */
-@media all and (orientation:landscape){
-}
-
-/* ================= iPhone4 (retina screen) ================= */
-@media only screen
-and (-webkit-min-device-pixel-ratio: 2)
-and (max-device-width: 480px){
-}
-
-/* ================= Intermediate browser viewing area (480px+)================= */
-@media screen
-and (max-width: 480px){
-
-#left_sidebar, #right_sidebar {
-    padding:0;
-    width:20px;
-    overflow: hidden;
-}
-
-#left_sidebar:hover, #right_sidebar:hover {
-    padding:@lineheight3;
-    width:30%;
-}
-
-
-}
-
-/* ================= Wide browser viewing area (768px +) ==================== */
-@media only screen
-and (max-width: 768px) {
-
-
-
-}
-
-/* ================= Max browser viewing area (1140px +) ==================== */
-@media only screen and (min-width: 1140px) {
-
-}
-
-/* ============================================================================= Print styles. Inlined to avoid required HTTP connection: www.phpied.com/delay-loading-your-print-css/ ========================================================================== */
-@media print {
-
-}
