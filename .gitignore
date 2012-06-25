@@ -1,0 +1,4 @@
+sessions/*.*
+*.bak
+*.pyc
+*.swp
