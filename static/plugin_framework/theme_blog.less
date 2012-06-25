@@ -31,10 +31,12 @@ header {
 
     h1 a {
         margin:0 @lineheight3;
-        line-height:@lineheight2;        
+        line-height:@lineheight2;   
+        height:@lineheight2;     
         color:#fff;
+        display:block;
         .inset-text;
-        font-size:@typeheight2;
+        font-size:@typeheight;
         font-family:Ubuntu;
         text-transform: uppercase;
         font-weight:normal;
@@ -83,8 +85,6 @@ nav {
         }
 
         li:last-child {
-            font-family: 'MyWebFont';
-
             a {
                 border-right:none;
                 padding-l:@lineheight2;
@@ -354,7 +354,11 @@ nav {
 
 footer {
     background-color:transparent;
-    color:@dusky-blue2;
+    color:@dusky-blue1;
+    
+    .copyright {
+        font-size: @typeheight * .8;
+    }
     
     #poweredby {
         float:right;

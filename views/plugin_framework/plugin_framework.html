@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>{{=response.title or request.application}}</title>
     <!-- http://dev.w3.org/html5/markup/meta.name.html -->
-    <meta name="application-name" content="{{=request.application}}" />
+    <meta name="application-name" content="{{=response.title}}" />
     <!-- http://google.com/webmasters -->
     <meta name="google-site-verification" content="" />
     <!--  Mobile Viewport Fix (j.mp/mobileviewport & davidbcalhoun.com/2010/viewport-metatag) -->
@@ -97,7 +97,7 @@
                 {{pass}}
             {{pass}}
 
-            <h1 id="appname">{{=A(request.application.capitalize(), _href=URL('default', 'index'))}}</h1>
+            <h1 id="appname">{{=A(response.title.capitalize(), _href=URL('default', 'index'))}}</h1>
 
         {{end}}
 
@@ -135,7 +135,7 @@
             <a href="http://www.web2py.com/" >
                 <img id="poweredby" alt="Powered by web2py, the full-stack Python framework for rapid web development." src="{{=URL('static','images/poweredby.png')}}"/>
             </a>
-            {{=T('Copyright')}} &#169; Ian W. Scott 2011 (licensed under GPL 3.0)
+            <span class="copyright">{{=response.meta.copyright}}</span>
             <div class="clear"></div><!-- Clear the divs -->
         {{end}}
     </footer>
