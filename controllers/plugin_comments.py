@@ -8,7 +8,7 @@ if 0:
 #checks to see whether hidden 'honeypot' field has any text in it (presumably placed there by a bot)
 def checkfilter(form):
     form.vars.filter = request.vars.filter
-    if form.vars.filter == '':
+    if form.vars.details == None:
         pass
     else:
         form.errors.bot = 'It seems like you may not be a human being! \
@@ -17,7 +17,9 @@ def checkfilter(form):
 
 def post():
     comment = db.plugin_comments_comment
-    form = SQLFORM(comment, submit_button = 'add comment', separator = '', formstyle = 'ul', hidden = dict(filter = ''))
+    form = SQLFORM(comment, submit_button = 'add comment', 
+                   separator = '', 
+                   formstyle = 'ul')
     # process form
     if form.process(onvalidation = checkfilter).accepted:
         response.flash = 'Thanks for your thoughts!'

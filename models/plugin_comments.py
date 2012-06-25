@@ -1,7 +1,10 @@
 db.define_table('plugin_comments_comment',
     Field('body','text', label='Your comment'),
     Field('posted_on', 'datetime', default=request.now),
-    Field('posted_by', db.auth_user, default=auth.user_id))
+    Field('posted_by', db.auth_user, default=auth.user_id),
+    Field('username', 'string'),
+    Field('email_address', 'string'),
+    Field('details', 'integer'))
 db.plugin_comments_comment.posted_on.writable=False
 db.plugin_comments_comment.posted_on.readable=False
 db.plugin_comments_comment.posted_by.writable=False

@@ -6,7 +6,7 @@ if 0:
     crud = Crud()
     request, session, db, auth = current.request, current.session, current.db, current.auth
 
-def front():
+def index():
     arts = db(db.articles.id > 0).select(orderby = db.articles.created)
     return dict(articles = arts)
 

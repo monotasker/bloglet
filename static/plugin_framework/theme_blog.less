@@ -3,8 +3,15 @@
 /* copyright Ian W. Scott, 2011 */
 /* licensed under GPL 3.0 as a free, open-source resource */
 
-@import "notebook_style";
+@import "framework";
 
+body {
+    background-color:@greye;
+    .linear-gradient(@greye,@greyd);
+    background-repeat: no-repeat;
+    z-index:1;
+    font-family: @fonts2;
+}
 
 header {
     position:relative;
@@ -359,3 +366,61 @@ footer {
     
 }
 
+.flash {
+    position:absolute;
+    width:280px;
+    left:50%;
+    top:0;
+    margin-left:-140px;
+    z-index:100;
+}
+
+/* ================= iPad in portrait ================= */
+@media all and (orientation:portrait){
+}
+
+/* ================= iPad in landscape ================= */
+@media all and (orientation:landscape){
+}
+
+/* ================= iPhone4 (retina screen) ================= */
+@media only screen
+and (-webkit-min-device-pixel-ratio: 2)
+and (max-device-width: 480px){
+}
+
+/* ================= Intermediate browser viewing area (480px+)================= */
+@media screen
+and (max-width: 480px){
+
+#left_sidebar, #right_sidebar {
+    padding:0;
+    width:20px;
+    overflow: hidden;
+}
+
+#left_sidebar:hover, #right_sidebar:hover {
+    padding:@lineheight3;
+    width:30%;
+}
+
+
+}
+
+/* ================= Wide browser viewing area (768px +) ==================== */
+@media only screen
+and (max-width: 768px) {
+
+
+
+}
+
+/* ================= Max browser viewing area (1140px +) ==================== */
+@media only screen and (min-width: 1140px) {
+
+}
+
+/* ============================================================================= Print styles. Inlined to avoid required HTTP connection: www.phpied.com/delay-loading-your-print-css/ ========================================================================== */
+@media print {
+
+}

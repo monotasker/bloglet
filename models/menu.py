@@ -5,15 +5,15 @@
 ## Customize your APP title, subtitle and menus here
 #########################################################################
 
-response.title = ' '.join(word.capitalize() for word in request.application.split('_'))
-response.subtitle = T('customize me!')
+response.title = T('Confessions of a Monotasker')
+response.subtitle = T('')
 
 ## read more at http://dev.w3.org/html5/markup/meta.name.html
-response.meta.author = 'Your Name <you@example.com>'
-response.meta.description = 'a cool new app'
-response.meta.keywords = 'web2py, python, framework'
+response.meta.author = 'Ian W. Scott <scottianw@gmail.com>'
+response.meta.description = 'My blog for biblical studies, web development, and life in general.'
+response.meta.keywords = 'bible, biblical, studies, academic, scholarship, web2py, python, framework'
 response.meta.generator = 'Web2py Web Framework'
-response.meta.copyright = 'Copyright 2011'
+response.meta.copyright = 'All content copyright Ian W. Scott, 2012 unless otherwise specified (all rights reserved); Site design copyright Ian W. Scott (licensed under GPL 3.0).'
 
 ## your http://google.com/analytics id
 response.google_analytics_id = None
@@ -23,7 +23,7 @@ response.google_analytics_id = None
 #########################################################################
 
 response.menu = [
-    (T('Home'), False, URL('default','index'), [])
+    (T('Home'), False, URL('bloglet', 'plugin_blog','index'), [])
     ]
 
 #########################################################################
@@ -35,6 +35,7 @@ def _():
     app = request.application
     ctr = request.controller
     # useful links to internal and external resources
+    """
     response.menu+=[
         (SPAN('web2py',_style='color:yellow'),False, None, [
                 (T('My Sites'),False,URL('admin','default','site')),
@@ -98,5 +99,4 @@ def _():
                         ])
                 ]
          )]
-_()
-
+         """
