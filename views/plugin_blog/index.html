@@ -5,8 +5,12 @@
 <article>
     {{=H2(a.title)}}
     {{=SPAN(a.author)}}
-    {{=SPAN(a.created.strftime('%B %e, %Y'))}}
-    {{=P(a.teaser)}}
+    {{if a.created:}}
+        {{=SPAN(a.created.strftime('%B %e, %Y'))}}
+    {{pass}}
+    {{if a.teaser:}}
+        {{=P(a.teaser)}}
+    {{pass}}
     {{=A('read more', _href=URL('plugin_blog', 'articles', args=[a.id]))}}
 </article>
 {{pass}}

@@ -1,19 +1,29 @@
 # -*- coding: utf-8 -*-
 # this file is released under public domain and you can use without limitations
 
+if 0:
+    from gluon import T, URL, current
+    response = current.response
+    request = current.request
+
 #########################################################################
 ## Customize your APP title, subtitle and menus here
 #########################################################################
 
 response.title = T('Confessions of a Monotasker')
-response.subtitle = T('')
+response.subtitle = T('Ian W. Scott')
 
 ## read more at http://dev.w3.org/html5/markup/meta.name.html
 response.meta.author = 'Ian W. Scott <scottianw@gmail.com>'
-response.meta.description = 'My blog for biblical studies, web development, and life in general.'
-response.meta.keywords = 'bible, biblical, studies, academic, scholarship, web2py, python, framework'
+response.meta.description = 'My blog for biblical studies, web development,'\
+                            ' and life in general.'
+response.meta.keywords = 'bible, biblical, studies, academic, scholarship,'\
+                        ' web2py, python, framework'
 response.meta.generator = 'Web2py Web Framework'
-response.meta.copyright = 'All content copyright Ian W. Scott, 2012 unless otherwise specified (all rights reserved); Site design copyright Ian W. Scott (licensed under GPL 3.0).'
+response.meta.copyright = 'All content copyright Ian W. Scott, 2012 unless'\
+                        ' otherwise specified (all rights reserved); Site'\
+                        ' design copyright Ian W. Scott (licensed under'\
+                        ' GPL 3.0).'
 
 ## your http://google.com/analytics id
 response.google_analytics_id = None
@@ -23,12 +33,13 @@ response.google_analytics_id = None
 #########################################################################
 
 response.menu = [
-    (T('Home'), False, URL('bloglet', 'plugin_blog','index'), [])
+    (T('Home'), False, URL('blog', 'plugin_blog', 'index'), [])
     ]
 
 #########################################################################
 ## provide shortcuts for development. remove in production
 #########################################################################
+
 
 def _():
     # shortcuts

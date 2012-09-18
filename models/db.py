@@ -29,17 +29,17 @@ mail.settings.login = 'emailhere:passwordhere'
 
 ## configure auth policy
 auth.settings.registration_requires_verification = False
-auth.settings.registration_requires_approval = False
+auth.settings.registration_requires_approval = True
 auth.settings.reset_password_requires_verification = True
 
 ## configure captcha
 auth.settings.login_captcha = None
-auth.settings.register_captcha = Recaptcha(request, 
-                                           '6Ldy5ccSAAAAALlI2gJuwFQYe-iaZ_oyQs3nhX-9', 
+auth.settings.register_captcha = Recaptcha(request,
+                                           '6Ldy5ccSAAAAALlI2gJuwFQYe-iaZ_oyQs3nhX-9',
                                            '6Ldy5ccSAAAAABr8FhJeb_aELfEC7SJOOyvhJp0R')
-auth.settings.retrieve_username_captcha = Recaptcha(request, 
-                                           '6Ldy5ccSAAAAALlI2gJuwFQYe-iaZ_oyQs3nhX-9', 
+auth.settings.retrieve_username_captcha = Recaptcha(request,
+                                           '6Ldy5ccSAAAAALlI2gJuwFQYe-iaZ_oyQs3nhX-9',
                                            '6Ldy5ccSAAAAABr8FhJeb_aELfEC7SJOOyvhJp0R')
-auth.settings.retrieve_password_captcha = Recaptcha(request, 
-                                           '6Ldy5ccSAAAAALlI2gJuwFQYe-iaZ_oyQs3nhX-9', 
+auth.settings.retrieve_password_captcha = Recaptcha(request,
+                                           '6Ldy5ccSAAAAALlI2gJuwFQYe-iaZ_oyQs3nhX-9',
                                            '6Ldy5ccSAAAAABr8FhJeb_aELfEC7SJOOyvhJp0R')

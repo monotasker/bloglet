@@ -1,14 +1,11 @@
 <div>
+{{if request.args:}}
+{{=}}
+{{pass}}
 <h2>Classes</h2>
 <ul>
-    <li><a href="">New Testament Theology and History</a></li>
-    <li><a href="">New Testament Theology and History (online)</a></li>
-    <li><a href="">Greek Exegesis I</a></li>
-    <li><a href="">Greek Exegesis II</a></li>
-    <li><a href="">1 Corinthians</a></li>
-    <li><a href="">Romans</a></li>
-    <li><a href="">Gospel of John</a></li>
-    <li><a href="">The Jewish World of the New Testament</a></li>
+    <li><a href="URL('plugin_blog', 'articles', )">New Testament Theology and History</a></li>
+    <li><a href="URL('plugin_blog', 'articles', )">Romans</a></li>
 </ul>
 </div>
 
@@ -19,7 +16,5 @@
     <li><a href="">Ancient Hebrew Poetry</a></li>
     <li><a href="">NT Gateway</a></li>
     <li><a href="">PaleoJudaica</a></li>
-    <li><a href=""></a></li>
-    <li><a href=""></a></li>
 </ul>
 </div>

@@ -14,8 +14,9 @@ def articles():
     the_id = request.args[0]
     art = db(db.articles.id == the_id).select()
     a = art[0]
-    created = a.created.strftime('%B %e, %Y')
-    return dict(a = a, created = created)
+    tags = a.tags
+    created = a.created.strftime('%B %e, %Y') or None
+    return dict(a = a, created = created, tags=tags)
 
 @auth.requires(auth.user_id == 2)
 def new_post():
