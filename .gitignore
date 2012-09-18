@@ -1,3 +1,4 @@
-*.swp
+sessions/*.*
 *.bak
 *.pyc
+*.swp

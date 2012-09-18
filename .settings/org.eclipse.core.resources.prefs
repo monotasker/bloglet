@@ -1,4 +1,6 @@
-#Wed Feb 15 12:36:29 EST 2012
+#Mon Feb 20 12:30:34 EST 2012
 eclipse.preferences.version=1
+encoding//controllers/plugin_blog.py=utf8
 encoding//controllers/plugin_comments.py=utf8
 encoding//models/db.py=utf-8
+encoding//models/menu.py=utf-8
