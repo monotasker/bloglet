@@ -4,8 +4,8 @@
 <article>
 {{=H2(a.title, _class='article_title')}}
 {{=SPAN(created, _class='date_created')}}
-{{=DIV(XML(a.body), _class='article_wrapper')}}
-{{=plugin_comments()}}
+{{=DIV(MARKMIN(a.body), _class='article_wrapper')}}
+{{#=plugin_comments()}}
 </article>
 
 {{block right_sidebar}}

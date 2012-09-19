@@ -1,20 +1,23 @@
 <div>
 {{if request.args:}}
-{{=}}
+    {{#if 'romans_class' in response.vars['tags']:}}
+      <!--   <h2>Resources</h2>
+        <ul></ul> -->
+    {{#pass}}
 {{pass}}
 <h2>Classes</h2>
 <ul>
-    <li><a href="URL('plugin_blog', 'articles', )">New Testament Theology and History</a></li>
-    <li><a href="URL('plugin_blog', 'articles', )">Romans</a></li>
+    <li><a href="{{=URL('plugin_blog', 'articles', args=3)}}">New Testament Theology and History</a></li>
+    <li><a href="{{=URL('plugin_blog', 'articles', args=2)}}">Romans</a></li>
 </ul>
 </div>
 
 <div>
-<h2>Blogs I Like</h2>
+<!-- <h2>Blogs I Like</h2>
 <ul>
     <li><a href="">Ger ve-Toshav</a></li>
     <li><a href="">Ancient Hebrew Poetry</a></li>
     <li><a href="">NT Gateway</a></li>
     <li><a href="">PaleoJudaica</a></li>
 </ul>
-</div>
+</div> -->

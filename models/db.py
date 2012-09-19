@@ -2,7 +2,7 @@
 if 0:
     from gluon import DAL, URL
 
-from gluon.tools import Auth, Mail, Crud, Service, PluginManager, prettydate
+from gluon.tools import Auth, Mail, Crud, Service, PluginManager
 from gluon.tools import Recaptcha
 from gluon.globals import current
 response = current.response

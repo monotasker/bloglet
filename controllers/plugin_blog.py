@@ -14,7 +14,7 @@ def articles():
     the_id = request.args[0]
     art = db(db.articles.id == the_id).select()
     a = art[0]
-    tags = a.tags
+    tags = a.blog_tags
     created = a.created.strftime('%B %e, %Y') or None
     return dict(a = a, created = created, tags=tags)
 

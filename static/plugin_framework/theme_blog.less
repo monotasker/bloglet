@@ -5,98 +5,79 @@
 
 @import "framework";
 
-body {
-    background-color:@greye;
-    .linear-gradient(@greye,@greyd);
-    background-repeat: no-repeat;
-    z-index:1;
-    font-family: @fonts2;
-}
+body                               {background-color:@greye;
+                                    .linear-gradient(@greye,@greyd);
+                                    background-repeat: no-repeat;
+                                    z-index:1;
+                                    font-family: @fonts2;
 
-header {
-    position:relative;
-    display:block;
-    height:@lineheight2;
-    line-height:@lineheight2;
-    .linear-gradient(@brown1, @brown2);
-    .box-shadow(0,2px,6px,rgba(0,0,0,0.3));
-    z-index:99;
-    padding:0;
+header                             {position:relative;
+                                    display:block;
+                                    height:@lineheight2;
+                                    line-height:@lineheight2;
+                                    .linear-gradient(@brown1, @brown2);
+                                    .box-shadow(0,2px,6px,rgba(0,0,0,0.3));
+                                    z-index:99;
+                                    padding:0;
 
-    #appname {
-        height:@lineheight2;
-        line-height:@lineheight2;
-        margin:0;
+    #appname                       {height:@lineheight2;
+                                    line-height:@lineheight2;
+                                    margin:0;}
+
+    h1 a                           {margin:0 @lineheight3;
+                                    line-height:@lineheight2;
+                                    height:@lineheight2;
+                                    color:#fff;
+                                    display:block;
+                                    .inset-text;
+                                    font-size:@typeheight;
+                                    font-family:Ubuntu;
+                                    text-transform: uppercase;
+                                    font-weight:normal;
+                                    letter-spacing: 2px;}
+
     }
 
-    h1 a {
-        margin:0 @lineheight3;
-        line-height:@lineheight2;   
-        height:@lineheight2;     
-        color:#fff;
-        display:block;
-        .inset-text;
-        font-size:@typeheight;
-        font-family:Ubuntu;
-        text-transform: uppercase;
-        font-weight:normal;
-        letter-spacing: 2px;
-    }
+nav                                {background-color:transparent;
+                                    padding: 0;
+                                    margin:0;
+                                    height:100%;
+                                    border-left:1px solid rgba(0,0,0,0.1);
 
-}
-
-nav {
-    background-color:transparent;
-    padding: 0;
-    margin:0;
-    height:100%;
-    border-left:1px solid rgba(0,0,0,0.1);
-
-    .sf-menu {
-        li {
-            background-color:transparent;
-            height:@lineheight2;
-            line-height:@lineheight2;
-            .blockletter;
-
-            a, a:link, a:visited {
-                color:#fff;
-                .inset-text;
-                border-left:1px solid rgba(270,270,270,0.3);
-                border-right:1px solid rgba(0,0,0,0.1);
-                padding:0 @typeheight;
+    .sf-menu                       {
+        li                         {background-color:transparent;
+                                    height:@lineheight2;
+                                    line-height:@lineheight2;
+                                    .blockletter;
+            a,
+            a:link,
+            a:visited              {color:#fff;
+                                    .inset-text;
+                                    border-left:1px solid rgba(270,270,270,0.3);
+                                    border-right:1px solid rgba(0,0,0,0.1);
+                                    padding:0 @typeheight;}
+            a:hover,
+            a:active,
+            a:focus                {.linear-gradient(rgba(270,270,270,0.1), rgba(270,270,270,0));}
             }
-            a:hover, a:active, a:focus {
-                .linear-gradient(rgba(270,270,270,0.1), rgba(270,270,270,0));
-            }
-        }
-        li:hover, li.sfHover {
-            background-color:transparent;
+        li:hover,
+        li.sfHover                 {background-color:transparent;
 
-            li {
-                line-height: @lineheight2;
-                height: @lineheight2;
-                background-color:@grey3;
-                .blockletter;
-                a:hover {
-                    color:@sky;
+            li                     {line-height: @lineheight2;
+                                    height: @lineheight2;
+                                    background-color:@grey3;
+                                    .blockletter;
+                a:hover            {color:@sky;}
                 }
             }
-        }
 
-        li:last-child {
-            a {
-                border-right:none;
-                padding-l:@lineheight2;
-            }
-
-            li {
-                .blockletter;
+        li:last-child              {
+            a                      {border-right:none;
+                                    padding-l:@lineheight2;}
+            li                     {.blockletter;}
             }
         }
     }
-
-}
 
 .auth_navbar {
     .inset-text;
@@ -104,7 +85,7 @@ nav {
     color:#fff;
     height:@lineheight2;
     line-height:@lineheight2;
-    display:block;
+    display:none;  /* shut off to avoid confusion */
 
     a, a:link, a:visited {
         .inset-text;
@@ -213,9 +194,9 @@ nav {
         font-family:prociono;
 
         h2 {
-            
+
             .blockletter();
-            
+
             font-weight: normal;
             color: #aaa;
             cursor:pointer;
@@ -355,15 +336,15 @@ nav {
 footer {
     background-color:transparent;
     color:@dusky-blue1;
-    
+
     .copyright {
         font-size: @typeheight * .8;
     }
-    
+
     #poweredby {
         float:right;
     }
-    
+
 }
 
 .flash {
@@ -404,6 +385,8 @@ and (max-width: 480px){
     width:30%;
 }
 
+
+}
 
 }
 
