@@ -91,3 +91,14 @@ timestamp: 2012-02-15T12:34:47.949923
 ALTER TABLE plugin_comments_comment ADD username CHAR(512);
 timestamp: 2012-02-15T12:34:48.154937
 ALTER TABLE plugin_comments_comment ADD email_address CHAR(512);
+timestamp: 2012-09-18T21:04:32.764872
+CREATE TABLE docs(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    label CHAR(512),
+    docfile CHAR(200)
+);
+success!
+timestamp: 2012-09-18T21:04:32.987863
+ALTER TABLE articles ADD parent INTEGER REFERENCES articles(id) ON DELETE CASCADE;
+timestamp: 2012-09-18T21:04:33.166902
+ALTER TABLE articles ADD docs TEXT;

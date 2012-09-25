@@ -4,12 +4,34 @@
 # default_application, default_controller, default_function
 # are used when the respective element is missing from the
 # (possibly rewritten) incoming URL
-#
-default_controller = 'plugin_blog'  # ordinarily set in app-specific routes.py
 
 routes_in = (
-    ('/articles/$anything', '/home/plugin_blog/articles/$anything'),
-    ('/index', '/home/plugin_blog/index'),
-    ('/classes/$anything', '/home/plugin_blog/classes/$anything')
+    ('\b?', '/blog/plugin_blog/index'),
+    ('/', '/blog/plugin_blog/index'),
+    ('/index', '/blog/plugin_blog/index'),
+    ('/index.html', '/blog/plugin_blog/index'),
+    ('/blog/default/index', '/blog/plugin_blog/index'),
+    ('/articles/$anything', '/blog/plugin_blog/articles/$anything'),
+    ('/classes/$anything', '/blog/plugin_blog/classes/$anything'),
+    # don't break download links
+    ('/blog/default/download/$anything', '/blog/default/download/$anything'),
+    # make sure you do not break admin
+    ('/admin', '/admin'),
+    ('/admin/$anything', '/admin/$anything'),
+    # make sure you do not break appadmin
+    ('/blog/appadmin', '/blog/appadmin'),
+    ('/blog/appadmin/$anything', '/blog/appadmin/$anything')
 )
-routes_out = [(x, y) for (y, x) in routes_in]
+routes_out = (
+    ('/blog/plugin_blog/index', '/'),
+    ('/blog/plugin_blog/articles/$anything', '/articles/$anything'),
+    ('/blog/plugin_blog/classes/$anything', '/classes/$anything'),
+    # don't break download links
+    ('/blog/default/download/$anything', '/blog/default/download/$anything'),
+    # make sure you do not break admin
+    ('/admin', '/admin'),
+    ('/admin/$anything', '/admin/$anything'),
+    # make sure you do not break appadmin
+    ('/blog/appadmin', '/blog/appadmin'),
+    ('/blog/appadmin/$anything', '/blog/appadmin/$anything')
+)

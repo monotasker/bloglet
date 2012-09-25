@@ -6,6 +6,7 @@ if 0:
     request = current.request
     response = current.response
     auth = current.auth
+    db = current.db
 
 #########################################################################
 ## This is a samples controller
@@ -42,12 +43,12 @@ def user():
     return dict(form=auth())
 
 
-# def download():
-#     """
-#     allows downloading of uploaded files
-#     http://..../[app]/default/download/[filename]
-#     """
-#     return response.download(request,db)
+def download():
+    """
+    allows downloading of uploaded files
+    http://..../[app]/default/download/[filename]
+    """
+    return response.download(request, db)
 
 
 # def call():

@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"any",
+				"anything"
+			],
+			[
 				"background",
 				"background-color"
 			],
@@ -403,6 +407,54 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "controllers/plugin_blog.py",
+			"settings":
+			{
+				"buffer_size": 1503,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/plugin_blog/right_sidebar.html",
+			"settings":
+			{
+				"buffer_size": 453,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "controllers/default.py",
+			"settings":
+			{
+				"buffer_size": 2593,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/plugin_blog/classes.html",
+			"settings":
+			{
+				"buffer_size": 880,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/plugin_blog/articles.html",
+			"settings":
+			{
+				"buffer_size": 381,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "routes.py",
+			"settings":
+			{
+				"buffer_size": 775,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "Packages/LESS-build/LESS.sublime-build",
 	"command_palette":
@@ -413,6 +465,10 @@
 			[
 				":w",
 				":w - Save"
+			],
+			[
+				":inst",
+				"Package Control: Install Package"
 			],
 			[
 				":sett",
@@ -433,10 +489,6 @@
 			[
 				":split",
 				"Preferences: SplitScreen-Resizer Key Bindings – Default"
-			],
-			[
-				":inst",
-				"Package Control: Install Package"
 			],
 			[
 				":insta",
@@ -567,7 +619,7 @@
 				"Package Control: Discover Packages"
 			]
 		],
-		"width": 507.0
+		"width": 561.0
 	},
 	"console":
 	{
@@ -584,6 +636,24 @@
 	},
 	"file_history":
 	[
+		"/home/ian/web/web2py/applications/blog/views/plugin_blog/classes.html",
+		"/home/ian/web/web2py/applications/blog/routes.py",
+		"/home/ian/web/web2py/routes.py",
+		"/home/ian/web/web2py/applications/blog/views/plugin_blog/right_sidebar.html",
+		"/home/ian/web/web2py/applications/blog/views/plugin_blog/articles.html",
+		"/home/ian/web/web2py/applications/blog/views/plugin_blog/index.html",
+		"/home/ian/web/web2py/applications/blog/controllers/plugin_blog.py",
+		"/home/ian/web/web2py/applications/blog/views/plugin_blog/left_sidebar.html",
+		"/home/ian/web/web2py/applications/blog/static/plugin_framework/theme_blog.less",
+		"/home/ian/web/web2py/applications/blog/views/default/index.html",
+		"/home/ian/web/web2py/applications/paideia/models/db.py",
+		"/home/ian/web/web2py/applications/blog/models/db.py",
+		"/home/ian/web/web2py/applications/blog/models/menu.py",
+		"/home/ian/web/web2py/applications/blog/models/menu.py.bak",
+		"/home/ian/web/web2py/applications/blog/__init__.py",
+		"/home/ian/web/web2py/applications/blog/models/plugin_blog.py",
+		"/home/ian/web/web2py/applications/blog/controllers/default.py",
+		"/home/ian/web/web2py/routes.example.py",
 		"/home/ian/web/web2py/applications/paideia/static/plugin_framework/framework.less",
 		"/home/ian/web/web2py/applications/paideia/static/plugin_slider/plugin_slider.less",
 		"/home/ian/.config/sublime-text-2/Packages/Default/Preferences.sublime-settings",
@@ -608,7 +678,6 @@
 		"/home/ian/web/web2py/applications/paideia/models/menu.py",
 		"/home/ian/web/web2py/applications/paideia/models/plugin_slider.py",
 		"/home/ian/.config/sublime-text-2/Packages/User/Package Control.sublime-settings",
-		"/home/ian/web/web2py/applications/paideia/models/db.py",
 		"/home/ian/.config/sublime-text-2/Packages/User/Flake8Lint.sublime-settings",
 		"/home/ian/.config/sublime-text-2/Packages/Function Name Display/Function Name Display.sublime-settings",
 		"/home/ian/.config/sublime-text-2/Packages/BracketHighlighter/BracketHighlighter.sublime-settings",
@@ -661,6 +730,7 @@
 		"height": 0.0,
 		"where_history":
 		[
+			"/home/ian/web/web2py/applications/blog"
 		]
 	},
 	"find_state":
@@ -668,6 +738,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"front",
+			"auth",
+			"routes_in",
 			"self._complete",
 			"db.session_data",
 			"self.complete",
@@ -738,8 +811,185 @@
 	"groups":
 	[
 		{
+			"selected": 2,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "controllers/plugin_blog.py",
+					"settings":
+					{
+						"buffer_size": 1503,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1174,
+								1174
+							]
+						],
+						"settings":
+						{
+							"function_name_status_row": 39,
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 412.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "views/plugin_blog/right_sidebar.html",
+					"settings":
+					{
+						"buffer_size": 453,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6,
+								6
+							]
+						],
+						"settings":
+						{
+							"function_name_status_row": 1,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "controllers/default.py",
+					"settings":
+					{
+						"buffer_size": 2593,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1942,
+								1942
+							]
+						],
+						"settings":
+						{
+							"function_name_status_row": 65,
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 764.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 3,
+					"file": "views/plugin_blog/classes.html",
+					"settings":
+					{
+						"buffer_size": 880,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								721,
+								721
+							]
+						],
+						"settings":
+						{
+							"function_name_status_row": 23,
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 32.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "views/plugin_blog/articles.html",
+					"settings":
+					{
+						"buffer_size": 381,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								111,
+								111
+							]
+						],
+						"settings":
+						{
+							"function_name_status_row": 5,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "routes.py",
+					"settings":
+					{
+						"buffer_size": 775,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								676,
+								676
+							]
+						],
+						"settings":
+						{
+							"function_name_status_row": 17,
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -760,11 +1010,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.3,
 			1.0
 		],
 		"rows":
@@ -792,6 +1049,46 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"def",
+				"controllers/default.py"
+			],
+			[
+				"rout",
+				"routes.py"
+			],
+			[
+				"art",
+				"views/plugin_blog/articles.html"
+			],
+			[
+				"side",
+				"views/plugin_blog/right_sidebar.html"
+			],
+			[
+				"plugin",
+				"controllers/plugin_blog.py"
+			],
+			[
+				"rou",
+				"routes.py"
+			],
+			[
+				"arti",
+				"views/plugin_blog/articles.html"
+			],
+			[
+				"index",
+				"views/plugin_blog/index.html"
+			],
+			[
+				"blog",
+				"static/plugin_framework/theme_blog.less"
+			],
+			[
+				"lef",
+				"views/plugin_blog/left_sidebar.html"
+			]
 		],
 		"width": 0.0
 	},

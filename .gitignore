@@ -2,3 +2,5 @@ sessions/*.*
 *.bak
 *.pyc
 *.swp
+private/*.*
+errors/*.*

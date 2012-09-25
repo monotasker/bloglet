@@ -4,19 +4,18 @@
 {{for a in articles:}}
 <article>
     {{=H2(a.title)}}
-    {{=SPAN(a.author)}}
+    {{=SPAN(a.author)}}, 
     {{if a.created:}}
         {{=SPAN(a.created.strftime('%B %e, %Y'))}}
     {{pass}}
     {{if a.teaser:}}
-        {{=P(a.teaser)}}
+        {{=P(a.teaser, '   ', A('read more', _href=URL('plugin_blog', 'articles', args=[a.id])))}}
     {{pass}}
-    {{=A('read more', _href=URL('plugin_blog', 'articles', args=[a.id]))}}
 </article>
 {{pass}}
 
 {{block right_sidebar}}
-    <p>{{include 'plugin_blog/right_sidebar.html'}}</p>
+    {{include 'plugin_blog/right_sidebar.html'}}
 {{end}}
 
 {{block left_sidebar}}
