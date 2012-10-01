@@ -8,15 +8,26 @@ if 0:
     auth = current.auth
 
 
+def smart_truncate(content, length=300, suffix='...'):
+    return (content if len(content) <= length
+                    else content[: length].rsplit(' ', 1)[0] + suffix)
+
+
 def index():
     arts = db(db.articles.id > 0).select(orderby=db.articles.created)
+    arts.exclude(lambda row: 5 in row.blog_tags)
+    for a in arts:
+        if a.teaser == '':
+            a.teaser = smart_truncate(a.body)
+	a.author = '{} {}'.format(db.auth_user[a.author].first_name,
+                                  db.auth_user[a.author].last_name)
     return dict(articles=arts)
 
 
 def articles():
     the_id = request.args[0]
-    art = db(db.articles.id == the_id).select()
-    a = art[0]
+    arts = db(db.articles.id == the_id).select()
+    a = arts.first()
     tags = a.blog_tags
     docs = a.docs
     created = a.created.strftime('%B %e, %Y') or None
