@@ -1,17 +1,16 @@
 {{right_sidebar_enabled = True}}
 {{left_sidebar_enabled = True}}
 {{extend 'layout.html'}}
+
 <article>
-{{=H2(a.title, _class='article_title')}}
-{{=SPAN(created, _class='date_created')}}
-{{=DIV(MARKMIN(a.body), _class='article_wrapper')}}
-{{#=plugin_comments()}}
+    {{=H2(a.title, _class='article_title')}}
+    {{=DIV(MARKMIN(a.body), _class='article_wrapper')}}
 </article>
 
 {{block right_sidebar}}
-<p>{{include 'plugin_blog/right_sidebar.html'}}</p>
+    <p>{{include 'plugin_blog/right_sidebar.html'}}</p>
 {{end}}
 
 {{block left_sidebar}}
-{{include 'plugin_blog/left_sidebar.html'}}
+    {{include 'plugin_blog/left_sidebar.html'}}
 {{end}}
