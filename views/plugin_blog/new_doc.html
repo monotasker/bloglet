@@ -3,11 +3,8 @@
 {{extend 'layout.html'}}
 
 <article>
-    {{if auth.has_membership('administrators'):}}
-        {{=A(['edit'], _href=URL('plugin_blog', 'edit_post', args=[id]))}}
-    {{pass}}
-    {{=H2(c.title, _class='article_title')}}
-    {{=DIV(MARKMIN(c.body), _class='article_wrapper')}}
+<h2>New Uploaded Document</h2>
+{{=form}}
 </article>
 
 {{block right_sidebar}}
@@ -18,13 +15,15 @@
         {{if parent:}}
             {{=LI(A('Course Description', _href=URL('classes', args=parent.id)))}}
         {{pass}}
-        {{if children:}}
+        {{if children and children is not None:}}
             {{for child in children:}}
                 {{=LI(A(child.title, _href=URL('classes', args=child.id)))}}
             {{pass}}
         {{pass}}
-        {{for d in docs:}}
-            {{=LI(A(d.label, _href=URL('default', 'download', args=d.docfile)))}}
+        {{if docs and docs is not None:}}
+            {{for d in docs:}}
+                {{=LI(A(d.label, _href=URL('default', 'download', args=d.docfile)))}}
+            {{pass}}
         {{pass}}
         </ul>
     </p>

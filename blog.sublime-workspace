@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"ord",
+				"orderby"
+			],
+			[
 				"any",
 				"anything"
 			],
@@ -411,7 +415,7 @@
 			"file": "controllers/plugin_blog.py",
 			"settings":
 			{
-				"buffer_size": 1503,
+				"buffer_size": 3050,
 				"line_ending": "Unix"
 			}
 		},
@@ -419,15 +423,7 @@
 			"file": "views/plugin_blog/right_sidebar.html",
 			"settings":
 			{
-				"buffer_size": 453,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "controllers/default.py",
-			"settings":
-			{
-				"buffer_size": 2593,
+				"buffer_size": 451,
 				"line_ending": "Unix"
 			}
 		},
@@ -435,23 +431,24 @@
 			"file": "views/plugin_blog/classes.html",
 			"settings":
 			{
-				"buffer_size": 880,
+				"buffer_size": 1018,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "views/plugin_blog/articles.html",
+			"file": "views/plugin_blog/edit_post.html",
 			"settings":
 			{
-				"buffer_size": 381,
-				"line_ending": "Unix"
+				"buffer_size": 1182,
+				"line_ending": "Unix",
+				"name": "{{right_sidebar_enabled = True}}"
 			}
 		},
 		{
 			"file": "routes.py",
 			"settings":
 			{
-				"buffer_size": 775,
+				"buffer_size": 1980,
 				"line_ending": "Unix"
 			}
 		}
@@ -459,7 +456,7 @@
 	"build_system": "Packages/LESS-build/LESS.sublime-build",
 	"command_palette":
 	{
-		"height": 375.0,
+		"height": 264.0,
 		"selected_items":
 		[
 			[
@@ -619,7 +616,7 @@
 				"Package Control: Discover Packages"
 			]
 		],
-		"width": 561.0
+		"width": 548.0
 	},
 	"console":
 	{
@@ -636,6 +633,12 @@
 	},
 	"file_history":
 	[
+		"/home/iscott/web/web2py/applications/blog/views/plugin_blog/articles.html",
+		"/home/iscott/web/web2py/applications/blog/views/plugin_blog/all_posts.html",
+		"/home/iscott/web/web2py/applications/blog/views/plugin_blog/new_post.html",
+		"/home/iscott/web/web2py/applications/blog/views/plugin_blog/new_doc.html",
+		"/home/iscott/web/web2py/applications/blog/controllers/default.py",
+		"/home/iscott/web/web2py/applications/blog/views/plugin_blog/new_post.load",
 		"/home/ian/web/web2py/applications/blog/views/plugin_blog/classes.html",
 		"/home/ian/web/web2py/applications/blog/routes.py",
 		"/home/ian/web/web2py/routes.py",
@@ -811,7 +814,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -819,26 +822,26 @@
 					"file": "controllers/plugin_blog.py",
 					"settings":
 					{
-						"buffer_size": 1503,
+						"buffer_size": 3050,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1174,
-								1174
+								1997,
+								1997
 							]
 						],
 						"settings":
 						{
-							"function_name_status_row": 39,
+							"function_name_status_row": 59,
 							"syntax": "Packages/Python/Python.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 412.0,
+						"translation.y": 975.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -848,55 +851,26 @@
 					"file": "views/plugin_blog/right_sidebar.html",
 					"settings":
 					{
-						"buffer_size": 453,
+						"buffer_size": 451,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6,
-								6
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"function_name_status_row": 1,
+							"function_name_status_row": 0,
 							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "controllers/default.py",
-					"settings":
-					{
-						"buffer_size": 2593,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1942,
-								1942
-							]
-						],
-						"settings":
-						{
-							"function_name_status_row": 65,
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 764.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -904,55 +878,28 @@
 			]
 		},
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
-					"buffer": 3,
+					"buffer": 2,
 					"file": "views/plugin_blog/classes.html",
 					"settings":
 					{
-						"buffer_size": 880,
+						"buffer_size": 1018,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								721,
-								721
+								219,
+								219
 							]
 						],
 						"settings":
 						{
-							"function_name_status_row": 23,
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 32.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "views/plugin_blog/articles.html",
-					"settings":
-					{
-						"buffer_size": 381,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								111,
-								111
-							]
-						],
-						"settings":
-						{
-							"function_name_status_row": 5,
+							"function_name_status_row": 6,
 							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
@@ -964,25 +911,57 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "routes.py",
+					"buffer": 3,
+					"file": "views/plugin_blog/edit_post.html",
 					"settings":
 					{
-						"buffer_size": 775,
+						"buffer_size": 1182,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								676,
-								676
+								1046,
+								1046
 							]
 						],
 						"settings":
 						{
-							"function_name_status_row": 17,
-							"syntax": "Packages/Python/Python.tmLanguage"
+							"auto_name": "{{right_sidebar_enabled = True}}",
+							"function_name_status_row": 36,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "routes.py",
+					"settings":
+					{
+						"buffer_size": 1980,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								211,
+								211
+							]
+						],
+						"settings":
+						{
+							"function_name_status_row": 7,
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1021,7 +1000,7 @@
 		"cols":
 		[
 			0.0,
-			0.3,
+			0.498990627253,
 			1.0
 		],
 		"rows":
@@ -1041,7 +1020,7 @@
 	},
 	"replace":
 	{
-		"height": 0.0
+		"height": 64.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1049,6 +1028,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"",
+				"/home/iscott/web/web2py/applications/blog/views/plugin_blog/classes.html"
+			],
 			[
 				"def",
 				"controllers/default.py"

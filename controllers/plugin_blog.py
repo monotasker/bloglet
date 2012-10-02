@@ -1,6 +1,6 @@
 # coding: utf8
 if 0:
-    from gluon import current
+    from gluon import current, TR, TD, TABLE, A, URL
     from gluon.tools import DAL, Crud
     db = DAL()
     crud = Crud()
@@ -19,7 +19,7 @@ def index():
     for a in arts:
         if a.teaser == '':
             a.teaser = smart_truncate(a.body)
-	a.author = '{} {}'.format(db.auth_user[a.author].first_name,
+    a.author = '{} {}'.format(db.auth_user[a.author].first_name,
                                   db.auth_user[a.author].last_name)
     return dict(articles=arts)
 
@@ -49,18 +49,57 @@ def classes():
 
 
 @auth.requires(auth.user_id == 2)
+def all_posts():
+    posts = db().select(db.articles.ALL, orderby='created')
+    post_list = TABLE()
+    for p in posts:
+        postline = TR(TD(A(p.title, _href=URL('plugin_blog', 'edit_post',
+                      args=[p.id]))), TD(p.created))
+        post_list.append(postline)
+    newlink = A('plugin_blog', 'new_post')
+    parent = None
+    children = None
+    docs = None
+    return dict(post_list=post_list,
+                parent=parent,
+                docs=docs,
+                children=children,
+                newlink=newlink)
+
+
+@auth.requires(auth.user_id == 2)
 def new_post():
     form = crud.create(db.articles)
-    return dict(form=form)
+    parent = None
+    children = None
+    docs = None
+    return dict(form=form, parent=parent, docs=docs, children=children)
 
 
 @auth.requires(auth.user_id == 2)
 def edit_post():
-    form = crud.update(db.articles, request.args[0])
-    return dict(form=form)
+    id = request.args[0]
+    form = crud.update(db.articles, id)
+    parent = None
+    children = None
+    docs = None
+    return dict(id=id,
+                form=form,
+                parent=parent,
+                docs=docs,
+                children=children)
 
 
 @auth.requires(auth.user_id == 2)
 def new_tag():
     form = crud.create(db.blog_tags)
     return dict(form=form)
+
+
+@auth.requires(auth.user_id == 2)
+def new_doc():
+    form = crud.create(db.docs)
+    parent = None
+    children = None
+    docs = None
+    return dict(form=form, parent=parent, docs=docs, children=children)
