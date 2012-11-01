@@ -3,6 +3,9 @@
 	[
 		{
 			"path": "/home/ian/web/web2py/applications/blog"
+		},
+		{
+			"path": "/home/iscott/web/web2py/applications/blog"
 		}
 	]
 }

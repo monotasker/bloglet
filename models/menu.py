@@ -6,11 +6,8 @@ if 0:
     response = current.response
     request = current.request
 
-#########################################################################
-## Customize your APP title, subtitle and menus here
-#########################################################################
-
 response.title = T('Confessions of a Monotasker')
+response.mobiletitle = response.title
 response.subtitle = T('Ian W. Scott')
 
 ## read more at http://dev.w3.org/html5/markup/meta.name.html

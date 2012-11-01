@@ -412,18 +412,26 @@
 	"buffers":
 	[
 		{
-			"file": "controllers/plugin_blog.py",
+			"file": "static/plugin_framework/theme_blog.less",
 			"settings":
 			{
-				"buffer_size": 3050,
+				"buffer_size": 13118,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "views/plugin_blog/right_sidebar.html",
+			"file": "static/plugin_framework/framework.less",
 			"settings":
 			{
-				"buffer_size": 451,
+				"buffer_size": 30037,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "static/css/theme.less",
+			"settings":
+			{
+				"buffer_size": 41,
 				"line_ending": "Unix"
 			}
 		},
@@ -445,10 +453,10 @@
 			}
 		},
 		{
-			"file": "routes.py",
+			"file": "views/layout.html",
 			"settings":
 			{
-				"buffer_size": 1980,
+				"buffer_size": 63,
 				"line_ending": "Unix"
 			}
 		}
@@ -616,7 +624,7 @@
 				"Package Control: Discover Packages"
 			]
 		],
-		"width": 548.0
+		"width": 449.0
 	},
 	"console":
 	{
@@ -633,6 +641,14 @@
 	},
 	"file_history":
 	[
+		"/home/iscott/web/web2py/applications/blog/views/layout.html",
+		"/home/iscott/web/web2py/applications/blog/views/plugin_framework/plugin_framework.html",
+		"/home/iscott/web/web2py/applications/blog/controllers/plugin_blog.py",
+		"/home/iscott/web/web2py/applications/blog/views/plugin_blog/right_sidebar.html",
+		"/home/iscott/web/web2py/applications/blog/models/menu.py",
+		"/home/iscott/web/web2py/applications/blog/views/plugin_blog/index.html",
+		"/home/iscott/web/web2py/applications/blog/views/default/index.html",
+		"/home/iscott/web/web2py/applications/blog/routes.py",
 		"/home/iscott/web/web2py/applications/blog/views/plugin_blog/articles.html",
 		"/home/iscott/web/web2py/applications/blog/views/plugin_blog/all_posts.html",
 		"/home/iscott/web/web2py/applications/blog/views/plugin_blog/new_post.html",
@@ -741,6 +757,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"h2",
 			"front",
 			"auth",
 			"routes_in",
@@ -819,55 +836,82 @@
 			[
 				{
 					"buffer": 0,
-					"file": "controllers/plugin_blog.py",
+					"file": "static/plugin_framework/theme_blog.less",
 					"settings":
 					{
-						"buffer_size": 3050,
+						"buffer_size": 13118,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1997,
-								1997
+								2493,
+								2493
 							]
 						],
 						"settings":
 						{
-							"function_name_status_row": 59,
-							"syntax": "Packages/Python/Python.tmLanguage",
+							"function_name_status_row": 54,
+							"syntax": "Packages/LESS/LESS.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 975.0,
+						"translation.y": 301.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "views/plugin_blog/right_sidebar.html",
+					"file": "static/plugin_framework/framework.less",
 					"settings":
 					{
-						"buffer_size": 451,
+						"buffer_size": 30037,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								10779,
+								10779
+							]
+						],
+						"settings":
+						{
+							"function_name_status_row": 346,
+							"syntax": "Packages/LESS/LESS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 5158.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "static/css/theme.less",
+					"settings":
+					{
+						"buffer_size": 41,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								41,
+								41
 							]
 						],
 						"settings":
 						{
 							"function_name_status_row": 0,
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/LESS/LESS.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -878,11 +922,11 @@
 			]
 		},
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
-					"buffer": 2,
+					"buffer": 3,
 					"file": "views/plugin_blog/classes.html",
 					"settings":
 					{
@@ -911,7 +955,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 4,
 					"file": "views/plugin_blog/edit_post.html",
 					"settings":
 					{
@@ -922,14 +966,14 @@
 						"selection":
 						[
 							[
-								1046,
-								1046
+								377,
+								377
 							]
 						],
 						"settings":
 						{
 							"auto_name": "{{right_sidebar_enabled = True}}",
-							"function_name_status_row": 36,
+							"function_name_status_row": 15,
 							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
@@ -941,27 +985,25 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "routes.py",
+					"buffer": 5,
+					"file": "views/layout.html",
 					"settings":
 					{
-						"buffer_size": 1980,
+						"buffer_size": 63,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								211,
-								211
+								63,
+								63
 							]
 						],
 						"settings":
 						{
-							"function_name_status_row": 7,
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"function_name_status_row": 1,
+							"syntax": "Packages/HTML/HTML.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1000,7 +1042,7 @@
 		"cols":
 		[
 			0.0,
-			0.498990627253,
+			0.637923123329,
 			1.0
 		],
 		"rows":
@@ -1028,6 +1070,30 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"theme.",
+				"blog/static/css/theme.less"
+			],
+			[
+				"frame",
+				"blog/views/plugin_framework/plugin_framework.html"
+			],
+			[
+				"menu",
+				"blog/models/menu.py"
+			],
+			[
+				"plugin_fr",
+				"blog/views/plugin_framework/plugin_framework.html"
+			],
+			[
+				"lay",
+				"blog/views/layout.html"
+			],
+			[
+				"index",
+				"blog/views/default/index.html"
+			],
 			[
 				"",
 				"/home/iscott/web/web2py/applications/blog/views/plugin_blog/classes.html"
@@ -1059,10 +1125,6 @@
 			[
 				"arti",
 				"views/plugin_blog/articles.html"
-			],
-			[
-				"index",
-				"views/plugin_blog/index.html"
 			],
 			[
 				"blog",

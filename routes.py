@@ -10,7 +10,7 @@ routes_in = (
     ('/', '/blog/plugin_blog/index'),
     ('/index', '/blog/plugin_blog/index'),
     ('/index.html', '/blog/plugin_blog/index'),
-    ('/login', '/blog/default/user/login')
+    ('/login', '/blog/default/user/login'),
     ('/blog/default/index', '/blog/plugin_blog/index'),
     ('/articles/$anything', '/blog/plugin_blog/articles/$anything'),
     ('/classes/$anything', '/blog/plugin_blog/classes/$anything'),
