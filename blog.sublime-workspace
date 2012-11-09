@@ -451,14 +451,6 @@
 				"line_ending": "Unix",
 				"name": "{{right_sidebar_enabled = True}}"
 			}
-		},
-		{
-			"file": "views/layout.html",
-			"settings":
-			{
-				"buffer_size": 63,
-				"line_ending": "Unix"
-			}
 		}
 	],
 	"build_system": "Packages/LESS-build/LESS.sublime-build",
@@ -641,13 +633,13 @@
 	},
 	"file_history":
 	[
-		"/home/iscott/web/web2py/applications/blog/views/layout.html",
 		"/home/iscott/web/web2py/applications/blog/views/plugin_framework/plugin_framework.html",
 		"/home/iscott/web/web2py/applications/blog/controllers/plugin_blog.py",
 		"/home/iscott/web/web2py/applications/blog/views/plugin_blog/right_sidebar.html",
 		"/home/iscott/web/web2py/applications/blog/models/menu.py",
 		"/home/iscott/web/web2py/applications/blog/views/plugin_blog/index.html",
 		"/home/iscott/web/web2py/applications/blog/views/default/index.html",
+		"/home/iscott/web/web2py/applications/blog/views/layout.html",
 		"/home/iscott/web/web2py/applications/blog/routes.py",
 		"/home/iscott/web/web2py/applications/blog/views/plugin_blog/articles.html",
 		"/home/iscott/web/web2py/applications/blog/views/plugin_blog/all_posts.html",
@@ -881,7 +873,7 @@
 						],
 						"settings":
 						{
-							"function_name_status_row": 346,
+							"function_name_status_row": 136,
 							"syntax": "Packages/LESS/LESS.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
@@ -922,7 +914,7 @@
 			]
 		},
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -977,33 +969,6 @@
 							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "views/layout.html",
-					"settings":
-					{
-						"buffer_size": 63,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								63,
-								63
-							]
-						],
-						"settings":
-						{
-							"function_name_status_row": 1,
-							"syntax": "Packages/HTML/HTML.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
