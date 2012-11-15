@@ -13,100 +13,110 @@ sS'sql'
 p7
 S'TEXT'
 p8
-ssS'parent'
+ssS'blog_links'
 p9
 (dp10
 g4
-S'reference articles'
+S'list:reference blog_links'
 p11
 sg6
-I9
+I11
 sg7
-S'INTEGER REFERENCES articles (id) ON DELETE CASCADE'
+S'TEXT'
 p12
-ssS'author'
+ssS'parent'
 p13
 (dp14
 g4
-S'reference auth_user'
+S'reference articles'
 p15
 sg6
-I2
+I9
 sg7
-S'INTEGER REFERENCES auth_user (id) ON DELETE CASCADE'
+S'INTEGER REFERENCES articles(id) ON DELETE CASCADE'
 p16
-ssS'docs'
+ssS'author'
 p17
 (dp18
 g4
-S'list:reference docs'
+S'reference auth_user'
 p19
 sg6
-I10
+I2
 sg7
-S'TEXT'
+S'INTEGER REFERENCES auth_user(id) ON DELETE CASCADE'
 p20
-ssS'title'
+ssS'docs'
 p21
 (dp22
 g4
-S'string'
+S'list:reference docs'
 p23
+sg6
+I10
+sg7
+g12
+ssS'title'
+p24
+(dp25
+g4
+S'string'
+p26
 sg6
 I3
 sg7
 S'CHAR(512)'
-p24
+p27
 ssS'created'
-p25
-(dp26
+p28
+(dp29
 g4
 S'datetime'
-p27
+p30
 sg6
 I4
 sg7
 S'TIMESTAMP'
-p28
+p31
 ssS'teaser'
-p29
-(dp30
+p32
+(dp33
 g4
 g5
 sg6
 I6
 sg7
 S'TEXT'
-p31
+p34
 ssS'blog_tags'
-p32
-(dp33
+p35
+(dp36
 g4
 S'list:reference blog_tags'
-p34
+p37
 sg6
 I8
 sg7
-g20
+g12
 ssS'pullquote'
-p35
-(dp36
+p38
+(dp39
 g4
 g5
 sg6
 I7
 sg7
 S'TEXT'
-p37
+p40
 ssS'id'
-p38
-(dp39
+p41
+(dp42
 g4
 S'id'
-p40
+p43
 sg6
 I1
 sg7
 S'INTEGER PRIMARY KEY AUTOINCREMENT'
-p41
+p44
 ss.

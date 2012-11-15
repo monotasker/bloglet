@@ -3,4 +3,7 @@
 	url = git@github.com:monotasker/plugin_listandedit
 [submodule "plugins/plugin_framework"]
 	path = plugins/plugin_framework
-	url = git@github.com:monotasker/plugin_framework
+	url = git@github.com:monotasker/plugin_framework.git
+[submodule "plugins/plugin_comments"]
+	path = plugins/plugin_comments
+	url = git@github.com:monotasker/plugin_comments.git

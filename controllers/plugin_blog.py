@@ -1,4 +1,6 @@
 # coding: utf8
+
+from pprint import pprint
 if 0:
     from gluon import current, TR, TD, TABLE, A, URL
     from gluon.tools import DAL, Crud
@@ -27,11 +29,11 @@ def index():
 def articles():
     the_id = request.args[0]
     arts = db(db.articles.id == the_id).select()
-    a = arts.first()
-    tags = a.blog_tags
-    docs = a.docs
-    created = a.created.strftime('%B %e, %Y') or None
-    return dict(a=a, created=created, tags=tags, docs=docs)
+    art = arts.first()
+    tags = [db.blog_tags[t].tagname for t in art.blog_tags]
+    docs = art.docs
+    created = art.created.strftime('%B %e, %Y') or None
+    return dict(art=art, created=created, tags=tags, docs=docs)
 
 
 def classes():

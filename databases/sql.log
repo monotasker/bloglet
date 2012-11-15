@@ -102,3 +102,13 @@ timestamp: 2012-09-18T21:04:32.987863
 ALTER TABLE articles ADD parent INTEGER REFERENCES articles(id) ON DELETE CASCADE;
 timestamp: 2012-09-18T21:04:33.166902
 ALTER TABLE articles ADD docs TEXT;
+timestamp: 2012-11-09T13:33:52.775019
+CREATE TABLE blog_links(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    link_label CHAR(512),
+    url CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2012-11-09T13:33:52.807792
+ALTER TABLE articles ADD blog_links TEXT;

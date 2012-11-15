@@ -4,3 +4,5 @@ sessions/*.*
 *.swp
 private/*.*
 errors/*.*
+*.~
+*.tmp

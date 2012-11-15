@@ -3,8 +3,18 @@
 {{extend 'layout.html'}}
 
 <article>
-    {{=H2(a.title, _class='article_title')}}
-    {{=DIV(MARKMIN(a.body), _class='article_wrapper')}}
+    {{if auth.has_membership('administrators'):}}
+        {{=A(['edit'], _href=URL('plugin_blog', 'edit_post', args=[art.id]))}}
+    {{pass}}
+    {{=H2(art.title, _class='article_title')}}
+    {{=SPAN(created, _class='article_date')}}
+    {{=DIV(MARKMIN(art.body), _class='article_wrapper')}}
+    {{=H3('subjects', _class='tags_heading')}}
+    <ul class='article_taglist'>
+    {{for tag in tags:}}
+        {{=LI(A(tag, _href='topics', args=[tag]))}}
+    {{pass}}
+    </ul>
 </article>
 
 {{block right_sidebar}}
