@@ -16,7 +16,7 @@ def smart_truncate(content, length=300, suffix='...'):
 
 
 def index():
-    arts = db(db.articles.id > 0).select(orderby=db.articles.created)
+    arts = db(db.articles.id > 0).select(orderby=~db.articles.created)
     arts.exclude(lambda row: 5 in row.blog_tags)
     for a in arts:
         if a.teaser == '':
