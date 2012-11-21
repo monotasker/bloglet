@@ -373,8 +373,7 @@ div.error {
   position: relative;
   overflow: visible;
 }
-a:hover .tip,
-a:active .tip {
+.tip_wrapper:target div.tip {
   display: block;
   -webkit-transition: all 200ms ease-in-out;
   -moz-transition: all 200ms ease-in-out;
@@ -382,6 +381,7 @@ a:active .tip {
   -ms-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
 }
+/* make tip div visible */
 /* border images */
 /* buttons */
 .button {
@@ -479,11 +479,6 @@ a:active .tip {
   line-height: 24px;
   padding: 0;
   text-align: center;
-  -moz-border-radius: 16px 16px 16px 16px;
-  -webkit-border-radius: 16px 16px 16px 16px;
-  -o-border-radius: 16px 16px 16px 16px;
-  -ms-border-radius: 16px 16px 16px 16px;
-  border-radius: 16px 16px 16px 16px;
   font-weight: bold;
   -moz-border-radius: 16px 16px 16px 16px;
   -webkit-border-radius: 16px 16px 16px 16px;
@@ -1065,7 +1060,6 @@ nav .sf-menu li:last-child li {
 #page article h2 {
   color: #852625;
   font-size: 16px;
-  text-transform: uppercase;
   font-family: ubuntu, calibri, arial, sans-serif;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -1086,21 +1080,18 @@ nav .sf-menu li:last-child li {
   padding: 0;
 }
 #page article ul {
-  margin-top: 16px;
-  margin-bottom: 16px;
-  padding-left: 36px;
+  padding-left: 24px;
 }
 #page article li {
   list-style-type: disc;
-  color: #aaa;
-  line-height: 36px;
+  color: #657b83;
   list-style-position: outside;
 }
 #page article li ul {
-  padding-left: 36px;
+  padding-left: 24px;
 }
 #page article li.comment_list {
-  line-height: 36px;
+  line-height: 24px;
   border-bottom: 1px solid #e5e5e5;
 }
 #page article a,
