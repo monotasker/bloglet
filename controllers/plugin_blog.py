@@ -21,7 +21,7 @@ def index():
     for a in arts:
         if a.teaser == '':
             a.teaser = smart_truncate(a.body)
-    a.author = '{} {}'.format(db.auth_user[a.author].first_name,
+        a.author = '{} {}'.format(db.auth_user[a.author].first_name,
                                   db.auth_user[a.author].last_name)
     return dict(articles=arts)
 

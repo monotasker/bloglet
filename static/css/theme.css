@@ -868,12 +868,12 @@ div.error {
   font-family: Websymbols;
 }
 body {
-  background-color: #eeeeee;
-  background-color: #dddddd;
-  background-image: -moz-linear-gradient(#eeeeee, #dddddd);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#eeeeee), to(#dddddd));
-  background-image: -o-linear-gradient(#eeeeee, #dddddd);
-  background-image: -ms-linear-gradient(#eeeeee, #dddddd);
+  background-color: #93a1a1;
+  background-color: #657b83;
+  background-image: -moz-linear-gradient(#93a1a1, #657b83);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#93a1a1), to(#657b83));
+  background-image: -o-linear-gradient(#93a1a1, #657b83);
+  background-image: -ms-linear-gradient(#93a1a1, #657b83);
   background-repeat: no-repeat;
   z-index: 1;
   font-family: Petrona, Palatino, 'Palatino Linotype', serif;
@@ -968,7 +968,7 @@ nav .sf-menu li:hover li,
 nav .sf-menu li.sfHover li {
   line-height: 36px;
   height: 36px;
-  background-color: #333333;
+  background-color: #073642;
   font-size: 16px;
   text-transform: uppercase;
   font-family: ubuntu, calibri, arial, sans-serif;
@@ -977,7 +977,7 @@ nav .sf-menu li.sfHover li {
 }
 nav .sf-menu li:hover li a:hover,
 nav .sf-menu li.sfHover li a:hover {
-  color: #7e9aff;
+  color: #2aa198;
 }
 nav .sf-menu li:last-child a {
   border-right: none;
@@ -1039,7 +1039,7 @@ nav .sf-menu li:last-child li {
   border-right: none;
 }
 #page {
-  background-color: #f5f5f5;
+  background-color: #fdf6e3;
   -moz-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   -o-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
@@ -1048,6 +1048,7 @@ nav .sf-menu li:last-child li {
   z-index: 1;
 }
 #page article {
+  position: relative;
   padding: 60px;
   padding-left: 96px;
   margin-right: 30%;
@@ -1055,26 +1056,47 @@ nav .sf-menu li:last-child li {
   text-align: justify;
   -moz-hyphens: auto;
   -webkit-hyphens: auto;
-  color: #666;
+  color: #657b83;
 }
 #page article h2 {
-  color: #852625;
+  color: #cb4b16;
   font-size: 16px;
   font-family: ubuntu, calibri, arial, sans-serif;
   letter-spacing: 2px;
   text-transform: uppercase;
   text-align: left;
 }
+#page article h2 a,
+#page article h2 a:link,
+#page article h2 a:visited,
+#page article h2 a:active {
+  color: #cb4b16;
+}
 #page article h3 {
-  color: #607890;
+  color: #2aa198;
   font-size: 16px;
   text-transform: uppercase;
   font-family: ubuntu, calibri, arial, sans-serif;
   letter-spacing: 2px;
 }
-#page article .date_created {
+#page article .article_date {
   display: block;
-  color: #7e9aff;
+  position: absolute;
+  width: 144px;
+  color: #859900;
+  -webkit-transform: rotate(270deg);
+  -webkit-transform-origin: 0 0;
+  -o-transform: rotate(270deg);
+  -o-transform-origin: 0 0;
+  -moz-transform: rotate(270deg);
+  -moz-transform-origin: 0 0;
+  -ms-transform: rotate(270deg);
+  -ms-transform-origin: 0 0;
+  transform: rotate(270deg);
+  transform-origin: 0 0;
+  margin-left: -36px;
+  top: 16px;
+  text-align: right;
 }
 #page article .article_wrapper {
   padding: 0;
@@ -1097,14 +1119,17 @@ nav .sf-menu li:last-child li {
 #page article a,
 #page article a:link,
 #page article a:visited {
-  color: #607890;
+  color: #2aa198;
 }
 #page article a:hover {
-  color: #003366;
+  color: #2aa198;
 }
 #page.index article {
   padding-bottom: 0;
   padding-top: 24px;
+}
+#page.index article:first-of-type {
+  padding-top: 60px;
 }
 #page.index article:last-of-type {
   padding-bottom: 60px;
@@ -1118,13 +1143,13 @@ nav .sf-menu li:last-child li {
   padding-bottom: 24px;
   margin-bottom: 24px;
   border-bottom: 1px solid #e6e6e6;
-  color: #888;
+  color: #657b83;
 }
 #page .comments .comment .comment_author {
-  color: #b10808;
+  color: #cb4b16;
 }
 #page .comments .comment .comment_date {
-  color: #aaa;
+  color: #859900;
   display: block;
   float: right;
 }
@@ -1159,11 +1184,11 @@ nav .sf-menu li:last-child li {
 #page #right_sidebar a:link,
 #page #left_sidebar a:visited,
 #page #right_sidebar a:visited {
-  color: #852625;
+  color: #cb4b16;
 }
 #page #left_sidebar a:hover,
 #page #right_sidebar a:hover {
-  color: #b10808;
+  color: #cb4b16;
 }
 #page #left_sidebar div,
 #page #right_sidebar div {
@@ -1191,7 +1216,7 @@ nav .sf-menu li:last-child li {
 }
 footer {
   background-color: transparent;
-  color: #607890;
+  color: #2aa198;
 }
 footer .copyright {
   font-size: 12.8px;
