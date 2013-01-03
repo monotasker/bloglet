@@ -10,7 +10,7 @@ if 0:
     auth = current.auth
 
 
-def smart_truncate(content, length=300, suffix='...'):
+def smart_truncate(content, length=480, suffix='...'):
     return (content if len(content) <= length
                     else content[: length].rsplit(' ', 1)[0] + suffix)
 

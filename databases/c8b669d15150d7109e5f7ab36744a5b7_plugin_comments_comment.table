@@ -24,27 +24,27 @@ I5
 sg7
 S'CHAR(512)'
 p12
-ssS'posted_by'
+ssS'details'
 p13
 (dp14
 g4
-S'reference auth_user'
-p15
-sg6
-I4
-sg7
-S'INTEGER REFERENCES auth_user(id) ON DELETE CASCADE'
-p16
-ssS'details'
-p17
-(dp18
-g4
 S'integer'
-p19
+p15
 sg6
 I7
 sg7
 S'INTEGER'
+p16
+ssS'posted_by'
+p17
+(dp18
+g4
+S'reference auth_user'
+p19
+sg6
+I4
+sg7
+S'INTEGER REFERENCES auth_user (id) ON DELETE CASCADE'
 p20
 ssS'email_address'
 p21
