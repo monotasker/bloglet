@@ -1,4 +1,6 @@
 # coding: utf8
+
+from pprint import pprint
 if 0:
     from gluon import current, TR, TD, TABLE, A, URL
     from gluon.tools import DAL, Crud
@@ -8,18 +10,18 @@ if 0:
     auth = current.auth
 
 
-def smart_truncate(content, length=300, suffix='...'):
+def smart_truncate(content, length=480, suffix='...'):
     return (content if len(content) <= length
                     else content[: length].rsplit(' ', 1)[0] + suffix)
 
 
 def index():
-    arts = db(db.articles.id > 0).select(orderby=db.articles.created)
+    arts = db(db.articles.id > 0).select(orderby=~db.articles.created)
     arts.exclude(lambda row: 5 in row.blog_tags)
     for a in arts:
         if a.teaser == '':
             a.teaser = smart_truncate(a.body)
-    a.author = '{} {}'.format(db.auth_user[a.author].first_name,
+        a.author = '{} {}'.format(db.auth_user[a.author].first_name,
                                   db.auth_user[a.author].last_name)
     return dict(articles=arts)
 
@@ -27,11 +29,11 @@ def index():
 def articles():
     the_id = request.args[0]
     arts = db(db.articles.id == the_id).select()
-    a = arts.first()
-    tags = a.blog_tags
-    docs = a.docs
-    created = a.created.strftime('%B %e, %Y') or None
-    return dict(a=a, created=created, tags=tags, docs=docs)
+    art = arts.first()
+    tags = [db.blog_tags[t].tagname for t in art.blog_tags]
+    docs = art.docs
+    created = art.created.strftime('%B %e, %Y') or None
+    return dict(art=art, created=created, tags=tags, docs=docs)
 
 
 def classes():

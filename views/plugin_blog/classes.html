@@ -4,7 +4,7 @@
 
 <article>
     {{if auth.has_membership('administrators'):}}
-        {{=A(['edit'], _href=URL('plugin_blog', 'edit_post', args=[id]))}}
+        {{=A(['edit'], _href=URL('plugin_blog', 'edit_post', args=[c.id]))}}
     {{pass}}
     {{=H2(c.title, _class='article_title')}}
     {{=DIV(MARKMIN(c.body), _class='article_wrapper')}}

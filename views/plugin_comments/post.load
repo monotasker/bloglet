@@ -1,7 +1,0 @@
-{{for comment in comments:}}
-<div class="comment">
-    {{=SPAN(comment.posted_by.first_name + ' ' + comment.posted_by.last_name, _class='comment_author')}} {{=SPAN(comment.posted_on.strftime('%B %e, %Y'), _class='comment_date')}}
-    <span class="comment_body">{{=comment.body}}</span>
-</div>
-{{pass}}
-{{=form}}

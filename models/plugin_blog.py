@@ -18,6 +18,12 @@ db.define_table('docs',
           uploadfolder=os.path.join(request.folder, 'uploads')),
     format='%(label)s')
 
+db.define_table('blog_links',
+    Field('link_label'),
+    Field('url'),
+    Field('description', 'text'),
+    format='%(link_label)s')
+
 db.define_table('articles',
     Field('author', db.auth_user, default=auth.user_id),
     Field('title'),
@@ -28,6 +34,7 @@ db.define_table('articles',
     Field('blog_tags', 'list:reference blog_tags'),
     Field('parent', 'reference articles'),
     Field('docs', 'list:reference docs'),
+    Field('blog_links', 'list:reference blog_links'),
     format='%(title)s')
 
 db.articles.blog_tags.requires = IS_IN_DB(db, 'blog_tags.id',

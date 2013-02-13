@@ -3,13 +3,14 @@
 {{extend 'layout.html'}}
 {{for a in articles:}}
 <article>
-    {{=H2(a.title)}}
-    {{=SPAN(a.author)}}, 
-    {{if a.created:}}
-        {{=SPAN(a.created.strftime('%B %e, %Y'))}}
-    {{pass}}
+    {{=H2(A(a.title, _href=URL('plugin_blog', 'articles', args=[a.id])))}}
     {{if a.teaser:}}
-        {{=P(a.teaser, '   ', A('read more', _href=URL('plugin_blog', 'articles', args=[a.id])))}}
+        {{=P(
+            SPAN(a.created.strftime('%B %e, %Y'), _class='article_date'),
+            a.teaser,
+            '   ',
+            A('read more', _href=URL('plugin_blog', 'articles', args=[a.id]))
+        )}}
     {{pass}}
 </article>
 {{pass}}
