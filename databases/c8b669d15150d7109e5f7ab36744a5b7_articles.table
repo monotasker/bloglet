@@ -22,7 +22,7 @@ p11
 sg6
 I9
 sg7
-S'INTEGER REFERENCES articles (id) ON DELETE CASCADE'
+S'INTEGER REFERENCES articles(id) ON DELETE CASCADE'
 p12
 ssS'author'
 p13
@@ -33,7 +33,7 @@ p15
 sg6
 I2
 sg7
-S'INTEGER REFERENCES auth_user (id) ON DELETE CASCADE'
+S'INTEGER REFERENCES auth_user(id) ON DELETE CASCADE'
 p16
 ssS'docs'
 p17

@@ -44,7 +44,7 @@ p19
 sg6
 I4
 sg7
-S'INTEGER REFERENCES auth_user (id) ON DELETE CASCADE'
+S'INTEGER REFERENCES auth_user(id) ON DELETE CASCADE'
 p20
 ssS'email_address'
 p21
