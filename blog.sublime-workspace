@@ -415,7 +415,7 @@
 			"file": "static/plugin_framework/theme_blog.less",
 			"settings":
 			{
-				"buffer_size": 13118,
+				"buffer_size": 11432,
 				"line_ending": "Unix"
 			}
 		},
@@ -423,7 +423,7 @@
 			"file": "static/plugin_framework/framework.less",
 			"settings":
 			{
-				"buffer_size": 30037,
+				"buffer_size": 30559,
 				"line_ending": "Unix"
 			}
 		},
@@ -431,7 +431,7 @@
 			"file": "static/css/theme.less",
 			"settings":
 			{
-				"buffer_size": 41,
+				"buffer_size": 42,
 				"line_ending": "Unix"
 			}
 		},
@@ -439,7 +439,7 @@
 			"file": "views/plugin_blog/classes.html",
 			"settings":
 			{
-				"buffer_size": 1018,
+				"buffer_size": 1021,
 				"line_ending": "Unix"
 			}
 		},
@@ -823,7 +823,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -831,20 +831,21 @@
 					"file": "static/plugin_framework/theme_blog.less",
 					"settings":
 					{
-						"buffer_size": 13118,
+						"buffer_size": 11432,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2493,
-								2493
+								371,
+								371
 							]
 						],
 						"settings":
 						{
-							"function_name_status_row": 54,
+							"color_scheme": "Packages/Solarized Color Scheme/Solarized (dark).tmTheme",
+							"function_name_status_row": 15,
 							"syntax": "Packages/LESS/LESS.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
@@ -860,20 +861,21 @@
 					"file": "static/plugin_framework/framework.less",
 					"settings":
 					{
-						"buffer_size": 30037,
+						"buffer_size": 30559,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								10779,
-								10779
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"function_name_status_row": 136,
+							"color_scheme": "Packages/Solarized Color Scheme/Solarized (dark).tmTheme",
+							"function_name_status_row": 0,
 							"syntax": "Packages/LESS/LESS.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
@@ -889,19 +891,20 @@
 					"file": "static/css/theme.less",
 					"settings":
 					{
-						"buffer_size": 41,
+						"buffer_size": 42,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								41,
-								41
+								0,
+								0
 							]
 						],
 						"settings":
 						{
+							"color_scheme": "Packages/Solarized Color Scheme/Solarized (dark).tmTheme",
 							"function_name_status_row": 0,
 							"syntax": "Packages/LESS/LESS.tmLanguage"
 						},
@@ -922,20 +925,21 @@
 					"file": "views/plugin_blog/classes.html",
 					"settings":
 					{
-						"buffer_size": 1018,
+						"buffer_size": 1021,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								219,
-								219
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"function_name_status_row": 6,
+							"color_scheme": "Packages/Solarized Color Scheme/Solarized (dark).tmTheme",
+							"function_name_status_row": 0,
 							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
@@ -965,6 +969,7 @@
 						"settings":
 						{
 							"auto_name": "{{right_sidebar_enabled = True}}",
+							"color_scheme": "Packages/Solarized Color Scheme/Solarized (dark).tmTheme",
 							"function_name_status_row": 15,
 							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"tab_size": 4,
@@ -1007,7 +1012,7 @@
 		"cols":
 		[
 			0.0,
-			0.637923123329,
+			0.65,
 			1.0
 		],
 		"rows":
