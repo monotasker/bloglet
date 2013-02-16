@@ -45,7 +45,11 @@ key_table	appadmin.py	/^    def key_table(keys):$/;"	f	function:ccache
 linked_create_form	plugin_ajaxselect.py	/^def linked_create_form():$/;"	f
 linked_edit_form	plugin_ajaxselect.py	/^def linked_edit_form():$/;"	f
 list	plugin_listandedit.py	/^def list():$/;"	f
+<<<<<<< HEAD
 makeurl	plugin_listandedit.py	/^def makeurl(tablename, orderby, restrictor):$/;"	f
+=======
+makeurl	plugin_listandedit.py	/^def makeurl(tablename, orderby):$/;"	f
+>>>>>>> 053cdd2b6fc770f1f3e6c2c99f4c2db046df7709
 new_doc	plugin_blog.py	/^def new_doc():$/;"	f
 new_post	plugin_blog.py	/^def new_post():$/;"	f
 new_tag	plugin_blog.py	/^def new_tag():$/;"	f
@@ -61,7 +65,11 @@ session	plugin_listandedit.py	/^    session = current.session$/;"	v
 set_form_wrapper	plugin_ajaxselect.py	/^def set_form_wrapper():$/;"	f
 set_widget	plugin_ajaxselect.py	/^def set_widget():$/;"	f
 setval	plugin_ajaxselect.py	/^def setval():$/;"	f
+<<<<<<< HEAD
 smart_truncate	plugin_blog.py	/^def smart_truncate(content, length=480, suffix='...'):$/;"	f
+=======
+smart_truncate	plugin_blog.py	/^def smart_truncate(content, length=300, suffix='...'):$/;"	f
+>>>>>>> 053cdd2b6fc770f1f3e6c2c99f4c2db046df7709
 state	appadmin.py	/^def state():$/;"	f
 update	appadmin.py	/^def update():$/;"	f
 user	default.py	/^def user():$/;"	f

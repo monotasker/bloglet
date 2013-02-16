@@ -5,7 +5,10 @@
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
 ICONLINK	plugin_widgets.py	/^def ICONLINK(title, text, icon):$/;"	f
+<<<<<<< HEAD
 ROLE	plugin_widgets.py	/^def ROLE(content, role=None):$/;"	f
+=======
+>>>>>>> 053cdd2b6fc770f1f3e6c2c99f4c2db046df7709
 TOOLTIP	plugin_widgets.py	/^def TOOLTIP(title, text, content, icon=None):$/;"	f
 _	menu.py	/^def _():$/;"	f
 auth	db.py	/^auth = Auth(db, hmac_key=Auth.get_or_create_key())  # authent\/authorization$/;"	v
