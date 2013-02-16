@@ -44,7 +44,11 @@ p19
 sg6
 I7
 sg7
+<<<<<<< HEAD
+S'INTEGER REFERENCES auth_user(id) ON DELETE CASCADE'
+=======
 S'INTEGER'
+>>>>>>> 20ed2e0cde215d9725411ef27a6db791d378c934
 p20
 ssS'email_address'
 p21
