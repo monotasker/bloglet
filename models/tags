@@ -4,16 +4,9 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-ICONLINK	plugin_widgets.py	/^def ICONLINK(title, text, icon):$/;"	f
-<<<<<<< HEAD
-ROLE	plugin_widgets.py	/^def ROLE(content, role=None):$/;"	f
-=======
->>>>>>> 053cdd2b6fc770f1f3e6c2c99f4c2db046df7709
-TOOLTIP	plugin_widgets.py	/^def TOOLTIP(title, text, content, icon=None):$/;"	f
 _	menu.py	/^def _():$/;"	f
 auth	db.py	/^auth = Auth(db, hmac_key=Auth.get_or_create_key())  # authent\/authorization$/;"	v
 auth	plugin_blog.py	/^    auth = current.auth$/;"	v
-authbar	plugin_framework.py	/^def authbar():$/;"	f
 db	db.py	/^db = DAL('sqlite:\/\/storage.sqlite')$/;"	v
 db	plugin_blog.py	/^    db = current.db$/;"	v
 format	plugin_blog.py	/^    format='%(label)s')$/;"	v
@@ -23,12 +16,9 @@ format	plugin_blog.py	/^    format='%(title)s')$/;"	v
 keydata	db.py	/^keydata = {}$/;"	v
 mail	db.py	/^mail = Mail()                                  # mailer$/;"	v
 multiple	plugin_blog.py	/^                                          multiple=True)$/;"	v
-plugin_comments	plugin_comments.py	/^def plugin_comments():$/;"	f
-plugin_listandedit	plugin_listandedit.py	/^def plugin_listandedit():$/;"	f
 request	db.py	/^request = current.request$/;"	v
 request	menu.py	/^    request = current.request$/;"	v
 request	plugin_blog.py	/^    request = current.request$/;"	v
 response	db.py	/^response = current.response$/;"	v
 response	menu.py	/^    response = current.response$/;"	v
-response	plugin_listandedit.py	/^    response = current.response$/;"	v
 uploadfolder	plugin_blog.py	/^          uploadfolder=os.path.join(request.folder, 'uploads')),$/;"	v
