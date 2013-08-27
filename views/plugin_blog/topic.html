@@ -1,6 +1,8 @@
-{{right_sidebar_enabled = 4}}
-{{left_sidebar_enabled = 0}}
+{{right_sidebar_enabled = True}}
+{{left_sidebar_enabled = True}}
 {{extend 'layout.html'}}
+
+{{if articles:}}
 {{for a in articles:}}
 <article>
     {{=H2(A(a.title, _href=URL('plugin_blog', 'articles', args=[a.id])))}}
@@ -15,10 +17,20 @@
 </article>
 {{pass}}
 
+{{else:}}
+<h2>Choose a Topic to Browse</h2>
+<ul class='taglist'>
+{{for t in taglist:}}
+    {{=LI(A(t.tagname, _href=URL('plugin_blog', 'topic', args=[t.id])))}}
+{{pass}}
+</ul>
+
+{{pass}}
+
 {{block right_sidebar}}
     {{include 'plugin_blog/right_sidebar.html'}}
 {{end}}
 
-<!--{{block left_sidebar}}-->
-    <!--{{include 'plugin_blog/left_sidebar.html'}}-->
-<!--{{end}}-->
+{{block left_sidebar}}
+    {{include 'plugin_blog/left_sidebar.html'}}
+{{end}}
