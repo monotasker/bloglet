@@ -61,6 +61,7 @@
 'Group ID': '群組編號',
 'Hello World': '嗨! 世界',
 'Home': 'Home',
+'Ian W. Scott': 'Ian W. Scott',
 'Import/Export': '匯入/匯出',
 'Index': '索引',
 'Installed applications': '已安裝應用程式',

@@ -97,6 +97,7 @@
 'profile': 'профиль',
 'record does not exist': 'запись не найдена',
 'record id': 'id записи',
+'register': 'register',
 'selected': 'выбрано',
 'state': 'состояние',
 'table': 'таблица',

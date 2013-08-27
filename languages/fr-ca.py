@@ -18,6 +18,7 @@
 'Check to delete:': 'Cliquez pour supprimer:',
 'Client IP': 'IP client',
 'Community': 'Communauté',
+'Confessions of a Monotasker': 'Confessions of a Monotasker',
 'Controller': 'Contrôleur',
 'Copyright': "Droit d'auteur",
 'Current request': 'Demande actuelle',
@@ -47,6 +48,7 @@
 'Groups': 'Groupes',
 'Hello World': 'Bonjour le monde',
 'Home': 'Accueil',
+'Ian W. Scott': 'Ian W. Scott',
 'Import/Export': 'Importer/Exporter',
 'Index': 'Index',
 'Internal State': 'État interne',
@@ -65,6 +67,7 @@
 'Name': 'Nom',
 'New Record': 'Nouvel enregistrement',
 'No databases in this application': "Cette application n'a pas de bases de données",
+'Object or table name': 'Object or table name',
 'Online examples': 'Exemples en ligne',
 'Origin': 'Origine',
 'Other Recipes': 'Autres recettes',
@@ -85,6 +88,7 @@
 'Record ID': "ID d'enregistrement",
 'Record Updated': 'Record Updated',
 'Register': "S'inscrire",
+'Registration identifier': 'Registration identifier',
 'Registration key': "Clé d'enregistrement",
 'Registration successful': 'Inscription réussie',
 'Remember me (for 30 days)': 'Se souvenir de moi (pendant 30 jours)',
@@ -165,4 +169,3 @@
 'unable to parse csv file': "incapable d'analyser le fichier cvs",
 'value already in database or empty': 'valeur déjà dans la base ou vide',
 }
-

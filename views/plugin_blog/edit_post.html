@@ -1,42 +1,14 @@
-{{right_sidebar_enabled = True}}
-{{left_sidebar_enabled = True}}
+{{right_sidebar_enabled = False}}
+{{left_sidebar_enabled = False}}
 {{extend 'layout.html'}}
 
-<article>
-<h2>Edit Article</h2>
-{{=form}}
-</article>
+{{if request.vars:
+    vars = request.vars
+else:
+    vars = None
+pass}}
 
-{{block right_sidebar}}
-    <p>{{include 'plugin_blog/right_sidebar.html'}}</p>
-    <p>
-        <h2>Resources</h2>
-        <ul>
-        {{if parent:}}
-            {{=LI(A('Course Description', _href=URL('classes', args=parent.id)))}}
-        {{pass}}
-        {{if children and children is not None:}}
-            {{for child in children:}}
-                {{=LI(A(child.title, _href=URL('classes', args=child.id)))}}
-            {{pass}}
-        {{pass}}
-        {{if docs and docs is not None:}}
-            {{for d in docs:}}
-                {{=LI(A(d.label, _href=URL('default', 'download', args=d.docfile)))}}
-            {{pass}}
-        {{pass}}
-        </ul>
-    </p>
-{{end}}
+<div id="plugin_listandedit_wrapper">
+{{=LOAD('plugin_listandedit', 'widget.load', args=request.args, vars=vars, ajax=False, ajax_trap=True)}}
+</div>
 
-{{block left_sidebar}}
-    {{=A('view article', _href=URL('plugin_blog', 'articles',
-                                    args=[request.args[0]])
-        )
-    }}
-    {{=A('view class', _href=URL('plugin_blog', 'classes',
-                                    args=[request.args[0]])
-        )
-    }}
-    {{include 'plugin_blog/left_sidebar.html'}}
-{{end}}

@@ -4,5 +4,7 @@ sessions/*.*
 *.swp
 private/*.*
 errors/*.*
-*.~
+*~
+*.un~
+*.swo
 *.tmp

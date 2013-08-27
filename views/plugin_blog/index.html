@@ -7,7 +7,7 @@
     {{if a.teaser:}}
         {{=P(
             SPAN(a.created.strftime('%B %e, %Y'), _class='article_date'),
-            a.teaser,
+            MARKMIN(a.teaser),
             '   ',
             A('read more', _href=URL('plugin_blog', 'articles', args=[a.id]))
         )}}
