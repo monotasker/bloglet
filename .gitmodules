@@ -1,15 +1,15 @@
+[submodule "plugins/plugin_ajaxselect"]
+	path = plugins/plugin_ajaxselect
+	url = git@github.com:monotasker/plugin_ajaxselect
+[submodule "plugins/plugin_framework"]
+	path = plugins/plugin_framework
+	url = git@github.com:monotasker/plugin_framework
 [submodule "plugins/plugin_listandedit"]
 	path = plugins/plugin_listandedit
 	url = git@github.com:monotasker/plugin_listandedit
-[submodule "plugins/plugin_framework"]
-	path = plugins/plugin_framework
-	url = git@github.com:monotasker/plugin_framework.git
-[submodule "plugins/plugin_comments"]
-	path = plugins/plugin_comments
-	url = git@github.com:monotasker/plugin_comments.git
-[submodule "plugins/plugin_ajaxselect"]
-	path = plugins/plugin_ajaxselect
-	url = git@github.com:monotasker/plugin_ajaxselect.git
 [submodule "plugins/plugin_widgets"]
 	path = plugins/plugin_widgets
 	url = git@github.com:monotasker/plugin_widgets
+[submodule "plugins/plugin_comments"]
+	path = plugins/plugin_comments
+	url = git@github.com:monotasker/plugin_comments
