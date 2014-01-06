@@ -1,0 +1,10 @@
+{{right_sidebar_enabled = 4}}
+{{left_sidebar_enabled = 0}}
+{{response.title = T('Witnesses of Hope')}}
+{{response.mobiletitle = response.title}}
+{{response.subtitle = T('Pathways into the New Testament')}}
+{{extend 'layout.html'}}
+
+{{=title1}}
+{{=title2}}
+{{=LOAD(c='plugin_woh', f='section.load', args=[chapnum, secnum], ajax=False, target='woh-section-wrapper')}}

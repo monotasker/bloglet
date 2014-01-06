@@ -1,4 +1,4 @@
-# coding: utf8
+# -*- coding: utf-8 -*-
 
 if 0:
     from gluon import current

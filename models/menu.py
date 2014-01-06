@@ -19,7 +19,7 @@ response.meta.description = 'My blog for biblical studies, web development,'\
 response.meta.keywords = 'bible, biblical, studies, academic, scholarship,'\
                         ' web2py, python, framework'
 response.meta.generator = 'Web2py Web Framework'
-response.meta.copyright = 'All content copyright Ian W. Scott, 2012 unless'\
+response.meta.copyright = 'All content copyright Ian W. Scott, 2012—2014 unless'\
                         ' otherwise specified (all rights reserved); Site'\
                         ' design copyright Ian W. Scott (licensed under'\
                         ' GPL 3.0).'
