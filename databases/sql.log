@@ -112,29 +112,33 @@ CREATE TABLE blog_links(
 success!
 timestamp: 2012-11-09T13:33:52.807792
 ALTER TABLE articles ADD blog_links TEXT;
+timestamp: 2014-01-13T16:06:00.197967
+CREATE TABLE chapter_titles(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    num INTEGER,
+    title CHAR(512)
+);
 success!
+timestamp: 2014-01-13T16:06:00.474515
+CREATE TABLE section_titles(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    chapter_num INTEGER,
+    section_num INTEGER,
+    title CHAR(512)
+);
 success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-timestamp: 2013-12-31T16:56:25.593519
+timestamp: 2014-01-13T16:06:00.690641
 CREATE TABLE paragraphs(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    chapter INTEGER,
-    section INTEGER,
-    subsection INTEGER,
     uid INTEGER,
-    status INTEGER,
-    created TIMESTAMP,
-    changed TIMESTAMP,
-    title CHAR(512),
-    body TEXT,
+    chapter CHAR(512),
+    section CHAR(512),
+    subsection CHAR(512),
     display_title CHAR(512),
+    status CHAR(512),
+    created CHAR(512),
+    changed CHAR(512),
+    body TEXT,
     pullquote CHAR(512),
     audio INTEGER,
     image_id INTEGER,
@@ -143,281 +147,4 @@ CREATE TABLE paragraphs(
     image_filename CHAR(512),
     topics CHAR(512)
 );
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-DELETE FROM paragraphs;
-DELETE FROM sqlite_sequence WHERE name='paragraphs';
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-DELETE FROM paragraphs;
-DELETE FROM sqlite_sequence WHERE name='paragraphs';
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-DELETE FROM paragraphs;
-DELETE FROM sqlite_sequence WHERE name='paragraphs';
-success!
-success!
-success!
-DELETE FROM paragraphs;
-DELETE FROM sqlite_sequence WHERE name='paragraphs';
-success!
-success!
-success!
-DELETE FROM paragraphs;
-DELETE FROM sqlite_sequence WHERE name='paragraphs';
-success!
-success!
-success!
-DELETE FROM paragraphs;
-DELETE FROM sqlite_sequence WHERE name='paragraphs';
-success!
-success!
-success!
-DELETE FROM paragraphs;
-DELETE FROM sqlite_sequence WHERE name='paragraphs';
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-DELETE FROM paragraphs;
-DELETE FROM sqlite_sequence WHERE name='paragraphs';
-success!
-success!
-success!
-success!
-success!
-DELETE FROM paragraphs;
-DELETE FROM sqlite_sequence WHERE name='paragraphs';
-success!
-success!
-success!
-success!
-success!
-DELETE FROM paragraphs;
-DELETE FROM sqlite_sequence WHERE name='paragraphs';
-success!
-success!
-success!
-DELETE FROM paragraphs;
-DELETE FROM sqlite_sequence WHERE name='paragraphs';
-success!
-success!
-success!
-DELETE FROM paragraphs;
-DELETE FROM sqlite_sequence WHERE name='paragraphs';
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-timestamp: 2014-01-06T11:49:34.272024
-CREATE TABLE chapter_titles(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    num INTEGER,
-    title CHAR(512)
-);
-success!
-success!
-success!
-timestamp: 2014-01-06T11:53:30.580589
-CREATE TABLE section_titles(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    chapter_num INTEGER,
-    section_num INTEGER,
-    title CHAR(512)
-);
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
-success!
 success!

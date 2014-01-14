@@ -4,10 +4,11 @@
 
 <article>
     {{if auth.has_membership('administrators'):}}
-        {{=A(['edit'], _href=URL('plugin_blog', 'edit_post', args=[c.id]))}}
+        {{=A(['edit'], _href=URL('plugin_blog', 'edit_post', args=[myclass.id]))}}
     {{pass}}
-    {{=H2(c.title, _class='article_title')}}
-    {{=DIV(MARKMIN(c.body), _class='article_wrapper')}}
+    {{=H2(myclass.title, _class='article_title')}}
+    {{}}
+    {{=DIV(MARKMIN(myclass.body), _class='article_wrapper')}}
 </article>
 
 {{block right_sidebar}}
@@ -30,6 +31,3 @@
     </p>
 {{end}}
 
-{{block left_sidebar}}
-    {{include 'plugin_blog/left_sidebar.html'}}
-{{end}}

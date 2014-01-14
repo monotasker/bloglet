@@ -1,43 +1,15 @@
-<div>
-    <h2>General Student Aids</h2>
-    <ul>
-        <li>
-            <a href='http://tyndale.ca/registrar'>Tyndale Registrar</a>
-        </li>
-        <li>
-            <a href='http://tyndale.ca/library'>Tyndale Library</a>
-        </li>
-        <li>
-            <a href='http://ezproxy.mytyndale.ca:2048/login?url=http://www.chicagomanualofstyle.org.ezproxy.mytyndale.ca:2048/tools_citationguide.html'>Chicago Style Quick Guide</a>
-        </li>
-        <li>
-            <a href='http://ezproxy.mytyndale.ca:2048/login?url=http://www.chicagomanualofstyle.org.ezproxy.mytyndale.ca:2048/16/contents.html'>Chicago Manual of Style Online</a>
-            (esp. <a href='http://ezproxy.mytyndale.ca:2048/login?url=http://www.chicagomanualofstyle.org.ezproxy.mytyndale.ca:2048/16/ch14/ch14_toc.html'>ch. 14</a> and sections
-            <a href='http://ezproxy.mytyndale.ca:2048/login?url=http://www.chicagomanualofstyle.org.ezproxy.mytyndale.ca:2048/16/ch10/ch10_sec046.html'>10.46 to 10.51</a>,
-            <a href='http://ezproxy.mytyndale.ca:2048/login?url=http://www.chicagomanualofstyle.org.ezproxy.mytyndale.ca:2048/16/ch14/ch14_sec253.html'>14.253 to 14.254</a>)
-        </li>
-    </ul>
-</div>
+{{from blocks import get_block}}
 
-<div>
-<h2>Classes</h2>
-<ul>
-    <li><a href="{{=URL('plugin_blog', 'classes', args=4)}}">New Testament Theology and History</a></li>
-    <li><a href="{{=URL('plugin_blog', 'classes', args=15)}}">NT Theology and History (Online)</a></li>
-    <li><a href="{{=URL('plugin_blog', 'classes', args=2)}}">Romans</a></li>
-    <li><a href="{{=URL('plugin_blog', 'classes', args=17)}}">Gospel of John</a></li>
-    <li><a href="{{=URL('plugin_blog', 'classes', args=18)}}">Elementary Greek I (Online)</a></li>
-    <li><a href="{{=URL('plugin_blog', 'classes', args=16)}}">Elementary Greek II (Online)</a></li>
-    <li><a href="{{=URL('plugin_blog', 'classes', args=13)}}">Jewish World of the NT<a></li>
-</ul>
-</div>
- 
-<!--<div>-->
-<!-- <h2>Blogs I Like</h2>
-<ul>
-    <li><a href="">Ger ve-Toshav</a></li>
-    <li><a href="">Ancient Hebrew Poetry</a></li>
-    <li><a href="">NT Gateway</a></li>
-    <li><a href="">PaleoJudaica</a></li>
-</ul>
-</div> -->
+{{for b in rightblocks:}}
+{{=get_block(b)}} 
+{{pass}}
+
+
+<script>
+    $('#left_sidebar div, #right_sidebar div').live('click', function(){
+        $('#left_sidebar ul, #right_sidebar ul').each(function(){
+            $(this).hide('slow');
+        });
+        $(this).find('ul').slideToggle();
+    });
+</script>

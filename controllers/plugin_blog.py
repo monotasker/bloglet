@@ -39,15 +39,15 @@ def articles():
 
 def classes():
     the_id = request.args[0]
-    c = db((db.articles.id == the_id) &
-           (db.articles.blog_tags.contains(5))).select().first()
-    tags = c.blog_tags
+    myclass = db((db.articles.id == the_id) &
+                 (db.articles.blog_tags.contains(5))).select().first()
+    tags = myclass.blog_tags
     alldocs = db(db.docs.id > 0).select()
-    docs = alldocs.find(lambda row: row.id in c.docs)
-    created = c.created.strftime('%B %e, %Y') or None
+    docs = alldocs.find(lambda row: row.id in myclass.docs)
+    created = myclass.created.strftime('%B %e, %Y') or None
     children = db(db.articles.parent == request.args[0]).select()
-    parent = db.articles[c.parent]
-    return dict(c=c, created=created, tags=tags, docs=docs,
+    parent = db.articles[myclass.parent]
+    return dict(myclass=myclass, created=created, tags=tags, docs=docs,
                 children=children, parent=parent)
 
 
