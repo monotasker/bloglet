@@ -27,6 +27,10 @@ response.meta.copyright = 'All content copyright Ian W. Scott, 2012—2014 unles
 ## your http://google.com/analytics id
 response.google_analytics_id = None
 
+## default sidebar blocks
+rightblocks = ['info', 'hours', 'my_sites', 'student_aids', 'classes']
+# 'social'
+
 #########################################################################
 ## this is the main application menu add/remove items as required
 #########################################################################
@@ -35,18 +39,21 @@ response.menu = [(SPAN(T(' Home'), _class='icon-home'), False,
                   URL('default', 'index'), []),
                  (SPAN(T(' Browse Topics'), _class='icon-tag'), False,
                   URL('plugin_blog', 'topic', args=[]), []),
-                 (SPAN(T(' Edit'), _class='icon-cog'), False,
-                  URL('plugin_blog', 'editing', args=['articles']),
-                  [
-                  (SPAN(T(' Articles'), _class='icon-home'), False,
-                  URL('plugin_blog', 'editing', args=['articles']), []),
-                  (SPAN(T(' Tags'), _class='icon-home'), False,
-                  URL('plugin_blog', 'editing', args=['blog_tags']), []),
-                  (SPAN(T(' Documents'), _class='icon-home'), False,
-                  URL('plugin_blog', 'editing', args=['documents']), []),
-                  ]),
                  ]
-#def _():
-    ## shortcuts
-    #app = request.application
-    #ctr = request.controller
+
+
+if auth.has_membership('administrators'):
+    response.menu.extend([(SPAN(T(' Edit'), _class='icon-cog'), False,
+                        URL('plugin_blog', 'editing', args=['articles']),
+                            [(SPAN(T(' Articles'), _class='icon-home'), False,
+                            URL('plugin_blog', 'editing', args=['articles']), []),
+                            (SPAN(T(' Tags'), _class='icon-home'), False,
+                            URL('plugin_blog', 'editing', args=['blog_tags']), []),
+                            (SPAN(T(' Documents'), _class='icon-home'), False,
+                            URL('plugin_blog', 'editing', args=['documents']), []),
+                            ]),
+                        ])
+    #def _():
+        ## shortcuts
+        #app = request.application
+        #ctr = request.controller
