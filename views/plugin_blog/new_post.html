@@ -1,0 +1,34 @@
+{{right_sidebar_enabled = True}}
+{{left_sidebar_enabled = True}}
+{{extend 'layout.html'}}
+
+<article>
+<h2>New Article</h2>
+{{=form}}
+</article>
+
+{{block right_sidebar}}
+    <p>{{include 'plugin_blog/right_sidebar.html'}}</p>
+    <p>
+        <h2>Resources</h2>
+        <ul>
+        {{if parent:}}
+            {{=LI(A('Course Description', _href=URL('classes', args=parent.id)))}}
+        {{pass}}
+        {{if children and children is not None:}}
+            {{for child in children:}}
+                {{=LI(A(child.title, _href=URL('classes', args=child.id)))}}
+            {{pass}}
+        {{pass}}
+        {{if docs and docs is not None:}}
+            {{for d in docs:}}
+                {{=LI(A(d.label, _href=URL('default', 'download', args=d.docfile)))}}
+            {{pass}}
+        {{pass}}
+        </ul>
+    </p>
+{{end}}
+
+{{block left_sidebar}}
+    {{include 'plugin_blog/left_sidebar.html'}}
+{{end}}

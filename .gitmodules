@@ -1,9 +1,6 @@
 [submodule "plugins/plugin_ajaxselect"]
 	path = plugins/plugin_ajaxselect
 	url = git@github.com:monotasker/plugin_ajaxselect
-[submodule "plugins/plugin_framework"]
-	path = plugins/plugin_framework
-	url = git@github.com:monotasker/plugin_framework
 [submodule "plugins/plugin_listandedit"]
 	path = plugins/plugin_listandedit
 	url = git@github.com:monotasker/plugin_listandedit
@@ -13,3 +10,6 @@
 [submodule "plugins/plugin_comments"]
 	path = plugins/plugin_comments
 	url = git@github.com:monotasker/plugin_comments
+[submodule "plugins/plugin_utils"]
+	path = plugins/plugin_utils
+	url = git@github.com:monotasker/plugin_utils
