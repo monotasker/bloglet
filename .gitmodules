@@ -13,3 +13,6 @@
 [submodule "plugins/plugin_comments"]
 	path = plugins/plugin_comments
 	url = git@github.com:monotasker/plugin_comments
+[submodule "plugins/plugin_utils"]
+	path = plugins/plugin_utils
+	url = git@github.com:monotasker/plugin_utils
