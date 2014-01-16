@@ -9,12 +9,41 @@ import traceback
 
 def section():
     try:
-        chapnum = request.args[0] if request.args[0] else 0
-        secnum = request.args[1] if request.args[0] else 0
+        chapnum = request.args[0] if request.args else 0
+        secnum = request.args[1] if len(request.args) > 0 else 1
         pars = db((db.paragraphs.chapter == chapnum) &
                   (db.paragraphs.section == secnum)
                   ).select(orderby=db.paragraphs.subsection)
         print 'found {} par rows'.format(len(pars))
+
+        # nav data
+        prevchap = chapnum  # default case
+        nextchap = chapnum  # default case
+        chpars = db(db.paragraphs.chapter == chapnum).select()
+        sections = sorted(list(set([p.section for p in chpars])))
+        secindex = sections.index(secnum)
+        if secindex > 0:
+            prevsec = sections[secindex - 1]
+        else:  # go to prev chapter
+            if int(chapnum) > 0:
+                prevchap = int(chapnum) - 1
+                prevchpars = db(db.paragraphs.chapter == prevchap).select()
+                prevsecs = sorted(list(set([p.section for p in prevchpars])))
+                prevsec = prevsecs[-1]
+            else:
+                prevchap = None
+                prevsec = None
+        if secindex < sections.index(sections[-1]):
+            nextsec = sections[secindex + 1]
+        else:  # go to next chapter
+            nextchap = int(chapnum) + 1
+            nextchpars = db(db.paragraphs.chapter == nextchap).select()
+            nextsecs = sorted(list(set([p.section for p in nextchpars])))
+            nextsec = nextsecs[0]
+        prevref = [prevchap, prevsec]
+        nextref = [nextchap, nextsec]
+
+        # this section content
         paragraphs = []
         for p in pars:
             mypar = {}
@@ -47,14 +76,16 @@ def section():
             paragraphs.append(mypar)
 
         pprint(paragraphs)
-        return {'paragraphs': paragraphs}
+        return {'paragraphs': paragraphs,
+                'prevref': prevref,
+                'nextref': nextref}
     except Exception:
         print traceback.format_exc(5)
 
 
 def read():
     chapnum = request.args[0] if request.args[0] else 0
-    secnum = request.args[1] if request.args[1] else 1
+    secnum = request.args[1] if len(request.args) > 1 else 1
     title1 = H1(db.chapter_titles(db.chapter_titles.num == chapnum).title)
     sec = db((db.section_titles.chapter_num == chapnum) &
              (db.section_titles.section_num == secnum)).select().first()

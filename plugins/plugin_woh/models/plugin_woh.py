@@ -2,9 +2,9 @@
 # -*- coding:utf-8 -*-
 
 if 0:
-    from gluon import Field, db, request
+    from gluon import Field, db
 import datetime
-import os
+#import os
 now = datetime.datetime.utcnow()
 
 db.define_table('chapter_titles',
@@ -25,11 +25,9 @@ db.define_table('woh_audio',
                 Field('audio_title'),
                 Field('audio_description'),
                 Field('audio_file_mp3', 'upload',
-                      uploadfolder=os.path.join(request.folder,
-                                                'static/audio')),
+                      uploadfolder='static/audio'),
                 Field('audio_file_ogg', 'upload',
-                      uploadfolder=os.path.join(request.folder,
-                                                'static/audio')),
+                      uploadfolder='static/audio'),
                 format=lambda r: r.audio_title
                 )
 
@@ -37,8 +35,7 @@ db.define_table('woh_images',
                 Field('image_title'),
                 Field('image_description'),
                 Field('img_file', 'upload',
-                      uploadfolder=os.path.join(request.folder,
-                                                'static/images')),
+                      uploadfolder='static/images'),
                 format=lambda r: r.audio_title
                 )
 
@@ -55,8 +52,8 @@ db.define_table('paragraphs',
                 Field('changed'),  # 'datetime', default = now
                 Field('body', 'text'),
                 Field('pullquote'),
-                Field('audio', 'list:reference woh_audio'),
-                Field('image', 'list:reference woh_images'),
+                Field('audio'),  # 'list:reference woh_audio'
+                Field('image'),  # 'list:reference woh_images'
                 Field('topics'),
                 format=lambda r: '{}, {}, {}'.format(r.chapter, r.section, r.subsection)
                 )

@@ -1,5 +1,6 @@
 {{right_sidebar_enabled = 4}}
 {{left_sidebar_enabled = 0}}
+{{rightblocks = ['info']}}
 {{response.title = T('Witnesses of Hope')}}
 {{response.mobiletitle = response.title}}
 {{response.subtitle = T('Pathways into the New Testament')}}
@@ -7,4 +8,20 @@
 
 {{=title1}}
 {{=title2}}
-{{=LOAD(c='plugin_woh', f='section.load', args=[chapnum, secnum], ajax=False, target='woh-section-wrapper')}}
+{{=LOAD('plugin_woh', 'section.load', ajax=False)}}
+
+
+{{block right_sidebar}}
+    {{=H3('Contents')}}
+    {{menu = UL()
+    chaps = db(db.chapter_titles.id > 0).select(orderby = db.chapter_titles.num)
+    for c in chaps:
+        secs = db(db.section_titles.chapter_num == c
+                  ).select(orderby = db.section_titles.section_num)
+        firstsec = secs.first().section_num if secs else 0
+        menu.append(LI(A(c.title, _href=URL('plugin_woh', 'read', args=[c.num, firstsec]))))
+    pass}}
+    {{=menu}}
+
+    <p>{{include 'plugin_blog/right_sidebar.html'}}</p>
+{{end}}
