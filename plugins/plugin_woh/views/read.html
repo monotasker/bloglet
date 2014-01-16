@@ -1,6 +1,6 @@
 {{right_sidebar_enabled = 4}}
 {{left_sidebar_enabled = 0}}
-{{rightblocks = ['info', 'woh_menu', 'woh_submenu', 'my_sites']}}
+{{rightblocks = ['info']}}
 {{response.title = T('Witnesses of Hope')}}
 {{response.mobiletitle = response.title}}
 {{response.subtitle = T('Pathways into the New Testament')}}
@@ -8,4 +8,21 @@
 
 {{=title1}}
 {{=title2}}
-{{=LOAD(c='plugin_woh', f='section.load', args=[chapnum, secnum], ajax=False, target='woh-section-wrapper')}}
+{{=LOAD('plugin_woh', 'section.load', args=request.args, ajax=False)}}
+
+
+{{block right_sidebar}}
+    {{=H3('Contents')}}
+    {{menu = UL()
+    for c in sorted(treerefs.keys()):
+        row = db.chapter_titles(db.chapter_titles.num == c)
+        title = row.title if row else ''
+        chnum = '{}. '.format(c) if c not in [0, 999] else ''
+        menu.append(LI(A(chnum, title,
+                         _href=URL('plugin_woh', 'read',
+                                   args=[c, treerefs[c][0]]))))
+    pass}}
+    {{=menu}}
+
+    <p>{{include 'plugin_blog/right_sidebar.html'}}</p>
+{{end}}
