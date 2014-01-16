@@ -1,1 +1,28 @@
-{{=text}}
+<table>
+    {{for p in paragraphs:}}
+    <tr>
+        <td>
+            {{=p['num']}}
+            {{if p['auds']:}}
+                {{for a in p['auds']:}}
+                <audio src="{{=URL('static/audio', a['audio_file'])}}" controls >
+                    <p>Sorry, your browser needs to be updated to support this
+                    audio content.</p>
+                </audio>
+                {{pass}}
+            {{pass}}
+        </td>
+        <td>
+            <p>
+                {{if p['images']:}}
+                    {{for i in p['images']:}}
+                    <img src="{{URL('static/images', i)}}" class="woh-illustration"/>
+                    {{pass}}
+                {{pass}}
+
+                {{=p['text']}}
+            </p>
+        </td>
+    </tr>
+    {{pass}}
+</table>
