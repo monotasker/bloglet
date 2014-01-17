@@ -1,3 +1,5 @@
+static/audio/*
+
 sessions/*.*
 *.bak
 *.pyc
