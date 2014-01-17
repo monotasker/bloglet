@@ -1,10 +1,28 @@
 #! /usr/bin/python
 # -*- coding:utf-8 -*-
 
+"""
+File: plugin_woh.py.
+
+Author: Me
+Description:
+
+"""
+
 if 0:
-    from gluon import SPAN, request, db, H1, H2
+    from gluon import SPAN, request, db, H1, H2, current, TAG
 from pprint import pprint
 import traceback
+session = current.session
+
+
+def get_nav_refs(chapnum, secnum):
+    """docstring for get_nav_refs"""
+    treeref, flatref = get_tree()
+    thisnode = flatref.index((int(chapnum), int(secnum)))
+    prevnode = flatref[thisnode] if thisnode == 0 else flatref[thisnode - 1]
+    nextnode = flatref[thisnode] if thisnode == len(flatref) + 1 else flatref[thisnode + 1]
+    return prevnode, nextnode
 
 
 def section():
@@ -17,31 +35,7 @@ def section():
         print 'found {} par rows'.format(len(pars))
 
         # nav data
-        prevchap = chapnum  # default case
-        nextchap = chapnum  # default case
-        chpars = db(db.paragraphs.chapter == chapnum).select()
-        sections = sorted(list(set([p.section for p in chpars])))
-        secindex = sections.index(secnum)
-        if secindex > 0:
-            prevsec = sections[secindex - 1]
-        else:  # go to prev chapter
-            if int(chapnum) > 0:
-                prevchap = int(chapnum) - 1
-                prevchpars = db(db.paragraphs.chapter == prevchap).select()
-                prevsecs = sorted(list(set([p.section for p in prevchpars])))
-                prevsec = prevsecs[-1]
-            else:
-                prevchap = None
-                prevsec = None
-        if secindex < sections.index(sections[-1]):
-            nextsec = sections[secindex + 1]
-        else:  # go to next chapter
-            nextchap = int(chapnum) + 1
-            nextchpars = db(db.paragraphs.chapter == nextchap).select()
-            nextsecs = sorted(list(set([p.section for p in nextchpars])))
-            nextsec = nextsecs[0]
-        prevref = [prevchap, prevsec]
-        nextref = [nextchap, nextsec]
+        prevnode, nextnode = get_nav_refs(chapnum, secnum)
 
         # this section content
         paragraphs = []
@@ -51,7 +45,7 @@ def section():
                                              str(p.subsection)] if s]),
                        _class='woh-refnum')
             mypar['num'] = num
-            mypar['text'] = p.body
+            mypar['text'] = TAG(p.body)
             if p.audio:
                 for a in p.audio:
                     mypar['auds'] = []
@@ -75,17 +69,43 @@ def section():
 
             paragraphs.append(mypar)
 
-        pprint(paragraphs)
         return {'paragraphs': paragraphs,
-                'prevref': prevref,
-                'nextref': nextref}
+                'prevref': prevnode,
+                'treerefs': session.treerefs,
+                'nextref': nextnode}
     except Exception:
         print traceback.format_exc(5)
 
 
+def get_tree():
+    """
+    """
+    paragraphs = db(db.paragraphs.id > 0).select(orderby=db.paragraphs.chapter | db.paragraphs.section)
+    chapters = [p.chapter for p in paragraphs]
+    chapters = sorted(list(set(chapters)))
+    treerefs = {}
+    flatrefs = []
+    for c in chapters:
+        sections = [int(p.section) for p in paragraphs.find(lambda r: r.chapter == c)]
+        sections = sorted(list(set(sections)))
+        treerefs[int(c)] = sections
+        for s in sections:
+            flatrefs.append((int(c), int(s)))
+    pprint(treerefs)
+    pprint(flatrefs)
+    session.woh_treerefs = treerefs
+    session.woh_flatrefs = flatrefs
+
+    return treerefs, flatrefs
+
+
 def read():
-    chapnum = request.args[0] if request.args[0] else 0
-    secnum = request.args[1] if len(request.args) > 1 else 1
+    """
+    Set up reading environment for woh.
+    """
+    treerefs, flatrefs = get_tree()
+    chapnum = request.args[0] if request.args[0] else treerefs.keys()[0]
+    secnum = request.args[1] if len(request.args) > 1 else treerefs[int(chapnum)][0]
     title1 = H1(db.chapter_titles(db.chapter_titles.num == chapnum).title)
     sec = db((db.section_titles.chapter_num == chapnum) &
              (db.section_titles.section_num == secnum)).select().first()
@@ -95,4 +115,5 @@ def read():
         title2 = ''
     print 'reading'
     return {'title1': title1, 'title2': title2,
-            'chapnum': chapnum, 'secnum': secnum}
+            'chapnum': chapnum, 'secnum': secnum,
+            'treerefs': treerefs}

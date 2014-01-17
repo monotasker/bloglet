@@ -13,6 +13,3 @@
 [submodule "plugins/plugin_utils"]
 	path = plugins/plugin_utils
 	url = git@github.com:monotasker/plugin_utils
-[submodule "plugins/plugin_framework"]
-	path = plugins/plugin_framework
-	url = git@github.com:monotasker/plugin_framework

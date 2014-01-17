@@ -8,18 +8,19 @@
 
 {{=title1}}
 {{=title2}}
-{{=LOAD('plugin_woh', 'section.load', ajax=False)}}
+{{=LOAD('plugin_woh', 'section.load', args=request.args, ajax=False)}}
 
 
 {{block right_sidebar}}
     {{=H3('Contents')}}
     {{menu = UL()
-    chaps = db(db.chapter_titles.id > 0).select(orderby = db.chapter_titles.num)
-    for c in chaps:
-        secs = db(db.section_titles.chapter_num == c
-                  ).select(orderby = db.section_titles.section_num)
-        firstsec = secs.first().section_num if secs else 0
-        menu.append(LI(A(c.title, _href=URL('plugin_woh', 'read', args=[c.num, firstsec]))))
+    for c in sorted(treerefs.keys()):
+        row = db.chapter_titles(db.chapter_titles.num == c)
+        title = row.title if row else ''
+        chnum = '{}. '.format(c) if c not in [0, 999] else ''
+        menu.append(LI(A(chnum, title,
+                         _href=URL('plugin_woh', 'read',
+                                   args=[c, treerefs[c][0]]))))
     pass}}
     {{=menu}}
 

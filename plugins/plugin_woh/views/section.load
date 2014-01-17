@@ -1,8 +1,8 @@
 <table>
     <tr>
         <td>
-{{=A('previous |', _href=URL('plugin_woh', 'section.load', args=prevref), _class='pull-left', cid='woh-section-wrapper')}}
-{{=A('| next', _href=URL('plugin_woh', 'section.load', args=nextref), _class='pull-right', cid='woh-section-wrapper')}}
+            {{=A('previous |', _href=URL('plugin_woh', 'section.load', args=prevref), _class='pull-left', cid=request.cid)}}
+            {{=A('| next', _href=URL('plugin_woh', 'section.load', args=nextref), _class='pull-right', cid=request.cid)}}
 </td>
 </tr>
 </table>
