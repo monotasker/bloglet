@@ -10,32 +10,42 @@ Description:
 """
 
 if 0:
-    from gluon import SPAN, request, db, H1, H2, current, TAG
+    from gluon import SPAN, request, db, current, TAG
 from pprint import pprint
 import traceback
 session = current.session
 
 
-def get_nav_refs(chapnum, secnum):
+def get_nav_refs(chapnum, secnum, flatrefs):
     """docstring for get_nav_refs"""
-    treeref, flatref = get_tree()
-    thisnode = flatref.index((int(chapnum), int(secnum)))
-    prevnode = flatref[thisnode] if thisnode == 0 else flatref[thisnode - 1]
-    nextnode = flatref[thisnode] if thisnode == len(flatref) + 1 else flatref[thisnode + 1]
+    thisnode = flatrefs.index((int(chapnum), int(secnum)))
+    prevnode = flatrefs[thisnode] if thisnode == 0 else flatrefs[thisnode - 1]
+    nextnode = flatrefs[thisnode] if thisnode == len(flatrefs) + 1 else flatrefs[thisnode + 1]
     return prevnode, nextnode
 
 
 def section():
+
     try:
-        chapnum = request.args[0] if request.args else 0
-        secnum = request.args[1] if len(request.args) > 0 else 1
+        treeref, flatref = get_tree()
+        chapnum = request.args[0] if request.args else sorted(treeref.keys())[0]
+        secnum = request.args[1] if len(request.args) > 0 else treeref[chapnum][0]
+
+        title1 = db.chapter_titles(db.chapter_titles.num == chapnum).title
+        sec = db((db.section_titles.chapter_num == chapnum) &
+                (db.section_titles.section_num == secnum)).select().first()
+        try:
+            title2 = sec.title
+        except AttributeError:
+            title2 = ''
+
         pars = db((db.paragraphs.chapter == chapnum) &
                   (db.paragraphs.section == secnum)
                   ).select(orderby=db.paragraphs.subsection)
         print 'found {} par rows'.format(len(pars))
 
         # nav data
-        prevnode, nextnode = get_nav_refs(chapnum, secnum)
+        prevnode, nextnode = get_nav_refs(chapnum, secnum, flatref)
 
         # this section content
         paragraphs = []
@@ -69,7 +79,9 @@ def section():
 
             paragraphs.append(mypar)
 
-        return {'paragraphs': paragraphs,
+        return {'title1': title1,
+                'title2': title2,
+                'paragraphs': paragraphs,
                 'prevref': prevnode,
                 'treerefs': session.treerefs,
                 'nextref': nextnode}
@@ -104,16 +116,5 @@ def read():
     Set up reading environment for woh.
     """
     treerefs, flatrefs = get_tree()
-    chapnum = request.args[0] if request.args[0] else treerefs.keys()[0]
-    secnum = request.args[1] if len(request.args) > 1 else treerefs[int(chapnum)][0]
-    title1 = H1(db.chapter_titles(db.chapter_titles.num == chapnum).title)
-    sec = db((db.section_titles.chapter_num == chapnum) &
-             (db.section_titles.section_num == secnum)).select().first()
-    try:
-        title2 = H2(sec.title)
-    except AttributeError:
-        title2 = ''
     print 'reading'
-    return {'title1': title1, 'title2': title2,
-            'chapnum': chapnum, 'secnum': secnum,
-            'treerefs': treerefs}
+    return {'treerefs': treerefs}
