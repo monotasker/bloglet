@@ -10,10 +10,11 @@ Description:
 """
 
 if 0:
-    from gluon import SPAN, request, db, current, TAG
+    from gluon import request, db, current, TAG
+    session = current.session
+    response = current.response
 from pprint import pprint
 import traceback
-session = current.session
 
 
 def get_nav_refs(chapnum, secnum, flatrefs):
@@ -33,50 +34,25 @@ def section():
 
         title1 = db.chapter_titles(db.chapter_titles.num == chapnum).title
         sec = db((db.section_titles.chapter_num == chapnum) &
-                (db.section_titles.section_num == secnum)).select().first()
-        try:
-            title2 = sec.title
-        except AttributeError:
-            title2 = ''
+                 (db.section_titles.section_num == secnum)).select().first()
+        title2 = sec.title if sec and sec.title else ''
 
         pars = db((db.paragraphs.chapter == chapnum) &
                   (db.paragraphs.section == secnum)
                   ).select(orderby=db.paragraphs.subsection)
-        print 'found {} par rows'.format(len(pars))
 
-        # nav data
         prevnode, nextnode = get_nav_refs(chapnum, secnum, flatref)
 
-        # this section content
         paragraphs = []
         for p in pars:
             mypar = {}
-            num = SPAN('.'.join([s for s in [str(chapnum), str(secnum),
-                                             str(p.subsection)] if s]),
-                       _class='woh-refnum')
+            num = '.'.join([s for s in [str(chapnum), str(secnum),
+                                        str(p.subsection)] if s])
             mypar['num'] = num
+            mypar['par_title'] = p.display_title
             mypar['text'] = TAG(p.body)
-            if p.audio:
-                for a in p.audio:
-                    mypar['auds'] = []
-                    arow = db.woh_audio(a)
-                    mypar['auds'].append((arow.audio_title,
-                                          arow.audio_description,
-                                          arow.audio_file_mp3,
-                                          arow.audio_file_ogg))
-            else:
-                mypar['auds'] = None
-
-            if p.image:
-                for i in p.image:
-                    mypar['images'] = []
-                    irow = db.woh_images(i)
-                    mypar['images'].append((irow.img_title,
-                                            irow.image_description,
-                                            irow.img_file))
-            else:
-                mypar['images'] = None
-
+            mypar['auds'] = get_audio(p)
+            mypar['images'] = get_images(p)
             paragraphs.append(mypar)
 
         return {'title1': title1,
@@ -87,6 +63,44 @@ def section():
                 'nextref': nextnode}
     except Exception:
         print traceback.format_exc(5)
+
+
+def download():
+    """
+    Display media file from upload field.
+    """
+    return response.download(request, db)
+
+
+def get_audio(row):
+    """
+    Return a list of tuples with data on an audio file related to the row.
+    """
+    if row.audio:
+        auds = [(db.woh_audio(a).audio_title,
+                 db.woh_audio(a).audio_description,
+                 db.woh_audio(a).audio_file_mp3,
+                 db.woh_audio(a).audio_file_ogg)
+                for a in row.audio]
+    else:
+        auds = None
+
+    return auds
+
+
+def get_images(row):
+    """
+    Return a list of tuples, each holding data on an image related to the row.
+    """
+    if row.image:
+        imgs = [(db.images(i).img_title,
+                 db.images(i).image_description,
+                 db.images(i).img_file)
+                for i in row.image]
+    else:
+        imgs = None
+
+    return imgs
 
 
 def get_tree():
