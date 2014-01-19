@@ -28,39 +28,45 @@ def get_nav_refs(chapnum, secnum, flatrefs):
 def section():
 
     try:
-        treeref, flatref = get_tree()
-        chapnum = request.args[0] if request.args else sorted(treeref.keys())[0]
-        secnum = request.args[1] if len(request.args) > 0 else treeref[chapnum][0]
+        treerefs, flatrefs = get_tree()
+        chapnum = request.args[0] if request.args else sorted(treerefs.keys())[0]
+        currsec = request.args[1] if len(request.args) > 0 else treerefs[chapnum][0]
 
         title1 = db.chapter_titles(db.chapter_titles.num == chapnum).title
-        sec = db((db.section_titles.chapter_num == chapnum) &
-                 (db.section_titles.section_num == secnum)).select().first()
-        title2 = sec.title if sec and sec.title else ''
 
-        pars = db((db.paragraphs.chapter == chapnum) &
-                  (db.paragraphs.section == secnum)
-                  ).select(orderby=db.paragraphs.subsection)
+        pars = db(db.paragraphs.chapter == chapnum
+                  ).select(orderby=db.paragraphs.section | db.paragraphs.subsection)
 
-        prevnode, nextnode = get_nav_refs(chapnum, secnum, flatref)
+        prevnode, nextnode = get_nav_refs(chapnum, currsec, flatrefs)
 
-        paragraphs = []
-        for p in pars:
-            mypar = {}
-            num = '.'.join([s for s in [str(chapnum), str(secnum),
-                                        str(p.subsection)] if s])
-            mypar['num'] = num
-            mypar['par_title'] = p.display_title
-            mypar['text'] = TAG(p.body)
-            mypar['auds'] = get_audio(p)
-            mypar['images'] = get_images(p)
-            paragraphs.append(mypar)
+        secrows = db(db.section_titles.chapter_num == chapnum).select()
+        sectitles = {s.section_num: s.title for s in secrows}
+
+        sections = {}
+        for mysec in treerefs[int(chapnum)]:
+            paragraphs = []
+            print 'found', len(pars)
+            secpars = pars.find(lambda r: r.section == str(mysec))
+            print 'secpars', len(secpars)
+            for p in secpars:
+                mypar = {}
+                num = '.'.join([s for s in [str(chapnum), str(mysec),
+                                            str(p.subsection)] if s])
+                mypar['num'] = num
+                mypar['par_title'] = p.display_title
+                mypar['text'] = TAG(p.body)
+                mypar['auds'] = get_audio(p)
+                mypar['images'] = get_images(p)
+                paragraphs.append(mypar)
+            sections[mysec] = paragraphs
 
         return {'title1': title1,
-                'title2': title2,
-                'paragraphs': paragraphs,
+                'sections': sections,
+                'sectitles': sectitles,
                 'prevref': prevnode,
                 'treerefs': session.treerefs,
-                'nextref': nextnode}
+                'nextref': nextnode,
+                'currsec': currsec}
     except Exception:
         print traceback.format_exc(5)
 
@@ -118,7 +124,7 @@ def get_tree():
         for s in sections:
             flatrefs.append((int(c), int(s)))
     pprint(treerefs)
-    pprint(flatrefs)
+    #pprint(flatrefs)
     session.woh_treerefs = treerefs
     session.woh_flatrefs = flatrefs
 

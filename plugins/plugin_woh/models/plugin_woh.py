@@ -16,7 +16,7 @@ db.define_table('chapter_titles',
 
 db.define_table('section_titles',
                 Field('uid', 'integer'),
-                Field('chapter_num', 'list:reference chapter_title'),
+                Field('chapter_num', 'list:reference chapter_titles'),
                 Field('section_num'),
                 Field('title', 'string', length=512),
                 format=lambda r: '{}.{}: {}'.format(r.chapter_num,
