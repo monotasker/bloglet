@@ -1,10 +1,40 @@
-{{right_sidebar_enabled = 4}}
-{{left_sidebar_enabled = 0}}
-{{rightblocks = ['info']}}
-{{response.title = T('Witnesses of Hope')}}
-{{response.mobiletitle = response.title}}
-{{response.subtitle = T('Pathways into the New Testament')}}
+{{
+right_sidebar_enabled = 4
+left_sidebar_enabled = 0
+rightblocks = ['info']
+response.title = T('Witnesses of Hope')
+response.mobiletitle = response.title
+response.subtitle = T('Pathways into the New Testament')
+# create dedicated woh menu for nav bar
+chapitems = []
+for c in sorted(treerefs.keys()):
+    row = db.chapter_titles(db.chapter_titles.num == c)
+    title = row.title if row else ''
+    cnum = '{}. '.format(c) if c not in [0, 999] else ''
+    title = '{}{}'.format(cnum, title)
+    item = (SPAN(T(title), _class=''), False,
+            URL('plugin_woh', 'read', args=[c, treerefs[c][0]]), [],)
+    chapitems.append(item)
+pass
+editems = []
+for e in ['chapter_titles', 'section_titles', 'paragraphs',
+          'woh_images', 'woh_audio']:
+    i = (SPAN(T(' {}'.format(e.replace('_', ' ').upper())), _class='icon-cog'),
+         False,
+         URL('plugin_blog', 'editing', args=[e]),
+         [])
+    editems.append(i)
+pass
+response.menu = [(SPAN(T(' Chapters'), _class='icon-book'),
+                  False,
+                  URL('#'),
+                  chapitems), 
+                 (SPAN(T(' Edit'), _class='icon-cog'),
+                  False,
+                  URL('#'),
+                  editems)]}}
 {{extend 'layout.html'}}
+{{#=========================================================================}}
 
 {{=LOAD('plugin_woh', 'section.load', args=request.args, ajax=False)}}
 
@@ -12,27 +42,8 @@
 
 {{block right_sidebar}}
 <div data-spy='affix' id='sidemenu'>
-    <div class="dropdown nav navbar nav-stacked">
-    <a id='dropdown-label' data-toggle='dropdown' class='dropdown-toggle'>
-        Chapters 
-        <b class='caret'></b>
-    </a>
-    <ul class='dropdown-menu' role="menu" aria-labeledby='dropdown-label'>
-    {{for c in sorted(treerefs.keys()):
-        row = db.chapter_titles(db.chapter_titles.num == c)
-        title = row.title if row else ''
-        chnum = '{}. '.format(c) if c not in [0, 999] else ''
-        item = LI(A(chnum, title,
-                    _href=URL('plugin_woh', 'read',
-                              args=[c, treerefs[c][0]])))
-        }}
-        {{=item}}
-    {{pass}}
-    </div>
-
     {{chaptitle = db.chapter_titles(db.chapter_titles.num == mychap).title}}
     {{=H3(chaptitle)}}
-
     {{submenu = UL(_class='nav nav-pills nav-stacked')
     for c in sorted(treerefs[mychap]):
         row = db((db.section_titles.section_num == c) &
