@@ -16,14 +16,18 @@ for c in sorted(treerefs.keys()):
             URL('plugin_woh', 'read', args=[c, treerefs[c][0]]), [],)
     chapitems.append(item)
 pass
-editems = []
-for e in ['chapter_titles', 'section_titles', 'paragraphs',
-          'woh_images', 'woh_audio']:
-    i = (SPAN(T(' {}'.format(e.replace('_', ' ').upper())), _class='icon-cog'),
-         False,
-         URL('plugin_blog', 'editing', args=[e]),
-         [])
-    editems.append(i)
+if auth.has_membership('administrators'):
+    editems = []
+    for e in ['chapter_titles', 'section_titles', 'paragraphs',
+            'woh_images', 'woh_audio']:
+        i = (SPAN(T(' {}'.format(e.replace('_', ' ').upper())), _class='icon-cog'),
+            False,
+            URL('plugin_blog', 'editing', args=[e]),
+            [])
+        editems.append(i)
+    pass
+else:
+    editems = ''
 pass
 response.menu = [(SPAN(T(' Chapters'), _class='icon-book'),
                   False,
