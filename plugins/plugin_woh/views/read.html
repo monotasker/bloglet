@@ -51,8 +51,16 @@ response.menu = [(SPAN(T(' Chapters'), _class='icon-book'),
                  (db.section_titles.chapter_num == mychap)).select().first()                
         title = row.title if row else ''
         secnum = '{}. '.format(c) 
+        secrows = db(db.paragraphs.section == c).select()
+        try:
+            rowaudio = [a for r in secrows for a in r.audio] 
+            secaudio = B(_class='icon-audio')
+        except TypeError:
+            secaudio = ''
+        pass
         submenu.append(LI(A(secnum, title,
-                            _href='#section_{}'.format(c))))
+                            _href='#section_{}'.format(c)),
+                          secaudio))
     pass}}
     {{=submenu}}
     <p>{{#include 'plugin_blog/right_sidebar.html'}}</p>
