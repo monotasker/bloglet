@@ -44,7 +44,8 @@ response.menu = [(SPAN(T(' Chapters'), _class='icon-book'),
 <div data-spy='affix' id='sidemenu'>
     {{chaptitle = db.chapter_titles(db.chapter_titles.num == mychap).title}}
     {{=H3(chaptitle)}}
-    {{submenu = UL(_class='nav nav-pills nav-stacked')
+    {{myopts = {'_data-spy': 'affix', '_data-target': '#page'} }}
+    {{submenu = UL(_class='nav nav-pills nav-stacked', **myopts)
     for c in sorted(treerefs[mychap]):
         row = db((db.section_titles.section_num == c) &
                  (db.section_titles.chapter_num == mychap)).select().first()                

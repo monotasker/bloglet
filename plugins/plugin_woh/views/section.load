@@ -8,7 +8,7 @@
 {{print(len(paragraphs))}}
 
     {{sectitle = sectitles[sec] if sec in sectitles.keys() else sec}}
-    <h2 id='{{='section_{}'.format(sec)}}' data-spy='scroll' data-target='#sidemenu'>{{=sectitle}}</h2>
+    <h2 id='{{='section_{}'.format(sec)}}' >{{=sectitle}}</h2>
 
 {{for p in paragraphs:}}
 
@@ -17,7 +17,7 @@
     {{pass}}    
     <div class='row-fluid'>
     <div class='span2'>
-        {{=SPAN(p['num'], _class='pull-left ')}}
+        {{=SPAN(p['num'], _class='pull-left woh-par-num')}}
 
         {{if p['auds']:}}
             {{for idx, a in enumerate(p['auds']):}}
@@ -26,8 +26,7 @@
                 {{tid = '{}_trigger'.format(aid)}}
                 <!--<a id="{{#=tid}}" rel="popover" class="popover-trigger">listen</a>-->
                 <!--<div class="modal fade popover-content" id="{{#=aid}}">-->
-                <audio class="woh_audio_player pull-left" title="{{=a[0]}}"
-                    style="width:40px; clear:left;" controls type >
+                <audio class="woh_audio_player pull-left" title="{{=a[0]}}" controls type >
                         <source src="{{=URL('plugin_woh/download', a[2])}}" type="audio/mpeg" />
                         {{if len(a) > 2 and a[3]:}}
                             <source src="{{=URL('plugin_woh/download', a[3])}}" type="audio/ogg" />
@@ -47,7 +46,7 @@
             {{pass}}
         {{pass}}
 
-        {{=p['text']}}
+        {{=P(p['text'])}}
     </div>
 
     </div>
