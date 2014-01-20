@@ -1,1 +1,70 @@
-{{=text}}
+{{=H1(title1)}}
+
+{{#=A('previous', _href=URL('plugin_woh', 'section.load', args=prevref), _class='pull-left', cid=request.cid)}}
+{{#=A('next', _href=URL('plugin_woh', 'section.load', args=nextref), _class='pull-right', cid=request.cid)}}
+
+{{for sec, paragraphs in sections.iteritems():}}
+{{print(sec)}}
+{{print(len(paragraphs))}}
+
+    {{sectitle = sectitles[sec] if sec in sectitles.keys() else sec}}
+    <h2 id='{{='section_{}'.format(sec)}}' data-spy='scroll' data-target='#sidemenu'>{{=sectitle}}</h2>
+
+{{for p in paragraphs:}}
+
+    {{if p['par_title']:}}
+        {{=H3(p['par_title'])}}
+    {{pass}}    
+    <div class='row-fluid'>
+    <div class='span2'>
+        {{=SPAN(p['num'], _class='pull-left ')}}
+
+        {{if p['auds']:}}
+            {{for idx, a in enumerate(p['auds']):}}
+                {{msg = 'Sorry, your browser needs to be updated to support this audio content.'}}
+                {{aid = 'woh_audio_{}_{}'.format(p['num'], idx)}}
+                {{tid = '{}_trigger'.format(aid)}}
+                <!--<a id="{{#=tid}}" rel="popover" class="popover-trigger">listen</a>-->
+                <!--<div class="modal fade popover-content" id="{{#=aid}}">-->
+                <audio class="woh_audio_player pull-left" title="{{=a[0]}}"
+                    style="width:40px; clear:left;" controls type >
+                        <source src="{{=URL('plugin_woh/download', a[2])}}" type="audio/mpeg" />
+                        {{if len(a) > 2 and a[3]:}}
+                            <source src="{{=URL('plugin_woh/download', a[3])}}" type="audio/ogg" />
+                        {{pass}}
+                        {{=msg}}
+                    </audio>
+                <!--</div>-->
+            {{pass}}
+        {{pass}}
+    </div>
+
+    <div class='span10'>
+        {{if p['images']:}}
+            {{for i in p['images']:}}
+            <img src="{{URL('plugin_woh/download', i[2])}}" title="{{=i[0]}}"
+                alt="{{=i[1]}}" class="woh-illustration pull-right" />
+            {{pass}}
+        {{pass}}
+
+        {{=p['text']}}
+    </div>
+
+    </div>
+{{pass}}
+{{pass}}
+
+<script type='text/javascript'>
+    //$('.popover-trigger').each(function(evt) {
+        $('.popover-trigger').popover({
+            placement: 'right',
+            html: true,
+            //selector: '.popover-content',
+            //content: $this.find('.popover-content').html()
+        });
+    //});
+    $('.popover-trigger').on('click', function(evt){
+        console.log(evt.target.id);
+        evt.target.popover('toggle');
+    });
+</script>

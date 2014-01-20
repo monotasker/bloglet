@@ -1,11 +1,63 @@
-{{#rightblocks = ['info', 'woh_menu', 'woh_submenu', 'my_sites']}}
-{{right_sidebar_enabled = 4}}
-{{left_sidebar_enabled = 0}}
-{{response.title = T('Witnesses of Hope')}}
-{{response.mobiletitle = response.title}}
-{{response.subtitle = T('Pathways into the New Testament')}}
+{{
+right_sidebar_enabled = 4
+left_sidebar_enabled = 0
+rightblocks = ['info']
+response.title = T('Witnesses of Hope')
+response.mobiletitle = response.title
+response.subtitle = T('Pathways into the New Testament')
+# create dedicated woh menu for nav bar
+chapitems = []
+for c in sorted(treerefs.keys()):
+    row = db.chapter_titles(db.chapter_titles.num == c)
+    title = row.title if row else ''
+    cnum = '{}. '.format(c) if c not in [0, 999] else ''
+    title = '{}{}'.format(cnum, title)
+    item = (SPAN(T(title), _class=''), False,
+            URL('plugin_woh', 'read', args=[c, treerefs[c][0]]), [],)
+    chapitems.append(item)
+pass
+editems = []
+for e in ['chapter_titles', 'section_titles', 'paragraphs',
+          'woh_images', 'woh_audio']:
+    i = (SPAN(T(' {}'.format(e.replace('_', ' ').upper())), _class='icon-cog'),
+         False,
+         URL('plugin_blog', 'editing', args=[e]),
+         [])
+    editems.append(i)
+pass
+response.menu = [(SPAN(T(' Chapters'), _class='icon-book'),
+                  False,
+                  URL('#'),
+                  chapitems), 
+                 (SPAN(T(' Edit'), _class='icon-cog'),
+                  False,
+                  URL('#'),
+                  editems)]}}
 {{extend 'layout.html'}}
+{{#=========================================================================}}
 
-{{=title1}}
-{{=title2}}
-{{=LOAD(c='plugin_woh', f='section.load', args=[chapnum, secnum], ajax=False, target='woh-section-wrapper')}}
+{{=LOAD('plugin_woh', 'section.load', args=request.args, ajax=False)}}
+
+{{mychap = int(request.args[0]) if request.args else 0}}
+
+{{block right_sidebar}}
+<div data-spy='affix' id='sidemenu'>
+    {{chaptitle = db.chapter_titles(db.chapter_titles.num == mychap).title}}
+    {{=H3(chaptitle)}}
+    {{submenu = UL(_class='nav nav-pills nav-stacked')
+    for c in sorted(treerefs[mychap]):
+        row = db((db.section_titles.section_num == c) &
+                 (db.section_titles.chapter_num == mychap)).select().first()                
+        title = row.title if row else ''
+        secnum = '{}. '.format(c) 
+        submenu.append(LI(A(secnum, title,
+                            _href='#section_{}'.format(c))))
+    pass}}
+    {{=submenu}}
+    <p>{{#include 'plugin_blog/right_sidebar.html'}}</p>
+</div>
+{{end}}
+
+<script type='text/javascript'>
+$('#sidemenu').affix();
+</script>

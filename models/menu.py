@@ -5,6 +5,7 @@ if 0:
     from gluon import T, URL, current, SPAN
     response = current.response
     request = current.request
+    auth = current.auth
 
 response.title = T('Confessions of a Monotasker')
 response.mobiletitle = response.title
@@ -44,15 +45,15 @@ response.menu = [(SPAN(T(' Home'), _class='icon-home'), False,
 
 if auth.has_membership('administrators'):
     response.menu.extend([(SPAN(T(' Edit'), _class='icon-cog'), False,
-                        URL('plugin_blog', 'editing', args=['articles']),
-                            [(SPAN(T(' Articles'), _class='icon-home'), False,
-                            URL('plugin_blog', 'editing', args=['articles']), []),
+                           URL('plugin_blog', 'editing', args=['articles']),
+                           [(SPAN(T(' Articles'), _class='icon-home'), False,
+                             URL('plugin_blog', 'editing', args=['articles']), []),
                             (SPAN(T(' Tags'), _class='icon-home'), False,
-                            URL('plugin_blog', 'editing', args=['blog_tags']), []),
+                             URL('plugin_blog', 'editing', args=['blog_tags']), []),
                             (SPAN(T(' Documents'), _class='icon-home'), False,
-                            URL('plugin_blog', 'editing', args=['documents']), []),
+                             URL('plugin_blog', 'editing', args=['documents']), []),
                             ]),
-                        ])
+                          ])
     #def _():
         ## shortcuts
         #app = request.application

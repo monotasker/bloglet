@@ -26,6 +26,7 @@ def get_block(myblock):
                    ')'
                    )
                 )
+
     classcont = UL(LI(A('New Testament Theology and History',
                         _href=URL('plugin_blog', 'classes', args=4))),
                    LI(A('New Testament Theology and History (Online)',
@@ -64,14 +65,6 @@ def get_block(myblock):
                     LI(A('Twitter (@ianwscott)', _href="https://twitter.com/ianwscott")),
                     LI(A('Twitter (@the_monotasker)', _href="https://twitter.com/the_monotasker"))
                     )
-    wohmenucont = UL(LI(A('Introduction', _href=URL('plugin_woh', 'read', args=[0, 1]))),
-                     LI(A('The Birth of the NT', _href=URL('plugin_woh', 'read', args=[1, 1]))),
-                     LI(A('Gospel of Mark', _href=URL('plugin_woh', 'read', args=[2, 1]))),
-                     LI(A('Gospel of Matthew', _href=URL('plugin_woh', 'read', args=[3, 1]))),
-                     LI(A('Gospel of Luke', _href=URL('plugin_woh', 'read', args=[4, 1]))),
-                     LI(A('Gospel of John', _href=URL('plugin_woh', 'read', args=[5, 1]))),
-                     )
-    submenucont = UL()
 
     blocks = {'student_aids': {'blocktitle': 'General Student Aids',
                                'content': sacont},
@@ -85,12 +78,7 @@ def get_block(myblock):
                           'content': sitescont},
               'social': {'blocktitle': 'Me On the Web',
                          'content': socialcont},
-              'woh_menu': {'blocktitle': 'Chapters',
-                           'content': wohmenucont},
-              'woh_submenu': {'blocktitle': 'Sections',
-                              'content': submenucont},
               }
-
 
     blocktitle = blocks[myblock]['blocktitle']
     content = blocks[myblock]['content']
