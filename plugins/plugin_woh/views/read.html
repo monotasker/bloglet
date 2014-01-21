@@ -1,4 +1,5 @@
 {{
+from plugin_widgets import MODAL
 right_sidebar_enabled = 4
 left_sidebar_enabled = 0
 rightblocks = ['info']
@@ -16,6 +17,8 @@ for c in sorted(treerefs.keys()):
             URL('plugin_woh', 'read', args=[c, treerefs[c][0]]), [],)
     chapitems.append(item)
 pass
+response.menu = [(SPAN(T(' Chapters'), _class='icon-book'), False, URL('#'), chapitems)]
+
 if auth.has_membership('administrators'):
     editems = []
     for e in ['chapter_titles', 'section_titles', 'paragraphs',
@@ -25,18 +28,10 @@ if auth.has_membership('administrators'):
             URL('plugin_blog', 'editing', args=[e]),
             [])
         editems.append(i)
+    edmenu = (SPAN(T(' Edit'), _class='icon-cog'), False, URL('#'), editems)
     pass
-else:
-    editems = ''
-pass
-response.menu = [(SPAN(T(' Chapters'), _class='icon-book'),
-                  False,
-                  URL('#'),
-                  chapitems), 
-                 (SPAN(T(' Edit'), _class='icon-cog'),
-                  False,
-                  URL('#'),
-                  editems)]}}
+    response.menu.append(edmenu)
+pass}}
 {{extend 'layout.html'}}
 {{#=========================================================================}}
 
@@ -45,32 +40,83 @@ response.menu = [(SPAN(T(' Chapters'), _class='icon-book'),
 {{mychap = int(request.args[0]) if request.args else 0}}
 
 {{block right_sidebar}}
-<div data-spy='affix' id='sidemenu'>
+<div data-spy='affix' id='sidemenu', _data-target='#page h2'>
     {{chaptitle = db.chapter_titles(db.chapter_titles.num == mychap).title}}
     {{=H3(chaptitle)}}
-    {{myopts = {'_data-spy': 'affix', '_data-target': '#page'} }}
-    {{submenu = UL(_class='nav nav-pills nav-stacked', **myopts)
+    {{submenu = OL(_class='nav nav-pills nav-stacked')
     for c in sorted(treerefs[mychap]):
         row = db((db.section_titles.section_num == c) &
                  (db.section_titles.chapter_num == mychap)).select().first()                
         title = row.title if row else ''
-        secnum = '{}. '.format(c) 
-        secrows = db(db.paragraphs.section == c).select()
+        #secnum = '{}. '.format(c) 
+        secrows = db((db.paragraphs.section == c) &
+                     (db.paragraphs.chapter == mychap)).select()
+        print 'found secrows:', len(secrows)
         try:
-            rowaudio = [a for r in secrows for a in r.audio] 
-            secaudio = B(_class='icon-audio')
-        except TypeError:
+            rowaudio = [r.audio for r in secrows if r.audio][0]
+            print rowaudio[0]
+            secaudio = B(_class='icon-volume-up')
+        except IndexError:
             secaudio = ''
         pass
-        submenu.append(LI(A(secnum, title,
-                            _href='#section_{}'.format(c)),
-                          secaudio))
+        submenu.append(LI(A(title, ' ', secaudio, _href='#section_{}'.format(c))))
     pass}}
     {{=submenu}}
     <p>{{#include 'plugin_blog/right_sidebar.html'}}</p>
+
+    {{parrows = db(db.paragraphs.chapter == mychap).select()
+    try:
+        audids = []
+        for p in parrows:
+            if isinstance(p.audio, list):
+                for a in p.audio:
+                    audids.append(a)
+                pass
+            else:
+                audids.append(p.audio)
+            pass
+        pass
+        audids = [a for a in audids if a]
+        print 'audids:', audids
+        audrows = db(db.woh_audio.id.belongs(audids)).select()
+    except TypeError:
+        print 'no audio'
+        audrows = None
+    pass
+    if audrows:}}
+        {{audlist = UL(_class='woh-sidebar-audio-list nav nav-pills nav-stacked')
+        for a in audrows:
+            aitem = LI(a.audio_title,
+                       A('mp3 ',
+                         B(_class='icon-download'),
+                         _href=URL('plugin_woh/download', a.audio_file_mp3)))
+            if a.audio_file_ogg:
+                aitem.append(' | ')
+                aitem.append(A('ogg ',
+                               B(_class='icon-download'),
+                               _href=URL('plugin_woh/download', a.audio_file_ogg)))
+            pass
+            audlist.append(aitem)
+        pass}}
+        {{audcontent = CAT(P('To download a recording, right click on a link and '
+                              'select "save target," "save link as," or a similar '
+                              'option.', _class='info-text'),
+                           audlist)}}
+        {{mymodal = MODAL('All audio for this chapter',
+                          'All audio for this chapter', audcontent,
+                          id='woh-chapter-audio',
+                          trigger_type='button',
+                          trigger_classes='button-info')}}
+        {{=mymodal[0]}}
+    {{pass}}
 </div>
+{{try:}}
+    {{=mymodal[1]}}
+{{except NameError:}} 
+    {{pass}}
+{{pass}}
 {{end}}
 
 <script type='text/javascript'>
-$('#sidemenu').affix();
+//$('#sidemenu').affix();
 </script>
