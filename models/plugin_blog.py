@@ -8,6 +8,14 @@ if 0:
     request = current.request
 
 
+db.define_table('blog_images',
+                Field('uid', 'integer'),
+                Field('image_title', length=512),
+                Field('image_description', 'text'),
+                Field('img_file', 'upload', length=256,
+                      uploadfolder='static/images'),
+                format=lambda r: r.image_title)
+
 db.define_table('blog_tags',
     Field('tagname'),
     format='%(tagname)s')
@@ -37,9 +45,12 @@ db.define_table('articles',
     Field('blog_links', 'list:reference blog_links'),
     format='%(title)s')
 
+db.articles.parent.requires = IS_IN_DB(db, 'articles.id',
+                                       db.articles._format,
+                                       multiple=False)
 db.articles.blog_tags.requires = IS_IN_DB(db, 'blog_tags.id',
                                           db.blog_tags._format,
                                           multiple=True)
 db.articles.docs.requires = IS_IN_DB(db, 'docs.id',
-                                          db.docs._format,
-                                          multiple=True)
+                                     db.docs._format,
+                                     multiple=True)

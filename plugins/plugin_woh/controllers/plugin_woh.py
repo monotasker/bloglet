@@ -15,6 +15,7 @@ if 0:
     response = current.response
 from pprint import pprint
 import traceback
+#from operator import attrgetter
 
 
 def get_nav_refs(chapnum, secnum, flatrefs):
@@ -34,27 +35,26 @@ def section():
 
         title1 = db.chapter_titles(db.chapter_titles.num == chapnum).title
 
-        pars = db(db.paragraphs.chapter == chapnum
-                  ).select(orderby=db.paragraphs.section | db.paragraphs.subsection)
+        pars = db(db.paragraphs.chapter == chapnum).select().as_list()
+        pars.sort(key=lambda p: (int(p['section']), int(p['subsection'])))
 
         prevnode, nextnode = get_nav_refs(chapnum, currsec, flatrefs)
 
-        secrows = db(db.section_titles.chapter_num == chapnum).select()
-        sectitles = {s.section_num: s.title for s in secrows}
+        secrows = db(db.section_titles.chapter_num == chapnum).select().as_list()
+        secrows.sort(key=lambda p: int(p['section_num']))
+        sectitles = {s['section_num']: s['title'] for s in secrows}
 
         sections = {}
         for mysec in treerefs[int(chapnum)]:
             paragraphs = []
-            print 'found', len(pars)
-            secpars = pars.find(lambda r: r.section == str(mysec))
-            print 'secpars', len(secpars)
+            secpars = [p for p in pars if int(p['section']) == int(mysec)]
             for p in secpars:
                 mypar = {}
                 num = '.'.join([s for s in [str(chapnum), str(mysec),
-                                            str(p.subsection)] if s])
+                                            str(p['subsection'])] if s])
                 mypar['num'] = num
-                mypar['par_title'] = p.display_title
-                mypar['text'] = TAG(p.body)
+                mypar['par_title'] = p['display_title']
+                mypar['text'] = TAG(p['body'])
                 print 'parsed text for', num
                 mypar['auds'] = get_audio(p)
                 mypar['images'] = get_images(p)
@@ -83,12 +83,12 @@ def get_audio(row):
     """
     Return a list of tuples with data on an audio file related to the row.
     """
-    if row.audio:
+    if row['audio']:
         auds = [(db.woh_audio(a).audio_title,
                  db.woh_audio(a).audio_description,
                  db.woh_audio(a).audio_file_mp3,
                  db.woh_audio(a).audio_file_ogg)
-                for a in row.audio]
+                for a in row['audio']]
     else:
         auds = None
 
@@ -99,11 +99,11 @@ def get_images(row):
     """
     Return a list of tuples, each holding data on an image related to the row.
     """
-    if row.image:
+    if row['image']:
         imgs = [(db.images(i).img_title,
                  db.images(i).image_description,
                  db.images(i).img_file)
-                for i in row.image]
+                for i in row['image']]
     else:
         imgs = None
 

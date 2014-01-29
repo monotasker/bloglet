@@ -1,3 +1,4 @@
+{{from plugin_markmin_extras import mm_extras}}
 {{right_sidebar_enabled = True}}
 {{left_sidebar_enabled = True}}
 {{extend 'layout.html'}}
@@ -9,7 +10,7 @@
     {{if a.teaser:}}
         {{=P(
             SPAN(a.created.strftime('%B %e, %Y'), _class='article_date'),
-            MARKMIN(a.teaser),
+            MARKMIN(a.teaser, extra=mm_extras),
             '   ',
             A('read more', _href=URL('plugin_blog', 'articles', args=[a.id]))
         )}}

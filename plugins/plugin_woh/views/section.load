@@ -3,12 +3,11 @@
 {{#=A('previous', _href=URL('plugin_woh', 'section.load', args=prevref), _class='pull-left', cid=request.cid)}}
 {{#=A('next', _href=URL('plugin_woh', 'section.load', args=nextref), _class='pull-right', cid=request.cid)}}
 
+<div class='textwrapper' >
 {{for sec, paragraphs in sections.iteritems():}}
-{{print(sec)}}
-{{print(len(paragraphs))}}
 
-    {{sectitle = sectitles[sec] if sec in sectitles.keys() else sec}}
-    <h2 id='{{='section_{}'.format(sec)}}' >{{=sectitle}}</h2>
+{{sectitle = sectitles[sec] if sec in sectitles.keys() else sec}}
+<h2 id='{{='section_{}'.format(sec)}}' >{{=sectitle}}</h2>
 
 {{for p in paragraphs:}}
 
@@ -52,8 +51,12 @@
     </div>
 {{pass}}
 {{pass}}
+</div>
 
 <script type='text/javascript'>
+    $('[data-spy="scroll"]').each(function () {
+      var $spy = $(this).scrollspy('refresh')
+    })
     //$('.popover-trigger').each(function(evt) {
         $('.popover-trigger').popover({
             placement: 'right',
