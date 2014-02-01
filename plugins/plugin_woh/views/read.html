@@ -40,10 +40,11 @@ pass}}
 {{mychap = int(request.args[0]) if request.args else 0}}
 
 {{block right_sidebar}}
-<div data-spy='affix' id='sidemenu', _data-target='#page h2'>
+<div id='sidemenu' data-spy='affix' data-target='body' data-offset-top='120'>
     {{chaptitle = db.chapter_titles(db.chapter_titles.num == mychap).title}}
     {{=H3(chaptitle)}}
-    {{submenu = OL(_class='nav nav-pills nav-stacked')
+    {{args = {}
+    submenu = UL(_class='nav nav-pills nav-stacked sections_nav', _id='sections_nav')
     for c in sorted(treerefs[mychap]):
         row = db((db.section_titles.section_num == c) &
                  (db.section_titles.chapter_num == mychap)).select().first()                
@@ -117,6 +118,6 @@ pass}}
 {{pass}}
 {{end}}
 
-<script type='text/javascript'>
-//$('#sidemenu').affix();
-</script>
+<!--<script type='text/javascript'>-->
+  <!--$('#sidemenu').affix();-->
+<!--</script>-->

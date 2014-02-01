@@ -49,7 +49,7 @@ I00
 sg6
 I4
 sg7
-S'INTEGER REFERENCES chapter_titles (id) ON DELETE CASCADE'
+S'INTEGER REFERENCES "chapter_titles" ("id") ON DELETE CASCADE'
 p18
 sg9
 I00

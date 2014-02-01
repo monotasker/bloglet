@@ -1,4 +1,6 @@
-from gluon import DIV, H2, UL, LI, A, URL
+from gluon import UL, LI, A, URL
+from pprint import pprint
+
 
 def get_block(myblock):
     """
@@ -80,7 +82,8 @@ def get_block(myblock):
                          'content': socialcont},
               }
 
-    blocktitle = blocks[myblock]['blocktitle']
-    content = blocks[myblock]['content']
+    theblock = blocks[myblock]
+    print 'in blocks module ========================='
+    pprint(theblock)
 
-    return DIV(H2(blocktitle), content)
+    return theblock

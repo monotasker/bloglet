@@ -1,3 +1,4 @@
+{{from plugin_markmin_extras import mm_extras}}
 {{right_sidebar_enabled = True}}
 {{left_sidebar_enabled = True}}
 {{extend 'layout.html'}}
@@ -8,7 +9,7 @@
     {{pass}}
     {{=H2(art.title, _class='article_title')}}
     {{=SPAN(created, _class='article_date')}}
-    {{=DIV(MARKMIN(art.body), _class='article_wrapper')}}
+    {{=DIV(MARKMIN(art.body, extra=mm_extras), _class='article_wrapper')}}
     {{=H3('subjects', _class='tags_heading')}}
     <ul class='article_taglist'>
     {{for tag in tags:}}

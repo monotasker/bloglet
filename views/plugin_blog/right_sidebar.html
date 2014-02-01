@@ -1,15 +1,14 @@
 {{from blocks import get_block}}
+{{from plugin_widgets import ACCORDION}}
 
-{{for b in rightblocks:}}
-{{=get_block(b)}} 
-{{pass}}
-
-
-<script>
-    $('#left_sidebar div, #right_sidebar div').live('click', function(){
-        $('#left_sidebar ul, #right_sidebar ul').each(function(){
-            $(this).hide('slow');
-        });
-        $(this).find('ul').slideToggle();
-    });
-</script>
+{{
+blockset = []
+for b in rightblocks:
+  block = get_block(b)
+  blockitem = ['block_{}'.format(b), block['blocktitle'], block['content'], '']
+  if b == 'info':
+    blockitem[3] = 'in'
+  pass
+  blockset.append(blockitem)
+pass}}
+{{=ACCORDION(blockset)}}
