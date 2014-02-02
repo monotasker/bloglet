@@ -4,9 +4,10 @@ right_sidebar_enabled = 4
 left_sidebar_enabled = 0
 rightblocks = ['info']
 response.title = T('Witnesses of Hope')
+response.homeurl = URL('blog', 'plugin_woh', 'read', args=[0])
 response.mobiletitle = response.title
 response.subtitle = T('Pathways into the New Testament')
-# create dedicated woh menu for nav bar
+# Dedicated woh menu for nav bar =============================================
 chapitems = []
 for c in sorted(treerefs.keys()):
     row = db.chapter_titles(db.chapter_titles.num == c)
@@ -17,8 +18,11 @@ for c in sorted(treerefs.keys()):
             URL('plugin_woh', 'read', args=[c, treerefs[c][0]]), [],)
     chapitems.append(item)
 pass
-response.menu = [(SPAN(T(' Chapters'), _class='icon-book'), False, URL('#'), chapitems)]
-
+response.menu = [(SPAN(T(' Chapters'), _class='icon-book'),
+                 False,
+                 URL('plugin_woh', 'read', args=[0]),
+                 chapitems)]
+# Edit menu ===============================================================
 if auth.has_membership('administrators'):
     editems = []
     for e in ['chapter_titles', 'section_titles', 'paragraphs',
@@ -28,8 +32,16 @@ if auth.has_membership('administrators'):
             URL('plugin_blog', 'editing', args=[e]),
             [])
         editems.append(i)
-    edmenu = (SPAN(T(' Edit'), _class='icon-cog'), False, URL('#'), editems)
     pass
+    editems.append((SPAN(T(' Design'), _class='icon-pencil'),
+                    False,
+                    URL(a='admin', c='default', f='index'),
+                    []))
+    editems.append((SPAN(T(' Database'), _class='icon-system'),
+                    False,
+                    URL('appadmin', 'index'),
+                    []))
+    edmenu = (SPAN(T(' Edit'), _class='icon-cog'), False, URL('#'), editems)
     response.menu.append(edmenu)
 pass}}
 {{extend 'layout.html'}}
@@ -43,6 +55,7 @@ pass}}
 <div id='sidemenu' data-spy='affix' data-target='body' data-offset-top='120'>
     {{chaptitle = db.chapter_titles(db.chapter_titles.num == mychap).title}}
     {{=H3(chaptitle)}}
+{{# Sidebar menu ============================================================}}
     {{args = {}
     submenu = UL(_class='nav nav-pills nav-stacked sections_nav', _id='sections_nav')
     for c in sorted(treerefs[mychap]):
@@ -65,6 +78,7 @@ pass}}
     {{=submenu}}
     <p>{{#include 'plugin_blog/right_sidebar.html'}}</p>
 
+{{# All audio button ========================================================}}
     {{parrows = db(db.paragraphs.chapter == mychap).select()
     try:
         audids = []
@@ -103,11 +117,11 @@ pass}}
                               'select "save target," "save link as," or a similar '
                               'option.', _class='info-text'),
                            audlist)}}
-        {{mymodal = MODAL('All audio for this chapter',
+        {{mymodal = MODAL('  All audio for this chapter',
                           'All audio for this chapter', audcontent,
                           id='woh-chapter-audio',
-                          trigger_type='button',
-                          trigger_classes='button-info')}}
+                          trigger_type='link',
+                          trigger_classes='btn btn-info icon-volume-up ')}}
         {{=mymodal[0]}}
     {{pass}}
 </div>
@@ -118,6 +132,3 @@ pass}}
 {{pass}}
 {{end}}
 
-<!--<script type='text/javascript'>-->
-  <!--$('#sidemenu').affix();-->
-<!--</script>-->

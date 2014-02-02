@@ -31,16 +31,20 @@ def section():
     try:
         treerefs, flatrefs = get_tree()
         chapnum = request.args[0] if request.args else sorted(treerefs.keys())[0]
+        chapid = db.chapter_titles(db.chapter_titles.num == chapnum).id
         currsec = request.args[1] if len(request.args) > 0 else treerefs[chapnum][0]
 
         title1 = db.chapter_titles(db.chapter_titles.num == chapnum).title
 
-        pars = db(db.paragraphs.chapter == chapnum).select().as_list()
+        pars = db(db.paragraphs.chapter_id == chapid).select().as_list()
         pars.sort(key=lambda p: (int(p['section']), int(p['subsection'])))
 
         prevnode, nextnode = get_nav_refs(chapnum, currsec, flatrefs)
-
-        secrows = db(db.section_titles.chapter_num == chapnum).select().as_list()
+        print 'chapid =', chapid
+        print 'chapnum =', chapnum
+        secrows = db(db.section_titles.chapter_num == chapid).select().as_list()
+        print 'secrows'
+        pprint(secrows)
         secrows.sort(key=lambda p: int(p['section_num']))
         sectitles = {s['section_num']: s['title'] for s in secrows}
 
