@@ -25,7 +25,7 @@
                 {{tid = '{}_trigger'.format(aid)}}
                 <!--<a id="{{#=tid}}" rel="popover" class="popover-trigger">listen</a>-->
                 <!--<div class="modal fade popover-content" id="{{#=aid}}">-->
-                <audio class="woh_audio_player pull-left" title="{{=a[0]}}" controls type >
+                <audio class="woh_audio_player pull-left" title="{{=a[0]}}" controls preload='auto'>
                         <source src="{{=URL('plugin_woh/download', a[2])}}" type="audio/mpeg" />
                         {{if len(a) > 2 and a[3]:}}
                             <source src="{{=URL('plugin_woh/download', a[3])}}" type="audio/ogg" />
