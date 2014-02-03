@@ -47,6 +47,8 @@ def section():
         pprint(secrows)
         secrows.sort(key=lambda p: int(p['section_num']))
         sectitles = {s['section_num']: s['title'] for s in secrows}
+        print 'sectitles'
+        pprint(sectitles)
 
         sections = {}
         for mysec in treerefs[int(chapnum)]:

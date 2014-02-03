@@ -53,18 +53,17 @@ pass}}
 
 {{block right_sidebar}}
 <div id='sidemenu' data-spy='affix' data-target='body' data-offset-top='120'>
-    {{chaptitle = db.chapter_titles(db.chapter_titles.num == mychap).title}}
-    {{=H3(chaptitle)}}
+    {{chaprow = db.chapter_titles(db.chapter_titles.num == mychap)}}
+    {{=H3(chaprow.title)}}
 {{# Sidebar menu ============================================================}}
     {{args = {}
     submenu = UL(_class='nav nav-pills nav-stacked sections_nav', _id='sections_nav')
     for c in sorted(treerefs[mychap]):
         row = db((db.section_titles.section_num == c) &
-                 (db.section_titles.chapter_num == mychap)).select().first()                
+                 (db.section_titles.chapter_num == chaprow.id)).select().first()                
         title = row.title if row else ''
-        #secnum = '{}. '.format(c) 
         secrows = db((db.paragraphs.section == c) &
-                     (db.paragraphs.chapter == mychap)).select()
+                     (db.paragraphs.chapter_id == chaprow.id)).select()
         print 'found secrows:', len(secrows)
         try:
             rowaudio = [r.audio for r in secrows if r.audio][0]
