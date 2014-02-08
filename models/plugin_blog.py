@@ -2,7 +2,7 @@ import datetime
 import os
 
 if 0:
-    from gluon import current, IS_IN_DB, Field
+    from gluon import current, IS_IN_DB, Field, IS_EMPTY_OR
     db = current.db
     auth = current.auth
     request = current.request
@@ -44,13 +44,12 @@ db.define_table('articles',
     Field('docs', 'list:reference docs'),
     Field('blog_links', 'list:reference blog_links'),
     format='%(title)s')
-
-db.articles.parent.requires = IS_IN_DB(db, 'articles.id',
-                                       db.articles._format,
-                                       multiple=False)
+db.articles.parent.requires = IS_EMPTY_OR(IS_IN_DB(db, 'articles.id',
+                                                   db.articles._format,
+                                                   multiple=False))
 db.articles.blog_tags.requires = IS_IN_DB(db, 'blog_tags.id',
                                           db.blog_tags._format,
                                           multiple=True)
-db.articles.docs.requires = IS_IN_DB(db, 'docs.id',
-                                     db.docs._format,
-                                     multiple=True)
+db.articles.docs.requires = IS_EMPTY_OR(IS_IN_DB(db, 'docs.id',
+                                                 db.docs._format,
+                                                 multiple=True))
