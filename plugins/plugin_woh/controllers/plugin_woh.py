@@ -10,7 +10,7 @@ Description:
 """
 
 if 0:
-    from gluon import request, db, current, TAG
+    from gluon import request, db, current
     session = current.session
     response = current.response
 from pprint import pprint
@@ -60,7 +60,7 @@ def section():
                                             str(p['subsection'])] if s])
                 mypar['num'] = num
                 mypar['par_title'] = p['display_title']
-                mypar['text'] = TAG(p['body'])
+                mypar['text'] = p['body']
                 print 'parsed text for', num
                 mypar['auds'] = get_audio(p)
                 mypar['images'] = get_images(p)
