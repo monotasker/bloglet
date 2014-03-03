@@ -46,7 +46,7 @@
             {{pass}}
         {{pass}}
         {{print p['text']}}
-        {{=TAG(markdown(p['text']))}}
+        {{response.write(markdown(p['text']).encode('utf8'), escape=False)}}
     </div>
 
     </div>
