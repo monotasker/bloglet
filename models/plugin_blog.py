@@ -54,9 +54,9 @@ db.define_table('articles',
 db.articles.parent.requires = IS_EMPTY_OR(IS_IN_DB(db, 'articles.id',
                                                    db.articles._format,
                                                    multiple=False))
-db.articles.blog_tags.requires = IS_IN_DB(db, 'blog_tags.id',
+db.articles.blog_tags.requires = IS_EMPTY_OR(IS_IN_DB(db, 'blog_tags.id',
                                           db.blog_tags._format,
-                                          multiple=True)
+                                          multiple=True))
 db.articles.blog_tags.widget = lambda field, value: \
                                 AjaxSelect(field, value,
                                             indx=1,
@@ -67,10 +67,20 @@ db.articles.blog_tags.widget = lambda field, value: \
 db.articles.docs.requires = IS_EMPTY_OR(IS_IN_DB(db, 'docs.id',
                                                  db.docs._format,
                                                  multiple=True))
-db.articles.docs.widget = lambda field, value: \
-                          AjaxSelect(field, value,
-                                     indx=2,
-                                     refresher=True,
-                                     multi='basic',
-                                     lister='simple',
-                                     orderby='label').widget()
+db.articles.docs.widget = lambda field, value: AjaxSelect(field, value,
+                                                          indx=2,
+                                                          refresher=True,
+                                                          multi='basic',
+                                                          lister='simple',
+                                                          orderby='label'
+                                                          ).widget()
+db.articles.blog_links.requires = IS_EMPTY_OR(IS_IN_DB(db, 'blog_links.id',
+                                                 db.blog_links._format,
+                                                 multiple=True))
+db.articles.blog_links.widget = lambda field, value: AjaxSelect(field, value,
+                                                                indx=3,
+                                                                refresher=True,
+                                                                multi='basic',
+                                                                lister='simple',
+                                                                orderby='label'
+                                                                ).widget()

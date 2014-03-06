@@ -16,3 +16,6 @@
 [submodule "plugins/plugin_framework"]
 	path = plugins/plugin_framework
 	url = git@github.com:monotasker/plugin_framework
+[submodule "plugins/plugin_sqlite_backup"]
+	path = plugins/plugin_sqlite_backup
+	url = git@github.com:monotasker/plugin_sqlite_backup
