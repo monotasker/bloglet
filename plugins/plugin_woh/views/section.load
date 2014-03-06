@@ -1,3 +1,4 @@
+{{from gluon.contrib.markdown.markdown2 import markdown}}
 {{=H1(title1)}}
 
 {{#=A('previous', _href=URL('plugin_woh', 'section.load', args=prevref), _class='pull-left', cid=request.cid)}}
@@ -13,7 +14,7 @@
 
     {{if p['par_title']:}}
         {{=H3(p['par_title'])}}
-    {{pass}}    
+    {{pass}}
     <div class='row-fluid'>
     <div class='span2'>
         {{=SPAN(p['num'], _class='pull-left woh-par-num')}}
@@ -44,8 +45,8 @@
                 alt="{{=i[1]}}" class="woh-illustration pull-right" />
             {{pass}}
         {{pass}}
-
-        {{=P(p['text'])}}
+        {{print p['text']}}
+        {{response.write(markdown(p['text']).encode('utf8'), escape=False)}}
     </div>
 
     </div>
