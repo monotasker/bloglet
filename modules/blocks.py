@@ -1,5 +1,4 @@
 from gluon import UL, LI, A, URL
-from pprint import pprint
 
 
 def get_block(myblock):
@@ -7,7 +6,6 @@ def get_block(myblock):
     """
     tynprox = 'http://ezproxy.mytyndale.ca:2048/login?url='
     chicago = 'http://www.chicagomanualofstyle.org.ezproxy.mytyndale.ca:2048/'
-
     sacont = UL(LI(A('Tyndale Registrar',
                     _href='http://tyndale.ca/registrar')),
                 LI(A('Tyndale Library',
@@ -28,7 +26,6 @@ def get_block(myblock):
                    ')'
                    )
                 )
-
     classcont = UL(LI(A('New Testament Theology and History',
                         _href=URL('plugin_blog', 'classes', args=4))),
                    LI(A('New Testament Theology and History (Online)',
@@ -67,7 +64,6 @@ def get_block(myblock):
                     LI(A('Twitter (@ianwscott)', _href="https://twitter.com/ianwscott")),
                     LI(A('Twitter (@the_monotasker)', _href="https://twitter.com/the_monotasker"))
                     )
-
     blocks = {'student_aids': {'blocktitle': 'General Student Aids',
                                'content': sacont},
               'classes': {'blocktitle': 'Classes',
@@ -81,9 +77,5 @@ def get_block(myblock):
               'social': {'blocktitle': 'Me On the Web',
                          'content': socialcont},
               }
-
     theblock = blocks[myblock]
-    print 'in blocks module ========================='
-    pprint(theblock)
-
     return theblock
