@@ -1,1 +1,1 @@
-../plugins/plugin_markmin_extras/plugin_markmin_extras.py
+../plugins/plugin_markmin_extras/modules/plugin_markmin_extras.py

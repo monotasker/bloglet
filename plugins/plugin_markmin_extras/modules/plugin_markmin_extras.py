@@ -44,10 +44,13 @@ imgrows = db(db.blog_images.id > 0).select().as_list()
 imgrows2 = db(db.woh_images.id > 0).select().as_list()
 audrows = db(db.woh_audio.id > 0).select().as_list()
 docrows = db(db.docs.id > 0).select().as_list()
+print 'in markmin_extras'
+pprint(docrows)
 pprint(docrows[0])
 
 maketag = lambda(t, txt): URL('plugin_markmin_extras', 'download',
-                              td[t]['table'](td[t]['titlefield'] == txt)[td[t]['filefield']]
+                              td[t]['table'](td[t]['titlefield'] == txt
+                                             )[td[t]['filefield']]
                               ).xml()
 
 mm_extras = dict(img_by_title=lambda text: maketag('image', text),

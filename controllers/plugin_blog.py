@@ -9,6 +9,7 @@ if 0:
     auth = current.auth
 
 import re
+from pprint import pprint
 
 
 def smart_truncate(content, length=480, suffix='...'):
@@ -38,6 +39,9 @@ def articles():
 
 
 def classes():
+    print 'starting classes controller'
+    docrows = db(db.docs.id > 0).select().as_list()
+    pprint(docrows)
     the_id = request.args[0]
     myclass = db((db.articles.id == the_id) &
                  (db.articles.blog_tags.contains(5))).select().first()
